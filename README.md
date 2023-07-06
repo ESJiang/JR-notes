@@ -2,23 +2,34 @@
 
 `匠人编程入门班16期笔记`
 
-## Module one：Web基础知识
+## Module one：HTML & CSS
 
-[HTML & CSS 第 1 节课](HTML&CSS_1.md)
+[HTML & CSS Part 1](./html&css/HTML&CSS_1.md)
 
-[HTML & CSS 第 2 节课](HTML&CSS_2.md)
+[HTML & CSS Part 2](./html&css/HTML&CSS_2.md)
 
-## Module two: Web基础-Javascript
+[HTML & CSS Part 3](./html&css/HTML&CSS_3.md)
 
+## Module two：Git
 
-## Module three: 网页应用搭建
+[Git](./Git/Git.md)
 
+[Git tutorial](./Git/Git_tutorial.md)
 
-## Module four: 数据库
+## Module three: JavaScript
 
+[javascript 1](./javascript/javascript_1.md)
 
-## Module five: Python
+[javascript_tutorial_1](./javascript/javascript_tutorial_1.md)
 
+## Module four: Node.js
 
-## Resources
+[Node 1](./Nodejs/Node_1.md)
+
+## Module five: Database
+
+## Module six: Python
+
+[Python 1](./python/Python_1.md)
+
 ## TBC

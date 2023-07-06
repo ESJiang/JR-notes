@@ -8,6 +8,11 @@
       - [CSS的优先级顺序](#css的优先级顺序)
     - [CSS语法](#css语法)
     - [CSS选择器](#css选择器)
+      - [+ 选择器](#-选择器)
+      - [~ 选择器](#-选择器-1)
+      - [\> 选择器和后代选择器区别](#-选择器和后代选择器区别)
+      - [p:last-child和p:last-of-type的区别](#plast-child和plast-of-type的区别)
+      - [p:only-child和p:only-of-type的区别](#ponly-child和ponly-of-type的区别)
     - [BEM命名规范 (如何给选择器取名)](#bem命名规范-如何给选择器取名)
     - [Box Model](#box-model)
     - [color命名](#color命名)
@@ -23,13 +28,13 @@
 # Class Notes
 
 ## Resources
-<https://github.com/australiaitgroup/html-css-guide>
+[html&css书写规范](https://github.com/australiaitgroup/html-css-guide)
 
-<https://flukeout.github.io/>
+[css选择器练习](https://flukeout.github.io/)
 
-<https://www.davidjones.com/home-and-food/dining/glassware>
+[gift card practice resource](https://www.davidjones.com/home-and-food/dining/glassware)
 
-<https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/background-borders>
+[background border practice](https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/background-borders)
 
 ## HTML & CSS Part 2 (`05/07/2023`)
 
@@ -45,7 +50,7 @@ Cascading Style Sheets
 
 ### CSS工作原理
 `原理图`<br>
-<img src="image/How_CSS_Works.png" alt="CSS工作原理" width="300" />
+<img src="../image/How_CSS_Works.png" alt="CSS工作原理" width="300" />
 
 > 在parse css时, 有attributes可以多样化selector
 
@@ -70,13 +75,13 @@ Cascading Style Sheets
 > 覆盖的意思是覆盖重复定义的property; 不是说优先级高的会覆盖所有优先级低的, 优先度低的内容如果在优先度高里面没有, 优先度低声明的这部分内容仍会生效.
 
 #### CSS的优先级顺序
-- !Important > Inline style > ID > Class > Element
+- !Important > Inline style > ID > Class > Element > Universal
 
-- internal css > external css
+- Internal css > External css
 
 ### CSS语法
 `举例一个element selector`<br>
-<img src="image/CSS_Syntax.png" alt="CSS语法" width="300" />
+<img src="../image/CSS_Syntax.png" alt="CSS语法" width="300" />
 
 ***更改a的颜色***
 ```css
@@ -97,6 +102,43 @@ p, .class_name, #id_name{
     color: #000000;
 }
 ```
+
+#### + 选择器
+`两个子元素紧挨着, 有相同父级`
+
+```css
+h1+p{
+    color: green; /*修改h1后面p的字体颜色*/
+}
+```
+
+#### ~ 选择器
+`匹配所有在h1后面的p元素, 不要求紧邻, 有相同父级`
+
+```css
+h1~p{
+    color: green; /*修改h1后面所有的p字体颜色*/
+}
+```
+
+#### > 选择器和后代选择器区别
+| div>p | div p |
+| :---: | :---: |
+| ***p必须是div的第一个直接子元素*** | ***匹配div中的所有子元素p(可以跳跃)*** |
+
+
+#### p:last-child和p:last-of-type的区别
+
+| p:last-child | p:last-of-type |
+| :---: | :---: |
+| ***匹配任意父级元素最后一个子元素, 并且子元素必须是p标签*** | ***匹配任意父级元素最后一个类型为p的子元素*** |
+
+> `即使最后一个元素不是p, 如果前面有p标签, last-of-type仍能匹配到, 但last-child就不行`
+
+#### p:only-child和p:only-of-type的区别
+| p:only-child | p:only-of-type |
+| :---: | :---: |
+| ***p的父级必须只包含一个元素, 这个元素是p*** | ***p的父级只包含一个p元素, 但可以有其他非p的子元素*** |
 
 ### BEM命名规范 (如何给选择器取名)
 > BEM会把每个block命名
@@ -133,7 +175,7 @@ p, .class_name, #id_name{
 </header>
 ```
 
-//不要使用元素命名, 命名要和功能有关
+`不要使用元素命名, 命名要和功能有关`
 
 这样做的好处？
 > 可读性和可维护性好<br>
@@ -143,7 +185,7 @@ p, .class_name, #id_name{
 ### Box Model
 *网站上的元素都遵循box model*
 
-<img src="image/box_model.png" alt="CSS语法" width="300" />
+<img src="../image/box_model.png" alt="CSS语法" width="300" />
 
 - Padding vs Border vs Margin
   - padding是紧贴content的部分
@@ -195,8 +237,8 @@ p {
 ```
 
 ### 长度单位
-*相对单位: em/rem/%/vm/vh*
-> em和rem的大小都是基于字体大小(em基于父元素, rem基于html元素), %/vm/vh的取值和width和height有关
+*相对单位: em/rem/%/vw/vh*
+> em和rem的大小都是基于字体大小(em基于父元素, rem基于html元素), %/vw/vh的取值和width和height有关
 
 *绝对单位: px*
 > 不随screen宽度/高度, 变化而变化
