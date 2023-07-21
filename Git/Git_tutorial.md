@@ -58,6 +58,8 @@
 
 > 如果不小心在子文件夹使用git init. 可以cd后执行"rm -rf .git"来撤销这步git init操作同时保留子文件夹内容 (不用完全删除子文件夹).
 
+<hr>
+
 ### git rebase/git reset/git commit --amend的区别
 | git rebase | git reset | git commit --amend
 | :---: | :---: | :---:
@@ -104,6 +106,7 @@ window 1: 将除第一个pick的commit都改成s (不能先s后pick)
 window 2: 编辑commit msg (ctrl+k删除不需要的行)
 退出esc
 git push --force-with-lease
+git pull --rebase
 ```
 
 #### git commit --amend操作
@@ -116,7 +119,6 @@ graph LR;
     a-->c["想把暂存区的新修改加入上一次commit而不想创建新commit"];
     c-->e["git commit --amend --no-edit"];
 ```
-
 
 <hr>
 

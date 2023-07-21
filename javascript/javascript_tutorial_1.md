@@ -22,6 +22,8 @@
 ### 为什么不用div要用img/button这些
 - 语义化
 
+<hr>
+
 ### h1设置颜色/字体粗细
 ```css
 h1{
@@ -36,27 +38,54 @@ h1{
 - 优先级比inline低, 防止个性化class失效
 - 复用性高, 容易控制
 
+<hr>
+
 ### 浏览器Inspect
-f12 -> css/html/js
+f12 -> console/inspect element/network/etc
+
+<hr>
 
 ### js执行顺序
 顺序执行, 不加分号也能运行
 
+<hr>
+
 ### 命名变量
 避免使用var (scope冲突)
+使用let/const
+
+<hr>
 
 ### 作用域
-在function内部定义的var不能在外部访问; 而外部定义的变量可以被内部function访问
+- 在function内部定义的var不能在外部访问
+- 外部定义的变量可以被内部function访问
+
+```js
+let i = 1;
+function sum() {
+    const c = 2;
+    i = 3;
+    console.log(c);
+}
+
+sum(); // c = 2
+console.log(i); //3
+console.log(c);//error
+```
+
+<hr>
 
 ### array遍历
 ```shell
 for ... in -> index
 for ... of -> value
 map (item, index) -> 按照指定pattern, 每个元素执行相同的操作并返回一个新array(length保持一致)
-flatmap -> 弥补了map方法length要一致的局限性(map+扁平化处理), 写法较map复杂但能实现特殊需求(预分配数据并显性迭代; 结合split方法; 添加和删除元素; 类数组处理)
+flatmap -> 弥补了map方法length要一致的局限性(map+扁平化处理), 写法较map复杂但能实现特殊需求(预分配数据并显性迭代; 结合split方法; 添加和删除元素; 类数组处理, etc)
 filter -> 从原array挑选部分元素(新length < 原length)
 reduce -> 做累加等操作
 ```
+
+<hr>
 
 ### practice code
 ```js
@@ -97,4 +126,3 @@ const avg = arr.reduce((result, element) => result + element, 0) / arr.length;
 
 console.log(avg);
 ```
-

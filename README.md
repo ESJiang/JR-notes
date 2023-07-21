@@ -10,6 +10,8 @@
 
 [HTML & CSS Part 3](./html&css/HTML&CSS_3.md)
 
+[HTML & CSS tutorial](./html&css/HTML&CSS_tutorial.md)
+
 ## Module two：Git
 
 [Git](./Git/Git.md)
