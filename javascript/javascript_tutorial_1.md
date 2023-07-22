@@ -4,7 +4,7 @@
     - [为什么不用div要用img/button这些](#为什么不用div要用imgbutton这些)
     - [h1设置颜色/字体粗细](#h1设置颜色字体粗细)
     - [浏览器Inspect](#浏览器inspect)
-    - [js执行顺序](#js执行顺序)
+    - [JS执行顺序](#js执行顺序)
     - [命名变量](#命名变量)
     - [作用域](#作用域)
     - [array遍历](#array遍历)
@@ -20,7 +20,7 @@
 ## javascript_tutorial_1 (`20/07/2023`)
 
 ### 为什么不用div要用img/button这些
-- 语义化
+- 语义化 + div需要额外css/js来实现img/button的默认效果
 
 <hr>
 
@@ -45,7 +45,7 @@ f12 -> console/inspect element/network/etc
 
 <hr>
 
-### js执行顺序
+### JS执行顺序
 顺序执行, 不加分号也能运行
 
 <hr>
@@ -70,7 +70,7 @@ function sum() {
 
 sum(); // c = 2
 console.log(i); //3
-console.log(c);//error
+console.log(c); //error
 ```
 
 <hr>
@@ -80,7 +80,7 @@ console.log(c);//error
 for ... in -> index
 for ... of -> value
 map (item, index) -> 按照指定pattern, 每个元素执行相同的操作并返回一个新array(length保持一致)
-flatmap -> 弥补了map方法length要一致的局限性(map+扁平化处理), 写法较map复杂但能实现特殊需求(预分配数据并显性迭代; 结合split方法; 添加和删除元素; 类数组处理, etc)
+flatmap -> 弥补了map方法length要一致的局限性, 一边filter一边有针对性修改elements(map+扁平化处理), 写法较map复杂但能实现特殊需求(预分配数据并显性迭代; 结合split方法; 添加和删除元素; 类数组处理, etc)
 filter -> 从原array挑选部分元素(新length < 原length)
 reduce -> 做累加等操作
 ```
