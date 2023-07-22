@@ -19,13 +19,10 @@
 # Class Notes
 
 ## Resources
-[Bootstrap](https://getbootstrap.com/)
-
-[Weed AI](https://github.com/Weed-AI/Weed-AI)
-
-[chatgpt interpreter](https://openai.com/blog/chatgpt-plugins#code-interpreter)
-
-[AWS certification](https://aws.amazon.com/certification)
+[Bootstrap](https://getbootstrap.com/)<br>
+[Weed AI](https://github.com/Weed-AI/Weed-AI)<br>
+[chatgpt interpreter](https://openai.com/blog/chatgpt-plugins#code-interpreter)<br>
+[AWS certification](https://aws.amazon.com/certification)<br>
 
 ## Python_1 (`15/07/2023`)
 

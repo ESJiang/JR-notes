@@ -26,9 +26,8 @@
 # Class Notes
 
 ## Resources
-[w3schools](https://www.w3schools.com/)
-
-[开发者指南](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+[w3schools](https://www.w3schools.com/)<br>
+[开发者指南](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)<br>
 
 ## HTML & CSS Part 1 (`28/06/2023`)
 ```前端: HTML,CSS,JavaScript```

@@ -18,10 +18,8 @@
 # Class Notes
 
 ## Resources
-
-[Node官网](https://nodejs.org/en)
-
-[50JS](https://github.com/bradtraversy/50projects50days)
+[Node官网](https://nodejs.org/en)<br>
+[50JS](https://github.com/bradtraversy/50projects50days)<br>
 
 ## Node_1 (`16/07/2023`)
 <p align='center'><img src='../image/nodejs.png' width='30%' height='30%' /></p>

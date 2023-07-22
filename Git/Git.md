@@ -21,14 +21,11 @@
 # Class Notes
 
 ## Resources
-[Git指南](../git.pdf)
-
-[Error: Permission denied (publickey)](https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey)
-
+[Git指南](../git.pdf)<br>
+[Error: Permission denied (publickey)](https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey)<br>
 
 ## Git (`12/07/2023`)
 <p align='center'><img src='../image/GitHub.png' width='50%' height='50%' /></p>
-
 
 ### 为什么要使用Git?
 > Git是一种分布式版本控制工具. 它具备以下几种功能

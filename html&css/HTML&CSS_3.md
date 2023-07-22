@@ -21,17 +21,12 @@
 # Class Notes
 
 ## Resources
-[w3schools](https://www.w3schools.com/css/css_pseudo_classes.asp)
-
-[css tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-[css garden - grid](https://cssgridgarden.com/)
-
-[position practice](https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/position/practice1)
-
-[blog practice](https://github.com/jessieyu1/intro-2-web-developmentV2/blob/main/PROTFOLIO/html/blog.html)
-
-[personal website example](https://v3.brittanychiang.com/)
+[w3schools](https://www.w3schools.com/css/css_pseudo_classes.asp)<br>
+[css tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)<br>
+[css garden - grid](https://cssgridgarden.com/)<br>
+[position practice](https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/position/practice1)<br>
+[blog practice](https://github.com/jessieyu1/intro-2-web-developmentV2/blob/main/PROTFOLIO/html/blog.html)<br>
+[personal website example](https://v3.brittanychiang.com/)<br>
 
 ## HTML & CSS Part 3 (`09/07/2023`)
 

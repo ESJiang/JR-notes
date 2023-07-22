@@ -13,9 +13,8 @@
 # Class Notes
 
 ## Resources
-[Notions课件](https://narrow-howler-e0c.notion.site/JS-1-c1af3fe7744943abb0e1f18fada82474)
-
-[JS阅读](https://github.com/getify/You-Dont-Know-JS)
+[Notions课件](https://narrow-howler-e0c.notion.site/JS-1-c1af3fe7744943abb0e1f18fada82474)<br>
+[JS阅读](https://github.com/getify/You-Dont-Know-JS)<br>
 
 ## javascript_tutorial_1 (`20/07/2023`)
 

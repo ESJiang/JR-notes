@@ -79,6 +79,8 @@ setting -> search spell
 }
 ```
 
+<hr>
+
 ### Python数据类型
 > Primitive type(不可变): integer/float/boolean/none/string
 > container type: list(可修改)/tuple(不可变)/set(不同元素只保存一次,可变)/dictionary(可变)
@@ -129,6 +131,8 @@ c[[1]] = [1] # error
 c[[1]] = [1] # correct -> {(1,): [1]}
 ```
 
+<hr>
+
 ### Python和JavaScript的命名差异
 <p align='center'><img src='../image/python:js variable declaration.png' width='50%' height='50%' /></p>
 
@@ -141,6 +145,8 @@ c[[1]] = [1] # correct -> {(1,): [1]}
   - //
   - /* */
 
+<hr>
+
 ### 获得包的帮助信息
 
 ```python
@@ -148,11 +154,15 @@ import pygame
 print(help(pygame))
 ```
 
+<hr>
+
 ### and和or的区别
 > and: 有一个false就是false<br>
 > or: 有一个true就是true
 
 `and和or本质上返回一个真正的值, 而不是boolean`
+
+<hr>
 
 ### 推荐课程
 <p align='center'><img src='../image/python_course.png' width='50%' height='50%' /></p>

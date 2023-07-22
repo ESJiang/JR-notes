@@ -28,13 +28,10 @@
 # Class Notes
 
 ## Resources
-[html&css书写规范](https://github.com/australiaitgroup/html-css-guide)
-
-[css选择器练习](https://flukeout.github.io/)
-
-[gift card practice resource](https://www.davidjones.com/home-and-food/dining/glassware)
-
-[background border practice](https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/background-borders)
+[html&css书写规范](https://github.com/australiaitgroup/html-css-guide)<br>
+[css选择器练习](https://flukeout.github.io/)<br>
+[gift card practice resource](https://www.davidjones.com/home-and-food/dining/glassware)<br>
+[background border practice](https://github.com/jessieyu1/intro-2-web-developmentV2/tree/main/practice/background-borders)<br>
 
 ## HTML & CSS Part 2 (`05/07/2023`)
 
