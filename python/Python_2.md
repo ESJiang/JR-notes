@@ -85,16 +85,17 @@ setting -> search spell
 
 ```mermaid
 graph TB;
-    a{"Python Data Type"}-->b{"Primitive Types"};
+    a{"Python Data Type"}-->b{"Primitive Types \n Immutable"};
     b-->c["Integer"];
     b-->d["Float"];
     b-->e["Boolean"];
     b-->f["None"];
     b-->g["String"];
-    a-->h["Containers"];
-    h-->i["list"];
-    h-->j["Tuple"];
-    h-->k["Dictionary"]
+    a-->h{"Containers \n Immutable & Mutable"};
+    h-->i["list \n Mutable"];
+    h-->j["Tuple \n Immutable"];
+    h-->k["Dictionary \n keys are immutable"]
+    h-->l["Set \ Mutable"];
 ```
 
 ```python
