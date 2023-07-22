@@ -37,8 +37,12 @@
 > CSS: 美化网站 (color, animation, opacity, etc)<br>
 > JavaScript: 动态 (前后端交互, 功能实现)<br>
 
+<hr>
+
 ### 怎样查看一个网站源码
 ***鼠标右键 + inspect/F12***
+
+<hr>
 
 ### HTML详解
 全称是`Hyper Text Markup Language` <br>
@@ -47,6 +51,8 @@ index.html -> `http://www.example.com`<br>
 blog.html -> `http://www.example.com/blog.html`<br>
 ***~~HTML是编程语言~~, HTML是标记型语言***
 > 原因: HTML使用标签(<tag>)来描述文档的内容
+
+<hr>
 
 ### VScode下载 (<https://code.visualstudio.com/>)
 ![VScode](image/vscode.png)
@@ -74,6 +80,8 @@ blog.html -> `http://www.example.com/blog.html`<br>
 | HTTP协议(http://) | 本地文件协议(file://)
 >`多用live server, 可以进行网页调试`
 
+<hr>
+
 ### Terminal/ Powershell创建文件夹
 1. cd到自己选定的目录
 2. 创建文件<br>
@@ -82,6 +90,7 @@ blog.html -> `http://www.example.com/blog.html`<br>
 | :---: | :---:
 | touch file_name, mkdir folder_name | New-Item -ItemType File -Name file_name, mkdir folder_name
 
+<hr>
 
 ### HTML基本格式
 ```html
@@ -97,6 +106,8 @@ blog.html -> `http://www.example.com/blog.html`<br>
 >content写的越多, 关键词越多, 增加曝光机会(SEO)
 
 >responsive web design -> 修改viewpoint(width=device-width)
+
+<hr>
 
 ### Tag
 - 大多数tag是要有闭合标签(`<div></div>`)
@@ -240,8 +251,8 @@ blog.html -> `http://www.example.com/blog.html`<br>
 #### 语义化标签可以代替div, 有助于搜索引擎优化
 `<header>, <nav>, <main>, <footer>, <article>, <section>, <aside>, <figure>, etc`
 
+<hr>
+
 ## 作业: 在freecodecamp上练习 & 尝试写个人blog
-
-<https://dribbble.com/search/search-blog>
-
-<https://www.freecodecamp.org/learn/2022/responsive-web-design/>
+<https://dribbble.com/search/search-blog><br>
+<https://www.freecodecamp.org/learn/2022/responsive-web-design/><br>

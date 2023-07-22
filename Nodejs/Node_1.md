@@ -33,6 +33,8 @@
 
 `window.location.href`: 拿到url
 
+<hr>
+
 ### 浏览器解析引擎
 <p align='center'><img src='../image/js为什么能在浏览器中运行.png' width='50%' /></p>
 
@@ -42,8 +44,12 @@
 *JS后端的运行环境是Node.js*
 > Node.js中无法调用DOM和BOM等浏览器内置方法
 
+<hr>
+
 ### 后端开发语言
 Java/Python/PHP/Node.js
+
+<hr>
 
 #### node能做什么
 `很多第三方框架可以节省代码`
@@ -55,6 +61,8 @@ Java/Python/PHP/Node.js
 | Restify | 快速搭建API接口项目 |
 
 `JS基础语法 + node.js内置api + 第三方api`
+
+<hr>
 
 ### 安装node.js
 
@@ -68,12 +76,16 @@ Java/Python/PHP/Node.js
 npm i package_name
 ```
 
+<hr>
+
 ### 常见控制台代码
 *使用node file_name运行*
 
 ```js
 console.log("hello world");
 ```
+
+<hr>
 
 ### 命令行指令
 - Mac
@@ -101,6 +113,8 @@ del file.txt 删除文件
 rd file 删除空文件夹
 ```
 
+<hr>
+
 ### JS数据类型
 
 #### 8种数据类型
@@ -114,6 +128,8 @@ console.log(BigInt(999999999)) //bigInt
 ```js
 let s = Symbol();
 ```
+
+<hr>
 
 ### 模块化
 - 复用性
