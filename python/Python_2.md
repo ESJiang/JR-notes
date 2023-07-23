@@ -27,7 +27,7 @@
 [anaconda](https://www.anaconda.com/download/)
 
 #### Anaconda和Python
-Anaconda是Python的发行版, 包含超过1500个科学包. 装包后, 就可以直接使用预先封装的方法.
+> Anaconda是Python的发行版, 包含超过1500个科学包. 装包后, 就可以直接使用预先封装的方法.
 
 `collection.abc: 抽象基类(Abstract Base Classes)`
 

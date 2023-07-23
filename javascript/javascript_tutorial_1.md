@@ -1,6 +1,6 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
-  - [javascript\_tutorial\_1 (`20/07/2023`)](#javascript_tutorial_1-20072023)
+  - [JavaScript\_tutorial\_1 (`20/07/2023`)](#javascript_tutorial_1-20072023)
     - [为什么不用div要用img/button这些](#为什么不用div要用imgbutton这些)
     - [h1设置颜色/字体粗细](#h1设置颜色字体粗细)
     - [浏览器Inspect](#浏览器inspect)
@@ -16,7 +16,7 @@
 [Notions课件](https://narrow-howler-e0c.notion.site/JS-1-c1af3fe7744943abb0e1f18fada82474)<br>
 [JS阅读](https://github.com/getify/You-Dont-Know-JS)<br>
 
-## javascript_tutorial_1 (`20/07/2023`)
+## JavaScript_tutorial_1 (`20/07/2023`)
 
 ### 为什么不用div要用img/button这些
 - 语义化 + div需要额外css/js来实现img/button的默认效果

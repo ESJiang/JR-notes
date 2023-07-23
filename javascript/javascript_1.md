@@ -1,6 +1,6 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
-  - [javascript\_1 (`18/07/2023`)](#javascript_1-18072023)
+  - [JavaScript\_1 (`18/07/2023`)](#javascript_1-18072023)
     - [汇编语言和高级语言](#汇编语言和高级语言)
     - [编程语言和标记语言](#编程语言和标记语言)
     - [JS的用途](#js的用途)
@@ -26,7 +26,7 @@
 
 ## Resources
 
-## javascript_1 (`18/07/2023`)
+## JavaScript_1 (`18/07/2023`)
 
 <p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
 
