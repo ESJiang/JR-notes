@@ -4,7 +4,7 @@
     - [写个人网站的注意事项](#写个人网站的注意事项)
     - [边偏移](#边偏移)
     - [transition和transform区别](#transition和transform区别)
-    - [flexbox practice code](#flexbox-practice-code)
+    - [Flexbox practice code](#flexbox-practice-code)
       - [HTML](#html)
       - [CSS](#css)
     - [minhpham.design](#minhphamdesign)
@@ -46,7 +46,7 @@
 | :---: | :---: |
 | ***设置delay, 让动画效果更自然*** | ***旋转, 颜色变化, 大小变化*** |
 
-### flexbox practice code
+### Flexbox practice code
 
 [flexbox-practice-code](https://github.com/jessieyu1/intro-2-web-developmentV2/blob/main/PROTFOLIO/html/blog.html)
 
