@@ -1,7 +1,5 @@
 # JR16-notes
 
-`匠人编程入门班16期笔记`
-
 ## Module One：HTML & CSS
 [HTML & CSS Part 1](./HTML&CSS/HTML&CSS_1.md)<br>
 [HTML & CSS Part 2](./HTML&CSS/HTML&CSS_2.md)<br>
