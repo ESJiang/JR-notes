@@ -83,6 +83,7 @@ setting -> search spell
 
 ### Python数据类型
 > Primitive type(不可变): integer/float/boolean/none/string
+
 > container type: list(可修改)/tuple(不可变)/set(不同元素只保存一次,可变)/dictionary(可变)
 
 ```mermaid
@@ -127,8 +128,8 @@ a.add(tuple([])) # correct -> {()}
 
 # dict中的key必须是hashable的, 而value随意
 c = dict()
-c[[1]] = [1] # error
-c[[1]] = [1] # correct -> {(1,): [1]}
+c[[1]] = [1]  # error
+c[tuple([1])] = [1]  # correct -> {(1,): [1]}
 ```
 
 <hr>
