@@ -2,13 +2,25 @@
   - [Resources](#resources)
   - [JavaScript\_2 (`23/07/2023`)](#javascript_2-23072023)
     - [if/else结构](#ifelse结构)
+      - [score if-else练习](#score-if-else练习)
       - [三元运算符 (分支少时可以用)](#三元运算符-分支少时可以用)
       - [switch用法 (全等匹配)](#switch用法-全等匹配)
+      - [水果switch判断](#水果switch判断)
     - [循环](#循环)
+      - [统计总分数和平均数](#统计总分数和平均数)
+      - [计算1-100能被3整除的和](#计算1-100能被3整除的和)
+      - [使用while计算1-100的和](#使用while计算1-100的和)
     - [console.log设置filter](#consolelog设置filter)
     - [Break和Continue](#break和continue)
+      - [continue demo](#continue-demo)
+      - [1-100除了能被7整除的和](#1-100除了能被7整除的和)
+      - [break demo](#break-demo)
     - [array](#array)
-    - [array转化成string](#array转化成string)
+      - [求总和\&平均数](#求总和平均数)
+      - [求数组最大值](#求数组最大值)
+      - [求数组和\&平均值](#求数组和平均值)
+      - [得到array的index](#得到array的index)
+      - [array转化成string](#array转化成string)
     - [Object](#object)
       - [遍历object](#遍历object)
   - [作业](#作业)
@@ -30,7 +42,7 @@ if (条件表达式){
     语句1;
 }
 
-`score if-else练习`
+#### score if-else练习
 ```js
 let score = prompt("Please enter your score");
 if (score >= 90) {
@@ -81,7 +93,7 @@ switch(num){
 }
 ```
 
-`水果switch判断`
+#### 水果switch判断
 ```js
 let fruit = prompt("Please enter a fruit name: ");
 switch (fruit) {
@@ -95,6 +107,8 @@ switch (fruit) {
         alert(fruit + " is not available");
 }
 ```
+
+<hr>
 
 ### 循环
 - for循环
@@ -113,7 +127,7 @@ for (let i = 1; i <= 100; i++) {
 }
 ```
 
-`统计总分数和平均数`
+#### 统计总分数和平均数
 ```js
 let num = parseInt(prompt("total class number"));
 let scoreSum = 0;
@@ -125,7 +139,7 @@ let average = scoreSum / num;
 alert(`Total_score: ${scoreSum} \nAverage_score: ${average}`);
 ```
 
-`计算1-100能被3整除的和`
+#### 计算1-100能被3整除的和
 ```js
 let sum = 0;
 for (let i = 1; i <= 100; i++) {
@@ -134,7 +148,7 @@ for (let i = 1; i <= 100; i++) {
 console.log(sum);
 ```
 
-`使用while计算1-100的和`
+#### 使用while计算1-100的和
 ```js
 let sum = 0;
 let i = 1;
@@ -145,20 +159,24 @@ while (i <= 100) {
 console.log("sum", sum);
 ```
 
+<hr>
+
 ### console.log设置filter
 ```js
-console.log("feature a sum", 123)
-console.log("fearture a average", 123)
+console.log("featureA sum", 123)
+console.log("feartureA average", 123)
 ```
 
-> 之后在filter中输入"feature a", 就能有针对性地看到结果
+> 之后在filter中输入"featureA", 就能有针对性地看到结果
+
+<hr>
 
 ### Break和Continue
 | break | continue |
 | :---: | :---: |
 | ***退出整个循环*** | ***跳出本次循环<br>继续下一次循环*** |
 
-`continue demo`
+#### continue demo
 ```js
 for (let i = 1; i <= 5; i++) {
     if (i === 3) {
@@ -168,7 +186,7 @@ for (let i = 1; i <= 5; i++) {
 }
 ```
 
-`1-100除了能被7整除的和`
+#### 1-100除了能被7整除的和
 ```js
 let sum = 0;
 for (let i = 1; i <= 100; i++) {
@@ -180,7 +198,7 @@ for (let i = 1; i <= 100; i++) {
 console.log(sum); //4315
 ```
 
-`break demo`
+#### break demo
 ```js
 for (let i=1; i<=5; i++) {
     if(i===3) break;
@@ -188,8 +206,9 @@ for (let i=1; i<=5; i++) {
 }
 ```
 
-### array
+<hr>
 
+### array
 `array demo`
 ```js
 let arr = new Array();
@@ -199,7 +218,7 @@ console.log(arr2[0]) //1
 console.log(arr2[arr2.length - 1]) //7
 ```
 
-`求总和&平均数`
+#### 求总和&平均数
 ```js
 let arr = [2, 6, 1, 7, 4];
 let sum = 0;
@@ -211,7 +230,7 @@ console.log(sum); //20
 console.log(avg); //4
 ```
 
-`求数组最大值`
+#### 求数组最大值
 ```js
 let arr = [2,6,1,77,52,25,7];
 let max = arr[0];
@@ -223,7 +242,7 @@ for (let i=1; i < arr.length; i++){
 console.log(max);
 ```
 
-`求数组和&平均值`
+#### 求数组和&平均值
 ```js
 let arr = [2,6,1,7,4];
 let sum = 0;
@@ -246,7 +265,7 @@ let average = 0;
 - 改变原数组 (删除了开始的元素)
 - 返回的是最前面被删除的元素
 
-`得到index`
+#### 得到array的index
 ```js
 let arr = ['red', 'green', 'blue', 'pink', 'blue'];
 let index = arr.indexOf('blue');
@@ -256,12 +275,14 @@ let index2 = arr2.lastIndexOf('blue')
 console.log(index2); //4
 ```
 
-### array转化成string
+#### array转化成string
 ```js
 let arr = ['red', 'green', 'blue', 'pink', 'blue'];
 console.log(arr.toString())  // 'green,blue,red'
 console.log(arr.join(' ')) // "green blue red"
 ```
+
+<hr>
 
 ### Object
 `无序的集合`
@@ -294,6 +315,8 @@ for(let key in obj){
     console.log(obj[key]); //这里key是variable
 }
 ```
+
+<hr>
 
 ## 作业
 16题 + 17题 + homework.md
