@@ -15,7 +15,7 @@
       - [continue demo](#continue-demo)
       - [1-100除了能被7整除的和](#1-100除了能被7整除的和)
       - [break demo](#break-demo)
-    - [array](#array)
+    - [Array](#array)
       - [求总和\&平均数](#求总和平均数)
       - [求数组最大值](#求数组最大值)
       - [求数组和\&平均值](#求数组和平均值)
@@ -208,7 +208,7 @@ for (let i=1; i<=5; i++) {
 
 <hr>
 
-### array
+### Array
 `array demo`
 ```js
 let arr = new Array();
