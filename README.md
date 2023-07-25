@@ -13,6 +13,7 @@
 ## Module Three: JavaScript
 [JavaScript 1](./JavaScript/JavaScript_1.md)<br>
 [JavaScript 2](./JavaScript/JavaScript_2.md)<br>
+[JavaScript 3](./JavaScript/JavaScript_3.md)<br>
 [JavaScript_tutorial_1](./JavaScript/JavaScript_tutorial_1.md)<br>
 
 ## Module Four: Node.js
