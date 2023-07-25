@@ -242,13 +242,6 @@ for (let i=1; i < arr.length; i++){
 console.log(max);
 ```
 
-#### 求数组和&平均值
-```js
-let arr = [2,6,1,7,4];
-let sum = 0;
-let average = 0;
-```
-
 `push方法`
 - 改变原数组 (后面添加)
 - 返回值是新数组length
