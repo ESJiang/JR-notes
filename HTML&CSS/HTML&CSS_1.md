@@ -30,6 +30,9 @@
 [开发者指南](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)<br>
 
 ## HTML & CSS Part 1 (`28/06/2023`)
+
+<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+
 ```前端: HTML,CSS,JavaScript```
 
 ### HTML & CSS & JavaScript的特点

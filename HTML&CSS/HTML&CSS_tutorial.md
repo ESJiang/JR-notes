@@ -22,6 +22,8 @@
 
 ## HTML & CSS tutorial (`19/07/2023`)
 
+<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+
 ### 写个人网站的注意事项
 > bem命名规范<br>
 `Modifier要尽量和元素内容或功能相关, 这会提升可读性+写css更容易`<br>

@@ -30,6 +30,8 @@
 
 ## HTML & CSS Part 3 (`09/07/2023`)
 
+<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+
 ### 上节课知识点复习
 1. 什么是Box Model
 > ***Box model is used to define how elements are rendered in a webpage. It consists four parts: content, padding, border, and margin.***
