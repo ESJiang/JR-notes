@@ -22,24 +22,24 @@
 <p align='center'><img src='../image/GitHub.png' width='50%' height='50%' /></p>
 
 ### 常见git指令
-- git init
-- git clone
-- git remote origin repo_link
+- git init: 创建一个新repo
+- git clone: 复制一个已存在的repo
+- git remote add origin <remote_url>: 添加一个远程repo, 并命名为origin.
 - git branch 查看本地有哪些branch
-- git branch -d/-D: 删除分支
-- git switch 切换分支 (指针不会指到最上面)
-- git checkout 切换分支 (指针到最上面)
+- git branch -d/-D: 删除branch
+- git switch 切换branch (指针不会指到最上面)
+- git checkout 切换branch (指针到最上面)
 - git add file_name: 将文件添加到staging area
-- git commit -m "your commit message": 把暂存区的文件commit到本地repo
+- git commit -m "your commit message": 把staging area的文件commit到本地repo
 - git push origin main/master: 把本地repo的内容push到远程repo
-- git log --oneline --graph: 当前分支commit的记录
+- git log --all --decorate --oneline --graph: 查看当前分支commit的记录
 - git status：查看git repo当前状态
-- git diff： 对比本地文件变化
-- git diff --staged: 对比staged(add之后)文件变化
-- git restore --staged file: 把暂存区的文件放到工作区
-- git restore --staged . 撤销暂存区所有文件
-- git restore file: 撤销工作区修改
-- git restore . 撤销工作区所有修改
+- git diff： 比较working area和staging area的差异
+- git diff --staged: 比较staging area和上一次提交的差异
+- git restore --staged file: 把staging area的文件放到working area
+- git restore --staged . 撤销staging area所有文件
+- git restore file: 撤销working area修改
+- git restore . 撤销working area所有修改
 
 #### git clone和git pull的区别
 | git clone | git pull

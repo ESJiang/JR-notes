@@ -114,6 +114,8 @@ for (let value of Object.values(obj)) {
 }
 ```
 
+<hr>
+
 ### 0-15, 判断奇偶性并依次打印
 #### solution 1: 三目运算符
 ```js
@@ -135,6 +137,8 @@ while (i < 16) {
     i++;
 }
 ```
+
+<hr>
 
 ### 找到数组中出现频率最高的元素
 #### solution 1: reduce
@@ -168,6 +172,8 @@ function findTheMostFrequenItem(arr) {
 console.log(findTheMostFrequenItem([3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3]));
 ```
 
+<hr>
+
 ### 找程序bug
 ```js
 function doubleIfEven(n) {
@@ -200,6 +206,8 @@ for (let num of input) {
 
 > 在function内部变量要使用let/const声明
 
+<hr>
+
 ### DOM选择器
 ```js
 getElementById()
@@ -221,6 +229,8 @@ e.target.value //input value
 * click onClick
 * keyDown onChange
 ```
+
+<hr>
 
 ### DOM练习
 #### counter (在output div中显示时间)

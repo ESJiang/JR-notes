@@ -21,7 +21,8 @@
 <p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
 
 ### 为什么不用div要用img/button这些
-- 语义化 + div需要额外css/js来实现img/button的默认效果
+- 语义化
+- div需要额外的css/js来实现img/button的默认效果
 
 <hr>
 
