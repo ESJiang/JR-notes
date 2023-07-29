@@ -25,6 +25,6 @@
 ## Module Six: Python
 [Python 1](./Python/Python_1.md)<br>
 [Python 2](./Python/Python_2.md)<br>
-~~[Python 3](./Python/Python_3.md)<br>~~
+[Python 3](./Python/Python_3.md)<br>
 
 ## TBC
