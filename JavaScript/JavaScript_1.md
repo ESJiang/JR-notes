@@ -101,11 +101,11 @@ var name = 'James';
 
 let name; // undefined
 let name = 'Jack';
-let name = 'James'; //error
+let name = 'James'; // error
 
 const name; // error
 const name = 'Jack';
-const name = 'James'; //error
+const name = 'James'; // error
 ```
 
 ### 交换两个变量的值
@@ -137,10 +137,10 @@ console.log("Your age is " + name + " years old");
 ### 检测数据类型
 ```js
 let num = 10;
-console.log(typeof num); //number
+console.log(typeof num); // number
 
 let a = null;
-console.log(typeof a); //object
+console.log(typeof a); // object
 ```
 
 ### 打印数据结果(使用逗号分隔string和变量名)
@@ -156,33 +156,33 @@ console.log("num", num);
 - 隐式转换
 
 ```js
-console.log(parseInt('3.14')) //3
-console.log(parseInt('120px')) //120
-console.log(parseInt('rem120px')) //NaN
-console.log(parseFloat('3.14')) //3.14
-console.log(parseFloat('120px')) //120
-console.log(parseFloat('rem120px')) //NaN
+console.log(parseInt('3.14')) // 3
+console.log(parseInt('120px')) // 120
+console.log(parseInt('rem120px')) // NaN
+console.log(parseFloat('3.14')) // 3.14
+console.log(parseFloat('120px')) // 120
+console.log(parseFloat('rem120px')) // NaN
 
 // 不要用+, 这样会隐式转化成str
-console.log('12' - 0); //12
-console.log('123' - '120'); //3
-console.log('123' * 1); //123
-console.log('123' / 1); //123
+console.log('12' - 0); // 12
+console.log('123' - '120'); // 3
+console.log('123' * 1); // 123
+console.log('123' / 1); // 123
 ```
 
 #### 浮点数计算
 ```js
-let num = 0.1 + 0.2; //0.30000000000000004
-console.log(num.toFixed(1)); //0.3
+let num = 0.1 + 0.2; // 0.30000000000000004
+console.log(num.toFixed(1)); // 0.3
 ```
 
 ### 前自增/后自增
 ```js
 let num = 1;
-console.log(num++); //1
+console.log(num++); // 1
 
 let age = 18;
-console.log(++age); //19
+console.log(++age); // 19
 ```
 
 ## 作业

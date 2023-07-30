@@ -101,4 +101,4 @@ print("Min element:", min_element)  # Min element: 1
 
 ### Python-Set/List/Dict的常用方法
 
-<p align='center'><img src='../image/pytthon(set:list:dict)_method.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/python(set:list:dict)_method.png' width='50%' height='50%' /></p>

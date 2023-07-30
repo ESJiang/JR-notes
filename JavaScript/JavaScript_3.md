@@ -58,10 +58,10 @@
 *声明函数 + 调用函数*
 
 ```js
-funciton 函数名(){ //使用Function Declaration声明函数
-    //函数体代码
+funciton 函数名(){ // 使用Function Declaration声明函数
+    // 函数体代码
 }
-函数名() //调用函数
+函数名() // 调用函数
 ```
 > function必须小写, 函数名命名为动词
 
@@ -186,7 +186,7 @@ console.log(getArrayMax2(arr));
 function getStr() {
     'hello'
 }
-console.log(getStr()) //undefined
+console.log(getStr()) // undefined
 ```
 
 ### 作用域
@@ -275,33 +275,33 @@ console.log(puppy.name + " is a " + puppy.age + " years old dog who likes " + pu
 ### Math方法
 #### max方法
 ```js
-console.log(Math.max(1, 99, 3)); //99
-console.log(Math.max(-1, -10)); //-1
-console.log(Math.max(1, 99, "Hi")); //NaN
-console.log(Math.max()); //-Infinity
+console.log(Math.max(1, 99, 3)); // 99
+console.log(Math.max(-1, -10)); // -1
+console.log(Math.max(1, 99, "Hi")); // NaN
+console.log(Math.max()); // -Infinity
 ```
 
 #### abs方法
 ```js
-console.log(Math.abs(1)) //1
-console.log(Math.abs(-1)) //1
-console.log(Math.abs('-1')) //1
-console.log(Math.abs('hello')) //NaN
+console.log(Math.abs(1)) // 1
+console.log(Math.abs(-1)) // 1
+console.log(Math.abs('-1')) // 1
+console.log(Math.abs('hello')) // NaN
 ```
 
 #### floor/ceil/round方法
 ```js
-console.log(Math.floor(1.1)) //1
-console.log(Math.floor(3.9)) //3
-console.log(Math.ceil(1.2)) //2
-console.log(Math.ceil(1.9)) //2
-console.log(Math.round(1.2)) //1
-console.log(Math.round(1.9)) //2
+console.log(Math.floor(1.1)) // 1
+console.log(Math.floor(3.9)) // 3
+console.log(Math.ceil(1.2)) // 2
+console.log(Math.ceil(1.9)) // 2
+console.log(Math.round(1.2)) // 1
+console.log(Math.round(1.9)) // 2
 ```
 
 #### random方法
 ```js
-console.log(Math.random()); //0~1随机数
+console.log(Math.random()); // 0~1随机数
 ```
 
 ##### 用random方法得到两个数之间的随机整数
@@ -326,7 +326,7 @@ console.log(arr[Math.floor(Math.random()*arr.length)]);
 ```js
 // 1. charAt(index) 根据位置返回字符
 var str = "andy";
-console.log(str.charAt(3)); //y
+console.log(str.charAt(3)); // y
 // 遍历所有的字符
 for (let i = 0; i < str.length; i++) {
     console.log(str[i]);
@@ -335,32 +335,32 @@ for (let i = 0; i < str.length; i++) {
 
 #### concat方法
 ```js
-//concat将多个字符串连接(不改变原array)
+// concat将多个字符串连接(不改变原array)
 var str = 'andy';
-console.log(str.concat(" ", "hi")) //"andy hi"
+console.log(str.concat(" ", "hi")) // "andy hi"
 ```
 
 #### substr方法
 ```js
 // 2. substr(不改变原array)
 var str1 = "abcdefghijk";
-console.log(str1.substr(2, 2)); //"cd"
+console.log(str1.substr(2, 2)); // "cd"
 ```
 
 #### replace方法
 ```js
 // replace替换
 var str1 = "abcoefoxyozzopp";
-console.log(str1.replace("a", "b")) //bbcoefoxyozzopp
+console.log(str1.replace("a", "b")) // bbcoefoxyozzopp
 
 
 // 全部替换
-//方法一 - replace方法
+// 方法一 - replace方法
 var str2 = "abcoefoxyozzopp";
 const newString = str2.replace(/o/g, "*");
 console.log(newString); // abc*ef*xy*zz*pp
 
-//方法2 - while循环
+// 方法2 - while循环
 while (str2.indexOf("o") !== -1){
     str2 = str2.replace("o", "*");
 }
@@ -434,4 +434,4 @@ document.getElementById("myBtn").addEventListener("click", ()=>{
 ```
 
 ## 作业
-09 + 10 + 50个project选一两个做
+09 + 10 + 50个projects选一两个做

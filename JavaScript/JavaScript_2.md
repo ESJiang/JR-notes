@@ -62,7 +62,7 @@ if (score >= 90) {
 
 ```js
 let score=85;
-console.log(score>90?'A':'B'); //B
+console.log(score>90?'A':'B'); // B
 ```
 
 ```js
@@ -181,7 +181,7 @@ for (let i = 1; i <= 5; i++) {
     if (i === 3) {
         continue;
     }
-    console.log(i); //1 2 4 5
+    console.log(i); // 1 2 4 5
 }
 ```
 
@@ -194,14 +194,14 @@ for (let i = 1; i <= 100; i++) {
     }
     sum += i;
 }
-console.log(sum); //4315
+console.log(sum); // 4315
 ```
 
 #### break demo
 ```js
 for (let i=1; i<=5; i++) {
     if(i===3) break;
-    console.log(i); //1 2
+    console.log(i); // 1 2
 }
 ```
 
@@ -213,8 +213,8 @@ for (let i=1; i<=5; i++) {
 let arr = new Array();
 let arr1 = [];
 let arr2 = [1,3,5,7]
-console.log(arr2[0]) //1
-console.log(arr2[arr2.length - 1]) //7
+console.log(arr2[0]) // 1
+console.log(arr2[arr2.length - 1]) // 7
 ```
 
 #### 求总和&平均数
@@ -225,8 +225,8 @@ for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
 }
 let avg = sum / arr.length;
-console.log(sum); //20
-console.log(avg); //4
+console.log(sum); // 20
+console.log(avg); // 4
 ```
 
 #### 求数组最大值
@@ -261,10 +261,10 @@ console.log(max);
 ```js
 let arr = ['red', 'green', 'blue', 'pink', 'blue'];
 let index = arr.indexOf('blue');
-console.log(index) //2
+console.log(index) // 2
 let arr2 = ['red', 'green', 'blue', 'pink', 'blue'];
 let index2 = arr2.lastIndexOf('blue')
-console.log(index2); //4
+console.log(index2); // 4
 ```
 
 #### array转化成string
@@ -304,7 +304,7 @@ let obj = {
     gender: "female"
 }
 for(let key in obj){
-    console.log(obj[key]); //这里key是variable
+    console.log(obj[key]); // 这里key是variable
 }
 ```
 

@@ -36,9 +36,9 @@
 <hr>
 
 ### 浏览器解析引擎
-<p align='center'><img src='../image/js为什么能在浏览器中运行.png' width='50%' /></p>
+<p align='center'><img src='../image/Why can JS run in the browser.png' width='50%' /></p>
 
-<p align='center'><img src='../image/javascript操作dom.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/JS operates DOM.png' width='50%' height='50%' /></p>
 
 *JS前端的运行环境是浏览器*
 *JS后端的运行环境是Node.js*

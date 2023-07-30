@@ -29,7 +29,7 @@
 *fs模块是Node.js官方提供的, 用来操作文件的模块*<br>
 *写入/读取成功err是null, 不成功是obj*<br>
 ```js
-//使用fs方法前, 先要导入fs
+// 使用fs方法前, 先要导入fs
 const fs = require('fs');
 ```
 
@@ -126,7 +126,7 @@ server.on("request", function (req, res) {
     const method = req.method;
     const str = url + " and request method is " + method;
     console.log("str", str);
-    res.setHeader("Content-Type", "text/html;charset=utf-8");
+    res.setHeader("Content-Type", "text/html;charset=utf-8"); // 避免乱码
     res.end(str);
 });
 
@@ -156,7 +156,7 @@ server.on("request", (req, res) => {
 包是用原生方法写的, 安装包后能节省很多代码
 
 ```shell
-npm -v
+npm -v # 查看npm版本号
 ```
 
 #### 格式化输出date - 常用写法
@@ -182,10 +182,13 @@ convertDate(new Date());
 [moment库](https://momentjs.com/docs/)
 
 ```shell
+# 第一种写法
 npm install moment
+# 第二种写法
+npm i moment
 ```
 
 ```js
-const moment = require("moment");
+const moment = require("moment"); // 导入moment
 console.log(moment().format("YYYY-MM-DD hh:mm:ss"));
 ```

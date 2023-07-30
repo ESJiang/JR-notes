@@ -74,7 +74,7 @@ a || b
 ##### for循环
 ```js
 for (let i=1; i<=100; i++){
-    //expression
+    // expression
 }
 ```
 
@@ -82,7 +82,7 @@ for (let i=1; i<=100; i++){
 ```js
 let i = 1;
 while (i<100){
-    //expression
+    // expression
     i++;
 }
 ```

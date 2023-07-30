@@ -71,8 +71,8 @@ function sum() {
 }
 
 sum(); // c = 2
-console.log(i); //3
-console.log(c); //error
+console.log(i); // 3
+console.log(c); // error
 ```
 
 <hr>
