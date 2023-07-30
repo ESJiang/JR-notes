@@ -18,7 +18,7 @@
 
 ## JavaScript_tutorial_1 (`20/07/2023`)
 
-<p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
 ### 为什么不用div要用img/button这些
 - 语义化

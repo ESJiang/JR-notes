@@ -26,7 +26,7 @@
 
 ## Python_1 (`15/07/2023`)
 
-<p align='center'><img src='../image/python.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/python.png' width='30%' height='30%' /></p>
 
 ### OCR
 `将图像中的文本转换为可编辑文本的技术``

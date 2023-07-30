@@ -35,7 +35,7 @@
 
 ## HTML & CSS Part 2 (`05/07/2023`)
 
-<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/HTML&CSS.png' width='30%' height='30%' /></p>
 
 ### CSS介绍
 Cascading Style Sheets

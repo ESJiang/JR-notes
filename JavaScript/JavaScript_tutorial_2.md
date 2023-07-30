@@ -44,7 +44,7 @@
 
 ## JavaScript_tutorial_2 (`27/07/2023`)
 
-<p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
 ### 复习lecture内容
 

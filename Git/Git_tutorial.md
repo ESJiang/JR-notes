@@ -19,7 +19,7 @@
 [Cloudshell Practice](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/praqma-training/git-katas.git)
 
 ## Git tutorial (`13/07/2023`)
-<p align='center'><img src='../image/GitHub.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/GitHub.png' width='30%' height='30%' /></p>
 
 ### 常见git指令
 - git init: 创建一个新repo

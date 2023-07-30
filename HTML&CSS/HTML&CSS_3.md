@@ -30,7 +30,7 @@
 
 ## HTML & CSS Part 3 (`09/07/2023`)
 
-<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/HTML&CSS.png' width='30%' height='30%' /></p>
 
 ### 上节课知识点复习
 1. 什么是Box Model

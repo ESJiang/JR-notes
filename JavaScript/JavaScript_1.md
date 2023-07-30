@@ -28,7 +28,7 @@
 
 ## JavaScript_1 (`18/07/2023`)
 
-<p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
 ### 汇编语言和高级语言
 | 汇编语言 | 高级语言 |

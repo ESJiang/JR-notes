@@ -22,7 +22,7 @@
 
 ## HTML & CSS tutorial (`19/07/2023`)
 
-<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/HTML&CSS.png' width='30%' height='30%' /></p>
 
 ### 写个人网站的注意事项
 > bem命名规范<br>

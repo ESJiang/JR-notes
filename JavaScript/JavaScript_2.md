@@ -18,7 +18,6 @@
     - [Array](#array)
       - [求总和\&平均数](#求总和平均数)
       - [求数组最大值](#求数组最大值)
-      - [求数组和\&平均值](#求数组和平均值)
       - [得到array的index](#得到array的index)
       - [array转化成string](#array转化成string)
     - [Object](#object)
@@ -35,7 +34,7 @@
 
 ## JavaScript_2 (`23/07/2023`)
 
-<p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
 ### if/else结构
 if (条件表达式){

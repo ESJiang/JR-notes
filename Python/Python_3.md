@@ -21,7 +21,7 @@
 
 ## Python_3 (`29/07/2023`)
 
-<p align='center'><img src='../image/python.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/python.png' width='30%' height='30%' /></p>
 
 ### A data-intensive appliation
 
@@ -37,7 +37,7 @@ flowchart TB
 | :---: | :---: |
 | ***Adding hardware resources to a single server, such as CPU, memory, disk, etc.*** | ***Adding more servers or nodes to the system*** |
 
-`Vertical scale和Horizontal scale是提升系统性能的两种方法. Horizontal scale普遍认为优于Vertical scale, 因为多server可以更好处理负载增加, 采用分布式结构等. 对于资源有限/重视latency的情况, 可以考虑使用Vertical scale.`
+`Vertical scale和Horizontal scale是提升系统性能的两种方法. Horizontal scale普遍认为优于Vertical scale, 因为多server可以更好处理负载增加, 采用分布式结构等. 但对于资源有限/重视latency的情况, 可以考虑使用Vertical scale.`
 
 <hr>
 

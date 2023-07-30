@@ -21,7 +21,7 @@
 
 ## Python_2 (`22/07/2023`)
 
-<p align='center'><img src='../image/python.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/python.png' width='30%' height='30%' /></p>
 
 ### 安装Python
 [anaconda](https://www.anaconda.com/download/)

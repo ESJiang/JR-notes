@@ -48,7 +48,7 @@
 
 ## JavaScript_3 (`25/07/2023`)
 
-<p align='center'><img src='../image/js.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
 ### 函数
 > for循环语句能实现简单的重复操作, 但有局限性. 另一个方法是定义函数<br>

@@ -31,7 +31,7 @@
 
 ## HTML & CSS Part 1 (`28/06/2023`)
 
-<p align='center'><img src='../image/HTML&CSS.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/HTML&CSS.png' width='30%' height='30%' /></p>
 
 ```前端: HTML,CSS,JavaScript```
 
