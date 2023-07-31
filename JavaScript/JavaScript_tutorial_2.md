@@ -308,11 +308,11 @@ setInterval(() => {
 
 ##### solution 1: closest
 ```js
-function handleArrowButtonClick(event) {
-    event.target.closest(".info-item").querySelector(".extra-info").style.display = "none";
+function handleArrowButtonClick() {
+    this.closest(".info-item").querySelector(".extra-info").style.display = "none"; // this指代点击事件的i元素, 这里使用this/e.target效果一样
 }
 
-document.querySelectorAll(".expand-collapse-btn i").forEach(button => {
+document.querySelectorAll(".expand-collapse-btn>i").forEach(button => {
     button.addEventListener("click", handleArrowButtonClick);
 });
 ```
@@ -322,7 +322,7 @@ document.querySelectorAll(".expand-collapse-btn i").forEach(button => {
 (function () {
     const main = document.getElementById("main");
     main.addEventListener("click", e => {
-        if (e.target.tagName === "I") {
+        if (e.target.tagName === "I") { //e.target指向main元素的子元素i, 这里用的是箭头函数, this表示window元素而不是触发事件的元素. 这里你改写成命名函数, this会指代main元素
             e.target.parentNode.parentNode.parentNode.children[1].children[2].style.display = "none";
         }
     });
