@@ -20,6 +20,8 @@
 ## Module Four: Node.js
 [Node 1](./Nodejs/Node_1.md)<br>
 [Node 2](./Nodejs/Node_2.md)<br>
+~~[Node 3](./Nodejs/Node_3.md)<br>~~
+~~[Node tutorial](./Nodejes/Node_tutorial.md)<br>~~
 
 ## Module Five: Database
 
@@ -27,5 +29,6 @@
 [Python 1](./Python/Python_1.md)<br>
 [Python 2](./Python/Python_2.md)<br>
 [Python 3](./Python/Python_3.md)<br>
+~~[Python 4](./Python/Python_4.md)<br>~~
 
 ## TBC
