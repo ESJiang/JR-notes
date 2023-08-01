@@ -102,7 +102,7 @@ app.listen(PORT, () => console.log("server is running on 8080."));
 ### Express中的路由
 ```mermaid
 graph TB;
-    a{"Express中的路由"}-->b["请求类型"];
+    a{"Express\n中的路由"}-->b["请求类型"];
     a-->c["请求URL"];
     a-->d["处理函数"];
 ```
