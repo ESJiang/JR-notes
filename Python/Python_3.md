@@ -1,7 +1,7 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
   - [Python\_3 (`29/07/2023`)](#python_3-29072023)
-    - [A data-intensive appliation](#a-data-intensive-appliation)
+    - [A data-intensive application](#a-data-intensive-application)
       - [Vertical scale和Horizontal scale](#vertical-scale和horizontal-scale)
     - [数据结构 (Trade-off)](#数据结构-trade-off)
       - [映射关系](#映射关系)
@@ -23,11 +23,11 @@
 
 <p align='center'><img src='../image/python.png' width='30%' height='30%' /></p>
 
-### A data-intensive appliation
+### A data-intensive application
 
 ```mermaid
 flowchart TB
-    A[A data-intensive appliation] -->|To work correctly even in the face of adversity| B[Reliability]
+    A[A data-intensive application] -->|To work correctly even in the face of adversity| B[Reliability]
     A -->|Reasonable ways of dealing with growth| C[Scalability]
     A -->|Be able to work on it productively| D[Maintainability]
 ```
