@@ -123,6 +123,8 @@ blog.html -> `http://www.example.com/blog.html`<br>
 #### p标签是段落标签
 <p>标签可以包含任意文本内容，包括文本、链接、图片等.<br>
 
+*p标签会根据浏览器宽度自动换行, 默认有margin*
+
 >***但是, p标签不能包含block element.
 
 ```html
@@ -134,15 +136,16 @@ blog.html -> `http://www.example.com/blog.html`<br>
 #### inline vs block level elements
 | Element type | Attributes
 | :---: | :---:
-| ***inline element(`<span>,<a>,<input>,<img>,etc`)*** | 不独占一行, 它们的大小由元素的内容决定, 设置宽高无效
-| ***block element(`<p>,<div>,etc`)*** | 而块级元素会独占一行，并且会在前后添加换行符, 可以设置宽高
+| ***inline element(`<span>,<a>,<button>,etc`)*** | 不独占一行, 它们的大小由元素的内容决定, 设置宽高无效, 可以设置左右的padding和margin
+| ***block element(`<p>,<div>,<button>,etc`)*** | 而块级元素会独占一行，并且会在前后添加换行符, 可以设置宽高
 
 #### span标签的用途
 > 修改部分文字样式<br>
 ```html
 <p>He <span style="color:green;font-weight:bold;font-style:italic">went to</span> school</p>
 ```
-这里用给p标签一个class selector不容易修改部分文字的style, span作为inline element非常灵活, 且不会破坏布局.<br>
+
+- 这里用给p标签一个class selector不容易修改部分文字的style, span作为行内元素很灵活, 不会独占一行.<br>
 
 >***但不要多用优先级高的inline style, 多用可以复用的class selector***
 

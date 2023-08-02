@@ -95,7 +95,7 @@ app.get("/users/:id/:room", (req, res) => {
 app.listen(PORT, () => console.log("server is running on 8080."));
 ```
 
-> npx nodemon (启动server+实时更新)<br>
+> npx nodemon (启动server + 实时更新)<br>
 > req.query默认是{}, 可以使用?name=Chris&age=20 传输数据<br>
 > req.params通过:匹配动态参数<br>
 
@@ -110,7 +110,7 @@ graph TB;
 > 请求类型和请求URL同时匹配成功, Express就会允许处理函数(从上到下匹配)<br>
 
 #### 模块化路由
-为了方便管理, 不应该把路由挂载到app上, 推荐将路由抽离成独立的模块
+为了方便管理, 不应该把[路由挂载到app上](#搭建server), 推荐将路由抽离成独立的模块
 
 ##### server.js
 ```js
@@ -140,7 +140,7 @@ module.exports = router;
 ```js
 const express = require("express");
 const userRouter = express.Router();
-userRouter.post("/add", (req,res)=>{
+userRouter.post("/add", (req, res) => {
     const body = req.body;
     console.log("body", body);
     res.send({
@@ -157,30 +157,30 @@ module.exports = userRouter;
 const express = require("express");
 const journalRouter = express.Router();
 let journal = [
-    {event: "work", squirrel: true},
-    {event: "cycling", squirrel: false},
-    {event: "break", squirrel: true},
-    {event: "brushed teeth", squirrel: true},
+    { event: "work", squirrel: true },
+    { event: "cycling", squirrel: false },
+    { event: "break", squirrel: true },
+    { event: "brushed teeth", squirrel: true },
 ];
 
-journalRouter.get("/event", (req,res)=>{
+journalRouter.get("/event", (req, res) => {
     const eventToFind = req.query.event;
-    if (!eventToFind){
-        return res.status(400).send("Event parameter is missing")
+    if (!eventToFind) {
+        return res.status(400).send("Event parameter is missing");
     }
-    const foundEvent = journal.find(item=>item.event === eventToFind);
-    if (!foundEvent){
-        return res.status(404).send("Event not found")
+    const foundEvent = journal.find(item => item.event === eventToFind);
+    if (!foundEvent) {
+        return res.status(404).send("Event not found");
     }
-    res.send(foundEvent)
-})
+    res.send(foundEvent);
+});
 
 journalRouter.post("/events", (req, res) => {
-    const {event, squirrel} = req.body;
-    if (!event || !squirrel){
+    const { event, squirrel } = req.body;
+    if (!event || !squirrel) {
         return res.status(400).send("Event and squirrel are required");
     }
-    const newEvent = {event, squirrel};
+    const newEvent = { event, squirrel };
     journal.push(newEvent);
     res.status(201).send({
         msg: "Add event succeeded",
@@ -197,24 +197,17 @@ module.exports = journalRouter;
 2. 针对新data, 写4个api
 ```js
 let journal = [
-  {
-    events: ["work", "touched tree", "pizza", "running", "television"],
-    squirrel: false,
-  },
-  {
-    events: [
-      "work",
-      "ice cream",
-      "cauliflower",
-      "lasagna",
-      "touched tree",
-      "brushed teeth",
-    ],
-    squirrel: false,
-  },
-  {
-    events: ["weekend", "cycling", "break", "peanuts", "beer"],
-    squirrel: true,
-  },
+    {
+        events: ["work", "touched tree", "pizza", "running", "television"],
+        squirrel: false,
+    },
+    {
+        events: ["work", "ice cream", "cauliflower", "lasagna", "touched tree", "brushed teeth"],
+        squirrel: false,
+    },
+    {
+        events: ["weekend", "cycling", "break", "peanuts", "beer"],
+        squirrel: true,
+    },
 ];
 ```
