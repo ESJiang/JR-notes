@@ -22,7 +22,7 @@
 [Node 2](./Nodejs/Node_2.md)<br>
 [Node 3](./Nodejs/Node_3.md)<br>
 [Node tutorial](./Nodejs/Node_tutorial.md)<br>
-- [Node_tutorial_code](https://github.com/ESJiang/JR16-notes/tree/main/Node_tutorial_code)
+[Node_tutorial_code](https://github.com/ESJiang/JR16-notes/tree/main/Node_tutorial_code)
 
 ## Module Five: Database
 
