@@ -249,17 +249,20 @@ module.exports = router;
 ```
 
 #### router.js solution 2
-> 如果一开始设定`const message_body = require("./messages.json");`, 就不需要每次存储更新后的messages array, 因为splice和Object.assign方法本身就已经修改了message.json中的元素(message_body会自动改变). 此外, put接口中使用Object.assign可以避免使用解构和删除操作. 封装两个命名函数writeMessageFile()和handleErrorMessage(res, messageId)用来实现代码复用.
+> 在writeMessageFile()直接写入{messages}, 就不需要创建每次更新后的messages array, 因为push, splice, Object.assign方法已经修改了message.json中的元素. 此外, put接口中使用Object.assign可以避免使用解构和删除操作. 封装三个命名函数writeMessageFile(), getMessageById(messageId)和handleErrorMessage(res, messageId)用来实现代码复用.
 
 ```js
 const express = require("express"),
     router = express.Router(),
     fs = require("fs"),
-    message_body = require("./messages.json"),
     messages = require("./messages.json").messages;
 
 function writeMessagesFile() {
-    fs.writeFileSync("./messages.json", JSON.stringify(message_body, null, 4));
+    fs.writeFileSync("./messages.json", JSON.stringify({ messages }, null, 4));
+}
+
+function getMessageById(messageId) {
+    return messages.find(msg => msg.id === messageId);
 }
 
 function handleErrorMessage(res, messageId) {
@@ -272,8 +275,8 @@ router.get("/", (req, res) => res.status(200).json(messages));
 // 获取单条留言
 router.get("/:id", (req, res) => {
     const messageId = parseInt(req.params.id);
-    const message = messages.find(msg => msg.id === messageId);
-    message ? res.json(message) : handleErrorMessage(res, messageId);
+    const message = getMessageById(messageId);
+    message ? res.status(200).json(message) : handleErrorMessage(res, messageId);
 });
 
 //POST:添加留言 C:CREATE
@@ -285,17 +288,17 @@ router.post("/", (req, res) => {
     };
     messages.push(newMessage);
     writeMessagesFile();
-    res.status(201).json({ message: "create successfully", data: newMessage });
+    res.status(201).json({ msg: "create successfully", newData: newMessage });
 });
 
 //PUT: 更新留言 U:UPDATE
 router.put("/:id", (req, res) => {
     const messageId = parseInt(req.params.id);
-    const messageToUpdate = messages.find(msg => msg.id === messageId);
+    const messageToUpdate = getMessageById(messageId);
     if (messageToUpdate) {
         Object.assign(messageToUpdate, req.body);
         writeMessagesFile();
-        res.status(201).json({ message: "update successfully", data: messageToUpdate });
+        res.status(201).json({ msg: "update successfully", updateData: messageToUpdate });
     } else handleErrorMessage(res, messageId);
 });
 
@@ -306,7 +309,7 @@ router.delete("/:id", (req, res) => {
     if (messageIndex !== -1) {
         const deletedMessage = messages.splice(messageIndex, 1)[0];
         writeMessagesFile();
-        res.status(201).json({ message: "delete successfully", data: deletedMessage });
+        res.status(201).json({ msg: "delete successfully", deleteData: deletedMessage });
     } else handleErrorMessage(res, messageId);
 });
 
