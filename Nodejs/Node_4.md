@@ -46,7 +46,7 @@ app.use("./user", express.static("./files"));
 ```
 > 以"/public"开头的请求将从 "./public" 目录中提供文件; 以 "/user" 开头的请求将从 "./files" 目录中提供文件.
 
-http://localhost/public/1.html
+http://localhost/public/1.html<br>
 http://localhost/user/1.html
 
 ### CORS 跨域资源共享
