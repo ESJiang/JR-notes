@@ -8,7 +8,7 @@
       - [http动词](#http动词)
         - [get vs post](#get-vs-post)
       - [http状态码](#http状态码)
-    - [User list练习](#user-list练习)
+    - [User list后端练习](#user-list后端练习)
       - [npm安装](#npm安装)
       - [index.js](#indexjs)
       - [router.js](#routerjs)
@@ -79,7 +79,7 @@ http://localhost/user/1.html
 #### http状态码
 <p align='center'><img src='../image/http status codes.png' width='50%' height='50%' /></p>
 
-### User list练习
+### User list后端练习
 #### npm安装
 ```shell
 npm init
