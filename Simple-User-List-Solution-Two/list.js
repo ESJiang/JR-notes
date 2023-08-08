@@ -69,7 +69,6 @@ async function clear_list() {
         if (!judgeContinue()) return;
         const response = await axios.delete("http://localhost:8080/api/clear");
         alert(response.data);
-        clearUserList();
         getUserList();
     } catch (error) {
         console.error("Error removing userlist", error);
