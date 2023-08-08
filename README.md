@@ -23,6 +23,8 @@
 [Node 3](./Nodejs/Node_3.md)<br>
 [Node 4](./Nodejs/Node_4.md)<br>
 [Node 5](./Nodejs/Node_5.md)<br>
+[Simple-User-List-Class-Solution](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Class-Solution)<br>
+[Simple-User-List-Solution-Two](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Solution-Two)<br>
 [Node tutorial](./Nodejs/Node_tutorial.md)<br>
 [Node_tutorial_code](https://github.com/ESJiang/JR16-notes/tree/main/Node_tutorial_code)
 

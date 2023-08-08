@@ -1,3 +1,20 @@
+- [Class Notes](#class-notes)
+  - [Resources](#resources)
+  - [Node\_5 (`08/08/2023`)](#node_5-08082023)
+    - [中间件](#中间件)
+      - [express 中间件的调用流程](#express-中间件的调用流程)
+      - [express中间件的格式](#express中间件的格式)
+      - [next函数的作用](#next函数的作用)
+      - [练习](#练习)
+      - [index.js](#indexjs)
+      - [index2.js](#index2js)
+      - [局部中间件 index3.js](#局部中间件-index3js)
+      - [index4.js \& router.js](#index4js--routerjs)
+    - [User list前端练习](#user-list前端练习)
+      - [list.html](#listhtml)
+      - [list.css](#listcss)
+      - [list.js](#listjs)
+
 # Class Notes
 
 ## Resources
@@ -163,4 +180,134 @@ module.exports = router;
 `axios导入`
 ```html
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+#### list.html
+```html
+<body>
+    <div class="container">
+        <h3>User List</h3>
+        <form class="user_form">
+            <label for="username">Name</label>
+            <input type="text" id="username" value="" />
+            <label for="age">Age</label>
+            <input type="number" id="age" value="" />
+        </form>
+        <div class="btn_group">
+            <button onclick="getList()" id="get_list">get list</button>
+            <button onclick="postUser()" id="add_user">add user</button>
+            <button onclick="deleteList()" id="clear_list">clear list</button>
+        </div>
+        <ul id="user_list"></ul>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./list.js"></script>
+</body>
+```
+
+#### list.css
+```css
+.container {
+  width: 600px;
+  height: 600px;
+  overflow: scroll;
+  margin: 10px auto;
+  background-color: #7986cb;
+  padding: 20px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+h3,
+.user_form,
+.btn_group {
+  display: flex;
+  justify-content: center;
+}
+
+.user_form {
+  margin-bottom: 1rem;
+}
+
+ul li {
+  list-style: none;
+  counter-increment: item;
+  margin-bottom: 1rem;
+}
+
+ul li::before {
+  content: counter(item);
+  background-color: #f9dd94;
+  color: #fff;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 1rem;
+}
+
+button {
+  color: #fff;
+  background-color: #c2d352;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #434343;
+  transition: all 0.4s ease;
+}
+```
+
+#### list.js
+```js
+function clearList() {
+    const userList = document.getElementById("user_list");
+    while (userList.firstChild) userList.removeChild(userList.firstChild);
+}
+
+function getList() {
+    console.log("getList fired");
+    const url = "http://localhost:8080/api/users";
+    axios
+        .get(url)
+        .then(function (res) {
+            const users = res.data.data;
+            console.log("users", users);
+            clearList();
+            users.forEach(function (user) {
+                const li = document.createElement("li");
+                li.innerHTML = user.name + " " + user.age;
+                li.setAttribute("data-id", user.id);
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", function () {
+                    deleteUserById(user.id);
+                });
+                li.appendChild(deleteButton);
+                document.getElementById("user_list").appendChild(li);
+            });
+        })
+        .catch(function (err) {
+            console.error("Error fetching user list:", err);
+        });
+}
+
+function deleteUserById(userId) {
+    console.log("deleteUserById fired");
+    const url = "http://localhost:8080/api/users/" + userId;
+    axios
+        .delete(url)
+        .then(function (res) {
+            console.log(userId + " deleted");
+            getList();
+        })
+        .catch(function (err) {
+            console.error("Error deleting user with ID: " + userId, err);
+        });
+}
 ```
