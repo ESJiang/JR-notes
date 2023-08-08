@@ -1,37 +1,63 @@
-const express = require("express");
-const router = express.Router();
+const express = require("express"),
+    router = express.Router(),
+    user = [
+        { id: 1, name: "Ben", age: 20 },
+        { id: 2, name: "John", age: 30 },
+        { id: 3, name: "Chris", age: 40 },
+        { id: 4, name: "Jane", age: 60 },
+    ];
 
-let user = [
-    { id: 1, name: "Ben", age: 20 },
-    { id: 2, name: "John", age: 30 },
-    { id: 3, name: "Chris", age: 40 },
-    { id: 4, name: "Jane", age: 60 },
-];
+router.get("/users", (req, res) => {
+    try {
+        res.status(200).json({ msg: "get user successfully", user: user });
+        console.log("userList", user);
+    } catch (err) {
+        next(err);
+    }
+});
 
-router.get("/api/users", (req, res) => res.status(200).json(user));
-router.post("/api/user", (req, res) => {
-    if (!req.body.name || !req.body.age) res.status(400).json("missing parameters");
-    user.push({ id: user.length + 1, ...req.body });
-    res.status(201).json({
-        msg: "add user successfully",
-        data: req.body,
+router.post("/user", (req, res) => {
+    try {
+        if (!req.body.name || !req.body.age) res.status(400).json("missing parameters");
+        user.push({ id: user.length + 1, ...req.body });
+        res.status(201).json({
+            msg: "add user successfully",
+            user: req.body,
+        });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.delete("/clearsingle", (req, res) => {
+    try {
+        const messageIndex = user.findIndex(user => user.id === parseInt(req.query.id));
+        if (messageIndex !== -1) {
+            if (messageIndex !== user.length - 1) for (let i = messageIndex + 1; i < user.length; i++) --user[i].id;
+            const deletedMessage = user.splice(messageIndex, 1)[0];
+            console.log("deletedMessage", deletedMessage);
+            res.status(201).json({ msg: "delete successfully", deleteData: deletedMessage });
+        } else res.status(404).json({ msg: "cannot delete" });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.delete("/clear", (req, res) => {
+    try {
+        user.length = 0;
+        res.status(201).send("User list has been cleared");
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        status: "error",
+        msg: "Internal server error",
     });
-});
-
-router.delete("/api/clearsingle", (req, res) => {
-    const messageID = parseInt(req.query.id);
-    const messageIndex = user.findIndex(user => user.id === messageID);
-    if (messageIndex !== -1) {
-        if (messageIndex !== user.length - 1) for (let i = messageIndex + 1; i < user.length; i++) --user[i].id;
-        const deletedMessage = user.splice(messageIndex, 1)[0];
-        console.log("deletedMessage", deletedMessage);
-        res.status(201).json({ msg: "delete successfully", deleteData: deletedMessage });
-    } else res.status(404).json({ msg: "cannot delete" });
-});
-
-router.delete("/api/clear", (req, res) => {
-    user = [];
-    res.status(201).send("User list has been cleared");
 });
 
 module.exports = router;
