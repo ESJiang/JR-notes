@@ -12,9 +12,7 @@
     color: hsla(0, 0%, 100%, 1);
 }
 
-h3,
-.user_form,
-.btn_group {
+.container > :not(ul) {
     display: flex;
     justify-content: center;
 }
