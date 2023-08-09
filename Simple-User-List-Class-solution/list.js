@@ -36,8 +36,10 @@ function deleteUserById(userId) {
     axios
         .delete(url)
         .then(function (res) {
-            console.log(userId + " deleted");
-            getList();
+            if (res.status === 200) {
+                console.log(res.data.msg);
+                getList();
+            }
         })
         .catch(function (err) {
             console.error("Error deleting user with ID: " + userId, err);
@@ -51,7 +53,7 @@ function deleteList() {
         .delete(url)
         .then(function (res) {
             if (res.status === 204) {
-                console.log("User list deleted");
+                console.log(res.data);
                 getList();
             }
         })
@@ -81,3 +83,4 @@ function postUser() {
             console.error("Error posting a user", err);
         });
 }
+getList();

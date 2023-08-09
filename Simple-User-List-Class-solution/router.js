@@ -20,10 +20,7 @@ router.get("/users", function (req, res) {
 });
 
 function getNextUser(users) {
-    const userIds = users.map(function (user) {
-        return user.id;
-    });
-    return Math.max(...userIds) + 1;
+    return users.length === 0 ? 1 : Math.max(...users.map(user => user.id)) + 1;
 }
 
 router.post("/users", function (req, res) {
@@ -44,7 +41,7 @@ router.post("/users", function (req, res) {
 router.delete("/users", function (req, res) {
     try {
         user = [];
-        res.status(204).send();
+        res.status(204).send("User List has been cleared");
     } catch (err) {
         next(err);
     }
@@ -71,6 +68,7 @@ router.delete("/users/:id", function (req, res) {
         next(err);
     }
 });
+
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({
