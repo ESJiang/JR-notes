@@ -58,7 +58,7 @@ function deleteList() {
             }
         })
         .catch(function (err) {
-            console.error("Error deleting user with ID: " + userId, err);
+            console.error("Error deleting entire user list" + err);
         });
 }
 
