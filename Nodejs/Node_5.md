@@ -18,6 +18,8 @@
 # Class Notes
 
 ## Resources
+[Simple-User-List-Class-Solution](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Class-Solution)<br>
+[Simple-User-List-Solution-Two](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Solution-Two)<br>
 
 ## Node_5 (`08/08/2023`)
 <p align='center'><img src='../image/nodejs.png' width='30%' height='30%' /></p>
@@ -166,7 +168,7 @@ const errorHandler = function (err, req, res, next) {
     console.error(err.stack);
     res.status(500).json({
         status: "error",
-        msg: "internal server error",
+        msg: "Internal server error",
     });
 };
 // add error middleware

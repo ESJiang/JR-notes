@@ -16,7 +16,7 @@ async function deleteSingle() {
     try {
         if (!judgeContinue(`Are you sure to delete ${this.previousElementSibling.previousElementSibling.textContent}? Y/N`)) return;
         const response = await axios.delete(`http://localhost:8080/api/clearsingle?id=${this.getAttribute("data-id")}`);
-        if (response.status === 201) alert("Delete successfully");
+        if (response.status === 201) alert(response.data.msg);
         getUserList();
     } catch (err) {
         console.error(err);
@@ -68,7 +68,7 @@ async function clear_list() {
     try {
         if (!judgeContinue()) return;
         const response = await axios.delete("http://localhost:8080/api/clear");
-        alert(response.data);
+        if (response.status === 200) alert(response.data.msg);
         getUserList();
     } catch (error) {
         console.error("Error removing userlist", error);

@@ -46,7 +46,7 @@ router.delete("/clearsingle", (req, res) => {
 router.delete("/clear", (req, res) => {
     try {
         user.length = 0;
-        res.status(201).send("User list has been cleared");
+        res.status(200).json({ status: "success", msg: "User list has been cleared" });
     } catch (err) {
         next(err);
     }
