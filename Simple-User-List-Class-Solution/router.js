@@ -7,11 +7,11 @@ let user = [
     { id: 4, name: "Jane", age: 60 },
 ];
 
-router.get("/users", function (req, res) {
+router.get("/users", function (req, res, next) {
     try {
         res.status(200).json({
             status: "success",
-            msg: "Retrievedd users successfully",
+            msg: "Retrieved userlist successfully",
             data: user,
         });
     } catch (err) {
@@ -20,15 +20,13 @@ router.get("/users", function (req, res) {
 });
 
 function getNextUser(users) {
-    return users.length === 0 ? 1 : Math.max(...users.map(user => user.id)) + 1;
+    return Math.max(...users.map(user => user.id), 0) + 1;
 }
 
-router.post("/users", function (req, res) {
+router.post("/users", function (req, res, next) {
     try {
         const newUser = req.body;
-        if (!newUser.name || !newUser.age) {
-            return res.status(400).json({ msg: "missing parameters" });
-        }
+        if (!newUser.name || !newUser.age) return res.status(400).json({ msg: "missing parameters" });
         const newId = getNextUser(user);
         let obj = { id: newId, ...newUser };
         user.push(obj);
@@ -38,7 +36,7 @@ router.post("/users", function (req, res) {
     }
 });
 
-router.delete("/users", function (req, res) {
+router.delete("/users", function (req, res, next) {
     try {
         user = [];
         res.status(204).send();
@@ -47,7 +45,7 @@ router.delete("/users", function (req, res) {
     }
 });
 
-router.delete("/users/:id", function (req, res) {
+router.delete("/users/:id", function (req, res, next) {
     try {
         const userIdToDelete = parseInt(req.params.id);
         const initialUserCount = user.length;

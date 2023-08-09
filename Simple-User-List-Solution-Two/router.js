@@ -7,7 +7,7 @@ const express = require("express"),
         { id: 4, name: "Jane", age: 60 },
     ];
 
-router.get("/users", (req, res) => {
+router.get("/users", (req, res, next) => {
     try {
         res.status(200).json({ msg: "get user successfully", user: user });
         console.log("userList", user);
@@ -16,7 +16,7 @@ router.get("/users", (req, res) => {
     }
 });
 
-router.post("/user", (req, res) => {
+router.post("/user", (req, res, next) => {
     try {
         if (!req.body.name || !req.body.age) res.status(400).json("missing parameters");
         user.push({ id: user.length + 1, ...req.body });
@@ -29,7 +29,7 @@ router.post("/user", (req, res) => {
     }
 });
 
-router.delete("/clearsingle", (req, res) => {
+router.delete("/clearsingle", (req, res, next) => {
     try {
         const messageIndex = user.findIndex(user => user.id === parseInt(req.query.id));
         if (messageIndex !== -1) {
@@ -43,7 +43,7 @@ router.delete("/clearsingle", (req, res) => {
     }
 });
 
-router.delete("/clear", (req, res) => {
+router.delete("/clear", (req, res, next) => {
     try {
         user.length = 0;
         res.status(200).json({ status: "success", msg: "User list has been cleared" });
