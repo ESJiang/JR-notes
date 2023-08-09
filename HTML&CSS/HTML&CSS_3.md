@@ -171,6 +171,9 @@ https://github.com/ESJiang/JR16-notes/assets/43910771/b7cf21cb-920c-44c1-ba95-0b
 }
 ```
 
+*注意: 后面的@media范围不能包含前面@media的范围, 因为这样做前面@media的设置会失效*
+
+
 `clamp([min], [calculated], [max])`: 在最小值和最大值时浮动(一般控制font-size, margin, etc)
 > 好处是不需要写多个@media控制了, 节省代码量，维持元素间的相对关系
 

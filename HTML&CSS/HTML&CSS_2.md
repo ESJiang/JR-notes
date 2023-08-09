@@ -13,6 +13,7 @@
       - [\> 选择器和后代选择器区别](#-选择器和后代选择器区别)
       - [p:last-child和p:last-of-type的区别](#plast-child和plast-of-type的区别)
       - [p:only-child和p:only-of-type的区别](#ponly-child和ponly-of-type的区别)
+      - [not选择器用法](#not选择器用法)
     - [BEM命名规范 (如何给选择器取名)](#bem命名规范-如何给选择器取名)
     - [Box Model](#box-model)
     - [color命名](#color命名)
@@ -139,6 +140,17 @@ h1~p{
 | :---: | :---: |
 | ***p的父级必须只包含一个元素, 这个元素是p*** | ***p的父级只包含一个p元素, 但可以有其他非p的子元素*** |
 
+#### not选择器用法
+```css
+p:not(.irrelevant) {
+  font-weight: bold; /*将没有类名为irrelevant的p标签字体变粗*/
+}
+
+p > :not(strong, b.important) {
+  color: green; /*将p的直接子元素中除了strong元素和有important类名的b元素字体颜色变绿*/
+}
+```
+
 ### BEM命名规范 (如何给选择器取名)
 > BEM会把每个block命名
 `B: block`
@@ -237,10 +249,13 @@ p {
 
 ### 长度单位
 *相对单位: em/rem/%/vw/vh*
-> em和rem的大小都是基于字体大小(em基于父元素, rem基于html元素), %/vw/vh的取值和width和height有关
+- em的font-size基于父元素的font-size, width/height/padding/margin的大小基于自身的font-size <br>
+- rem基于html元素的font-size, 与父级font-size无关 <br>
+- %基于父级的大小决定 <br>
+- vw/vh的取值和视图width/height有关
 
 *绝对单位: px*
-> 不随screen宽度/高度, 变化而变化
+- **不**随screen宽度/高度, 变化而变化
 
 ## 课后作业
 
