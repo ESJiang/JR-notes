@@ -41,7 +41,7 @@ router.post("/users", function (req, res) {
 router.delete("/users", function (req, res) {
     try {
         user = [];
-        res.status(204).send("User List has been cleared");
+        res.status(204).send();
     } catch (err) {
         next(err);
     }

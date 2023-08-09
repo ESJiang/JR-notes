@@ -29,7 +29,7 @@ async function getUserList() {
         const response = await axios.get("http://localhost:8080/api/users");
         const users = response.data.user;
         console.log("users", users);
-        if (users.length === 0) return alert("no users found, please add a new user");
+        // if (users.length === 0) return alert("no users found, please add a new user");
         for (value of users) {
             const li = document.createElement("li");
             li.innerHTML = `
@@ -68,7 +68,7 @@ async function clear_list() {
     try {
         if (!judgeContinue()) return;
         const response = await axios.delete("http://localhost:8080/api/clear");
-        if (response.status === 200) alert(response.data.msg);
+        if (response.status === 204) alert("User List has been cleared successfully");
         getUserList();
     } catch (error) {
         console.error("Error removing userlist", error);

@@ -53,7 +53,7 @@ function deleteList() {
         .delete(url)
         .then(function (res) {
             if (res.status === 204) {
-                console.log(res.data);
+                console.log("User List removed");
                 getList();
             }
         })
