@@ -38,7 +38,7 @@ async function getUserList() {
             <button class="btn_group_btn" data-id="${value.id}">Delete</button>`;
             user_list.appendChild(li);
         }
-        user_list.querySelectorAll("span~.btn_group_btn").forEach(item => item.addEventListener("click", deleteSingle));
+        user_list.querySelectorAll("span+.btn_group_btn").forEach(item => item.addEventListener("click", deleteSingle));
     } catch (error) {
         console.error("Error fetching userlist:", error);
     }
