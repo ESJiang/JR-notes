@@ -315,7 +315,7 @@ print(reversed.__doc__)
 ```
 
 ### Funciton Annotations (函数注解)
-`避免开发者出现简单的type error`
+`避免开发者出现简单的type error. Python 3.0 版本引入了函数注解的概念, 但它们在 Python 3.5 版本中得到了进一步的发展和改进, 尤其是引入了类型提示的支持, 从而增强了代码的可读性和可维护性.`
 <div style='display:flex; justify-content: space-between'>
     <img src='../image/python annotation.png' width='50%' />
     <img src='../image/python annotation debug.png' width='50%' />

@@ -39,4 +39,4 @@
 - [Python 2](./Python/Python_2.md)<br>
 - [Python 3](./Python/Python_3.md)<br>
 - [Python 4](./Python/Python_4.md)<br>
-- ~~[Python 5](./Python/Python_5.md)<br>~~
+- [Python 5](./Python/Python_5.md)<br>
