@@ -1,6 +1,34 @@
+- [Class Notes](#class-notes)
+  - [Resources](#resources)
+  - [Python\_5 (`12/08/2023`)](#python_5-12082023)
+    - [lambda function](#lambda-function)
+      - [dis库](#dis库)
+      - [lambda的优势和使用场景](#lambda的优势和使用场景)
+    - [Decorator](#decorator)
+      - [Decorator例子1: 计算运行时间](#decorator例子1-计算运行时间)
+        - [计算函数平均执行时间 - timeit库](#计算函数平均执行时间---timeit库)
+      - [Decorator例子2: logging](#decorator例子2-logging)
+      - [Decorator的其他应用场景](#decorator的其他应用场景)
+      - [cProfile](#cprofile)
+    - [map/filter/reduce](#mapfilterreduce)
+      - [map 返回一个迭代器 (对每个元素统一执行相同操作)](#map-返回一个迭代器-对每个元素统一执行相同操作)
+      - [filter 返回一个迭代器 (挑选满足条件的元素)](#filter-返回一个迭代器-挑选满足条件的元素)
+      - [reduce 返回一个值 (累加, 累乘)](#reduce-返回一个值-累加-累乘)
+    - [List comprehension实现map/filter/reduce (推荐!)](#list-comprehension实现mapfilterreduce-推荐)
+      - [为什么推荐使用List comprehension而不是直接使用map/filter/reduce?](#为什么推荐使用list-comprehension而不是直接使用mapfilterreduce)
+      - [使用List comprehension实现map](#使用list-comprehension实现map)
+        - [两种错误写法](#两种错误写法)
+      - [使用List comprehension实现filter](#使用list-comprehension实现filter)
+      - [使用List comprehension实现reduce](#使用list-comprehension实现reduce)
+
 # Class Notes
 
 ## Resources
+[Python_lambda](https://www.w3schools.com/python/python_lambda.asp)<br>
+[Python_decorator](https://foofish.net/python-decorator.html)<br>
+[Python_map](https://www.w3schools.com/python/ref_func_map.asp)<br>
+[Python_filter](https://www.freecodecamp.org/chinese/news/python-filter-function)<br>
+[Python_reduce](https://www.runoob.com/python/python-func-reduce.html)<br>
 
 ## Python_5 (`12/08/2023`)
 
@@ -91,9 +119,98 @@ print(decorated_say_hi)
 ```
 
 #### Decorator例子1: 计算运行时间
+```python
+import time
+
+
+def calculate_runtime(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        runtime = end_time - start_time
+        print(f"Function {func.__name__} took {runtime:.6f} seconds to run.")
+        return result
+
+    return wrapper
+
+
+@calculate_runtime
+def slow_function(n):
+    total = 0
+    for i in range(n):
+        total += i
+        time.sleep(0.1)
+    return total
+
+
+print(slow_function(5))
+```
+
+##### 计算函数平均执行时间 - timeit库
+```python
+import timeit
+
+
+def example_code():
+    total = 0
+    for i in range(20):
+        total += i
+    return total
+
+
+# 测量 example_code 的平均执行时间，执行 1000 次
+execution_time = timeit.timeit(example_code, number=10)
+print(f"Average execution time: {execution_time:.6f} seconds")
+```
 
 #### Decorator例子2: logging
+```python
+import logging
 
+
+def log_function_calls(func):
+    logging.basicConfig(level=logging.INFO)
+
+    def wrapper(*args, **kwargs):
+        logging.info(
+            f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}"
+        )
+        result = func(*args, **kwargs)
+        logging.info(f"{func.__name__} returned: {result}")
+        return result
+
+    return wrapper
+
+
+@log_function_calls
+def add(a, b):
+    return a + b
+
+
+@log_function_calls
+def multiply(x, y):
+    return x * y
+
+
+result1 = add(3, 5)
+result2 = multiply(2, 4)
+```
+
+#### Decorator的其他应用场景
+
+`装饰器在的其他应用场景:`
+
+- Authorization: You can use decorators to check if a user has the permission to execute specific requests.
+- Caching/Memoization: Decorators can be used for caching the results of a function to improve speed. If a function is frequently called with the same parameters, decorators can store the previous results.
+- Data Validation: Decorators can be used to automatically validate the input and output of a function, ensuring they meet certain requirements.
+- Retry Mechanism: In network requests or other potentially failing operations, decorators can be used for automatic retries.
+- Feature Toggling: Decorators can control the enabling or disabling of specific features, making feature toggling easier.
+- Monitoring and Statistics: Decorators can be used to gather information about how a function is used and may send this information to external tools for monitoring or analysis.
+- AOP (Aspect-Oriented Programming): Decorators allow you to separate cross-cutting concerns like logging and security from business logic, making the code cleaner and more maintainable.
+- Response Handling: In web frameworks, decorators can be used for pre-processing or post-processing HTTP responses, such as adding headers or changing status codes.
+- Routing: Many web frameworks use decorators to link functions with URL routes.
+- Event Registration: Decorators can be used for registering event handlers in a system.
 
 #### cProfile
 > 提供了一个轻量级的性能分析器，可以用来测量函数调用的时间和调用次数，帮助您识别代码中的瓶颈和优化点
@@ -113,7 +230,7 @@ if __name__ == "__main__":
 ```
 
 ### map/filter/reduce
-#### map 返回一个迭代器 (每个元素统一进行操作)
+#### map 返回一个迭代器 (对每个元素统一执行相同操作)
 ```python
 print(list(map(lambda x: x * 2, [1, 2, 3, 4, 5]))) # [2, 4, 6, 8, 10]
 ```
@@ -126,8 +243,40 @@ print(list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5, 6]))) # [2, 4, 6]
 #### reduce 返回一个值 (累加, 累乘)
 ```python
 from functools import reduce
-print(reduce(lambda x, y: x * y, [1,2,3]))
+print(reduce(lambda x, y: x * y, [1,2,3])) # 6
 ```
 
-### 使用list comprehension实现map/filter/reduce
-***一般推荐使用list comprehensive替代使用map/filter/reduce***
+***一般推荐使用list comprehensive而避免使用map/filter. reduce***
+
+### List comprehension实现map/filter/reduce (推荐!)
+#### 为什么推荐使用List comprehension而不是直接使用map/filter/reduce?
+<p align='center'><img src='../image/List comprehension vs map:filter:reduce.png' /></p>
+
+#### 使用List comprehension实现map
+```python
+print([i * 2 for i in [1, 2, 3, 4, 5, 6]])  # [2, 4, 6, 8, 10, 12]
+```
+
+##### 两种错误写法
+```python
+print([i *= 2 for i in [1, 2, 3, 4, 5, 6]])
+```
+> 第一个写法的错误原因是i*=2没有返回值
+
+```python
+print([i := i * 2 for i in [1, 2, 3, 4, 5, 6]])
+```
+> 第二种写法的错误原因是迭代变量i在List comprehension中是只读的, 不能重新绑定
+
+#### 使用List comprehension实现filter
+```python
+print([i for i in [1, 2, 3, 4, 5, 6] if i % 2 == 0]) # [2, 4, 6]
+```
+
+#### 使用List comprehension实现reduce
+```python
+product = 1
+print([product := product * num for num in [1, 2, 3]][-1]) # 6
+```
+
+*使用了python3.8版本引入的Assignment Expresions实现了reduce操作. 累乘实际上直接用reduce实现起来更容易些, 但对于[简单的情况](#为什么推荐使用list-comprehension而不是直接使用mapfilterreduce), 可以用List comprehension*
