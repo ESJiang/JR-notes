@@ -40,3 +40,6 @@
 - [Python 3](./Python/Python_3.md)<br>
 - [Python 4](./Python/Python_4.md)<br>
 - [Python 5](./Python/Python_5.md)<br>
+
+## Module Seven: Final Project
+- [Node_Project1](./Final%20Project/Node_Project1.md)<br>
