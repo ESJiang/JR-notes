@@ -1,15 +1,30 @@
+- [Class Notes](#class-notes)
+  - [Resources](#resources)
+  - [Backend\_class\_1 (`13/08/2023`)](#backend_class_1-13082023)
+    - [上节课User\_List补全deleteList()和postUser()](#上节课user_list补全deletelist和postuser)
+      - [deleteList()](#deletelist)
+      - [postUser()](#postuser)
+    - [Top Social](#top-social)
+      - [npm初始化](#npm初始化)
+      - [修改package.json](#修改packagejson)
+      - [server.js](#serverjs)
+      - [中间件顺序](#中间件顺序)
+      - [创建routes文件夹实现模块化](#创建routes文件夹实现模块化)
+        - [index.js](#indexjs)
+        - [profile.js](#profilejs)
+      - [errorHandler middleware](#errorhandler-middleware)
 
 # Class Notes
 
 ## Resources
 [backend code](https://github.com/AllyTang/TopSocial)
 
-## Node_Project1 (`13/08/2023`)
+## Backend_class_1 (`13/08/2023`)
 <p align='center'><img src='../image/Top Social.png' width='100%' height='100%' /></p>
 
-### 上节课User_List补全deleteList和postUser
+### 上节课User_List补全deleteList()和postUser()
 
-#### deleteList
+#### deleteList()
 ```js
 function deleteList() {
     const url = "http://localhost:8080/api/users";
@@ -25,7 +40,7 @@ function deleteList() {
 }
 ```
 
-#### postUser
+#### postUser()
 ```js
 // 通过定义appendUsers(users)可以简化getUserList()和postUser()
 function appendUsers(users) {
@@ -92,7 +107,7 @@ npm i nodemon concurrently -D
 
 `使用npm run dev能同时启动两个server`
 
-#### index.js
+#### server.js
 ```js
 const express = require("express");
 const cors = require("cors");
@@ -167,7 +182,7 @@ profileRouter.get("/api/profile", async function (req, res, next) {
 module.exports = profileRouter;
 ```
 
-#### errorhandler middleware
+#### errorHandler middleware
 ```js
 const handleErrors = function (err, req, res, next) {
   console.error(err.stack);
