@@ -20,6 +20,7 @@
         - [两种错误写法](#两种错误写法)
       - [使用List comprehension实现filter](#使用list-comprehension实现filter)
       - [使用List comprehension实现reduce](#使用list-comprehension实现reduce)
+      - [List comprehension vs map/filter/reduce 总结](#list-comprehension-vs-mapfilterreduce-总结)
 
 # Class Notes
 
@@ -280,3 +281,6 @@ print([product := product * num for num in [1, 2, 3]][-1]) # 6
 ```
 
 *使用了python3.8版本引入的Assignment Expresions实现了reduce操作. 累乘实际上直接用reduce实现起来更容易些, 但对于[简单的情况](#为什么推荐使用list-comprehension而不是直接使用mapfilterreduce), 可以用List comprehension*
+
+#### List comprehension vs map/filter/reduce 总结
+`对于简单操作且数据量较少, 用写法简洁的list comprehension好; 数据集庞大且需要复杂处理时, 用map等内置方法能节约内存 (map方法return的是iterator不是iterable)`
