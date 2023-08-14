@@ -9,6 +9,7 @@
       - [git reset --mixed/--soft/--hard](#git-reset---mixed--soft--hard)
       - [git rebase操作](#git-rebase操作)
       - [git commit --amend操作](#git-commit---amend操作)
+    - [.gitignore的陷阱](#gitignore的陷阱)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
       - [environment setup](#environment-setup)
@@ -94,8 +95,15 @@ git push origin branch --force-with-lease
 ```
 
 #### git rebase操作
-`丢弃rebase的修改`<br>
+`丢弃rebase的修改`
+```bash
 git rebase --abort
+```
+
+`查看commit的数量`
+```bash
+git log --oneline | wc -l
+```
 
 ```shell
 # 全局设置一个code editor
@@ -118,6 +126,22 @@ graph LR;
     b-->d["git commit --amend -m 'new_message'"];
     a-->c["想把暂存区的新修改加入上一次commit而不想创建新commit"];
     c-->e["git commit --amend --no-edit"];
+```
+
+### .gitignore的陷阱
+*很多时候第一次push时创建的.gitignore会生效. 但为什么push几次后再修改.gitignore就不生效了呢?*
+> 实际上, .gitignore只能应用于未被track的文件. 如果这些文件已经被push过了, 我们需要执行下面的代码:
+
+```bash
+git rm -r --cached . # 从暂存区中取消跟踪所有文件和目录，但保留这些文件在您的工作目录中
+git add . # 将工作区所有修改添加到暂存区
+git commit -m 'update .gitignore' # 将暂存区修改commit到本地仓库
+git push # 将本地仓库的commit推送到远程仓库
+```
+
+`如果觉得上面需要一行一行输入太麻烦, 可以在~/.bash_profile中添加alias (注意等号前后均无空格)`
+```bash
+alias gitignore-update='git rm -r --cached . && git add . && git commit -m "update .gitignore" && git push'
 ```
 
 <hr>

@@ -17,6 +17,8 @@
     - [不同分支commit \& merge流程图举例](#不同分支commit--merge流程图举例)
     - [Git可视化工具](#git可视化工具)
     - [Git clone/pull/push失败](#git-clonepullpush失败)
+      - [Git clone配置http连接详解](#git-clone配置http连接详解)
+      - [Git clone配置ssh详解](#git-clone配置ssh详解)
 
 # Class Notes
 
@@ -164,4 +166,23 @@ gitGraph
 flowchart LR
     A{git failed} -->|git remote add origin后面是ssh形式| B[ssh-keygen, ssh-add]
     A -->|git remote add origin后面是https形式| C[generate new token]
+```
+
+#### Git clone配置http连接详解
+```bash
+http连接 -> 使用developer settings里的token进行验证
+```
+
+#### Git clone配置ssh详解
+```bash
+ssh连接 -> ssh-keygen
+ssh-keygen -t ed25519 -C "email_address"
+eval "$(ssh-agent -s)"
+touch ~/.ssh/config -> 写入
+Host *
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_ed25519
+在github setting中添加.ssh文件中的public key
+ssh -T git@github.com -> 做测试
 ```
