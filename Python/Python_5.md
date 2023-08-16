@@ -14,13 +14,16 @@
       - [map 返回一个迭代器 (对每个元素统一执行相同操作)](#map-返回一个迭代器-对每个元素统一执行相同操作)
       - [filter 返回一个迭代器 (挑选满足条件的元素)](#filter-返回一个迭代器-挑选满足条件的元素)
       - [reduce 返回一个值 (累加, 累乘)](#reduce-返回一个值-累加-累乘)
-    - [List comprehension实现map/filter/reduce (推荐!)](#list-comprehension实现mapfilterreduce-推荐)
+    - [List comprehension实现map/filter/reduce](#list-comprehension实现mapfilterreduce)
       - [为什么推荐使用List comprehension而不是直接使用map/filter/reduce?](#为什么推荐使用list-comprehension而不是直接使用mapfilterreduce)
       - [使用List comprehension实现map](#使用list-comprehension实现map)
         - [两种错误写法](#两种错误写法)
       - [使用List comprehension实现filter](#使用list-comprehension实现filter)
       - [使用List comprehension实现reduce](#使用list-comprehension实现reduce)
       - [List comprehension vs map/filter/reduce 总结](#list-comprehension-vs-mapfilterreduce-总结)
+    - [Generator Expression为什么比List comprehension更好?](#generator-expression为什么比list-comprehension更好)
+      - [Generator expression vs List comprehension执行结果](#generator-expression-vs-list-comprehension执行结果)
+      - [总结](#总结)
 
 # Class Notes
 
@@ -247,9 +250,9 @@ from functools import reduce
 print(reduce(lambda x, y: x * y, [1,2,3])) # 6
 ```
 
-***一般推荐使用list comprehensive而避免使用map/filter. reduce***
+***一般推荐使用list comprehensive或generator expression而避免使用map/filter. reduce***
 
-### List comprehension实现map/filter/reduce (推荐!)
+### List comprehension实现map/filter/reduce
 #### 为什么推荐使用List comprehension而不是直接使用map/filter/reduce?
 <p align='center'><img src='../image/List comprehension vs map:filter:reduce.png' /></p>
 
@@ -284,3 +287,45 @@ print([product := product * num for num in [1, 2, 3]][-1]) # 6
 
 #### List comprehension vs map/filter/reduce 总结
 `对于简单操作且数据量较少, 用写法简洁的list comprehension好; 数据集庞大且需要复杂处理时, 用map等内置方法能节约内存 (map方法return的是iterator不是iterable)`
+
+### Generator Expression为什么比List comprehension更好?
+#### Generator expression vs List comprehension执行结果
+```python
+"""
+    list()+generator和list_comprehension都能得到list
+    但使用list()+generator的写法比用list_comprehension更省内存, 执行速度快一点
+"""
+from sys import getsizeof as getsize
+import time
+
+list_comprehension_a = [i * 2 for i in range(1000000)]
+generator_expression_a = (i * 2 for i in range(1000000))
+generator_expression_list_a = list(generator_expression_a)
+print(
+    f"value: {len(list_comprehension_a)} | 使用列表生成式的size: {getsize(list_comprehension_a)}"
+)
+print(
+    f"value: {len(generator_expression_list_a)} | 使用生成式+list()的size: {getsize(generator_expression_list_a)}"
+)
+
+
+start_time = time.time()
+print(sum(list_comprehension_a))
+end_time = time.time()
+print(f"使用列表生成式的sum执行时间: {end_time - start_time} 秒")
+
+start_time = time.time()
+print(sum(generator_expression_list_a))
+end_time = time.time()
+print(f"使用生成器表达式的sum执行时间: {end_time - start_time} 秒")
+
+# 用生成式做需要iterable方法的参数, 可以省略(), 更简洁
+print(sum([x for x in range(3)]))
+print(sum(x for x in range(3)))
+```
+
+<p align='center'><img src='../image/generator+list() vs list comprehension.png' width='80%' height='50%' /></p>
+
+#### 总结
+- 大多数情况下, 对于需要iterable做参数的内置方法, 可以优先使用Generator Expression. 这样写法更简洁, 也能达到相同效果
+- 即使需要输出一个list, 也可以通过list() + Generator Expression轻松实现. 更重要是在数据量很大时, 使用list() + Generator Expression [不仅节省内存而且可以提升效率](#generator-expression-vs-list-comprehension执行结果)
