@@ -23,7 +23,7 @@
       - [List comprehension vs map/filter/reduce 总结](#list-comprehension-vs-mapfilterreduce-总结)
     - [Generator Expression为什么比List comprehension更好?](#generator-expression为什么比list-comprehension更好)
       - [Generator expression vs List comprehension执行结果](#generator-expression-vs-list-comprehension执行结果)
-      - [总结](#总结)
+      - [Generator expression vs List comprehension总结](#generator-expression-vs-list-comprehension总结)
 
 # Class Notes
 
@@ -33,6 +33,7 @@
 [Python_map](https://www.w3schools.com/python/ref_func_map.asp)<br>
 [Python_filter](https://www.freecodecamp.org/chinese/news/python-filter-function)<br>
 [Python_reduce](https://www.runoob.com/python/python-func-reduce.html)<br>
+[Generator Expression vs List Comprehension](./Generator%20Expression%20vs%20List%20Comprehension.py)
 
 ## Python_5 (`12/08/2023`)
 
@@ -326,6 +327,6 @@ print(sum(x for x in range(3)))
 
 <p align='center'><img src='../image/generator+list() vs list comprehension.png' width='80%' height='50%' /></p>
 
-#### 总结
+#### Generator expression vs List comprehension总结
 - 大多数情况下, 对于需要iterable做参数的内置方法, 可以优先使用Generator Expression. 这样写法更简洁, 也能达到相同效果
 - 即使需要输出一个list, 也可以通过list() + Generator Expression轻松实现. 更重要是在数据量很大时, 使用list() + Generator Expression [不仅节省内存而且可以提升效率](#generator-expression-vs-list-comprehension执行结果)
