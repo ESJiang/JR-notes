@@ -43,3 +43,4 @@
 
 ## Module Seven: Final Project
 - [Backend_class_1](./Final%20Project/Backend_class_1.md)<br>
+- [Backend_class_2](./Final%20Project/Backend_class_2.md)<br>
