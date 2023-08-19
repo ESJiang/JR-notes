@@ -115,14 +115,30 @@ graph TB;
 
 ### python多态
 ```python
+class Animal:
+    def speak(self):
+        pass
+
+
+class Dog(Animal):
+    def speak(self):
+        print("Woof!")
+
+
+class Cat(Animal):
+    def speak(self):
+        print("Meow!")
+
+
 def animal_sound(animal):
     animal.speak()
+
 
 dog = Dog()
 cat = Cat()
 
-animal_sound(dog)  # 输出: Woof!
-animal_sound(cat)  # 输出: Meow!
+animal_sound(dog) # Woof!
+animal_sound(cat) # Meow!
 ```
 
 ### python继承
