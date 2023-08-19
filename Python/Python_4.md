@@ -26,13 +26,12 @@
 # Class Notes
 
 ## Resources
-
-## Python_4 (`05/08/2023`)
 [Python - Iterator](https://www.w3schools.com/python/python_iterators.asp)<br>
 [Python - List Comprehension](https://www.w3schools.com/python/python_lists_comprehension.asp)<br>
 [Python - Function](https://www.w3schools.com/python/python_functions.asp)<br>
 [Python - Packing&Unpacking](https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/)
 
+## Python_4 (`05/08/2023`)
 <p align='center'><img src='../image/python.png' width='30%' height='30%' /></p>
 
 ### VScode python setting (修复deprecated warning)

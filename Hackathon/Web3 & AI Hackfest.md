@@ -12,6 +12,11 @@
 
 `Revolutionising Web3 & AI: Building Decentralised, AI-Powered Solutions for a Sustainable Future`
 
+### Cobweb Pay
+<https://www.cobwebpay.com/>
+> 一种支付app, 可以支持支付, 数字资产和外汇交易.
+> 使用最新的
+
 ### neovim
 > neovim可以理解成vim的更新版本. 支持异步插件, 可以不堵塞编辑流程, 为处理大项目带来更好的性能.
 
@@ -29,4 +34,3 @@ alias vi='nvim'
 - 一些底层的security问题. 不管什么实现方式(block chain, web3, etc). 基本的CIA (confidentiality, Integrity, Availability)在项目里是怎样体现的.
 
 - 就和写论文一样, 你的information gathering做的怎么样. 项目的新颖度和价值需要和现在的competitors和以前的projects做对比(技术栈, 功能等).
-
