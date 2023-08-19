@@ -108,7 +108,6 @@ async function asyncFunction() {
 asyncFunction();
 ```
 
-### Message Board 前后端练习
 ### Event bubble
 > `除了特殊情况(focus,blur,resize等), 子元素和父元素同时注册监听事件, 触发子事件时, 会一直向上执行其他祖先上的事件`
 
@@ -116,13 +115,18 @@ asyncFunction();
 //在子元素添加下面一行来避免event bubble
 e.stopPropagation();
 ```
+
+#### Event bubble demo
+https://github.com/ESJiang/JR16-notes/assets/43910771/5e0da7e7-bd96-4903-8097-cf703cf4110c
+
+
 ### Event preventDefault
 > `有些html元素有默认事件(form, checkbox, etc). 通过使用下面指令, 来阻止默认事件的发生`
 
 ```js
 e.preventDefault();
 ```
-
+### Message Board 前后端练习
 #### package.json
 ```json
 {
