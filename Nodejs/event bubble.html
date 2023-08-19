@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            * {
+                box-sizing: border_box;
+                margin: 0;
+            }
+
+            body > div {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                overflow-x: hidden;
+                border: 2px dashed black;
+                background-color: lightskyblue;
+                text-align: center;
+            }
+
+            div {
+                padding: 20px;
+                background-color: lightcoral;
+            }
+
+            span {
+                display: block;
+                padding: 20px;
+                background-color: green;
+            }
+
+            button {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            this is body
+            <div>
+                this is div
+                <span
+                    >this is span
+                    <button>Click Me!</button>
+                </span>
+            </div>
+        </div>
+        <script>
+            document.getElementsByTagName("body")[0].addEventListener("click", () => alert("body was clicked"));
+            document.getElementsByTagName("div")[1].addEventListener("click", e => {
+                // e.stopPropagation();
+                alert("div was clicked");
+            });
+            document.getElementsByTagName("span")[0].addEventListener("click", e => {
+                // e.stopPropagation();
+                alert("span was clicked");
+            });
+            document.getElementsByTagName("button")[0].addEventListener("click", e => {
+                // e.stopPropagation();
+                alert("button was clicked");
+            });
+        </script>
+    </body>
+</html>

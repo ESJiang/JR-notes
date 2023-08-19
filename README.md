@@ -46,3 +46,6 @@
 ## Module Seven: Final Project
 - [Backend_1](./Final%20Project/Backend_1.md)
 - [Backend_2](./Final%20Project/Backend_2.md)
+
+## Module Eight: Hackathon
+- [Hackathon](./Hackathon/Hackathon.md)
