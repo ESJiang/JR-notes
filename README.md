@@ -31,7 +31,7 @@
 - [Simple-User-List-Class-Solution](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Class-Solution)
 - [Simple-User-List-Solution-Two](https://github.com/ESJiang/JR16-notes/tree/main/Simple-User-List-Solution-Two)
 - [Node_tutorial_code](https://github.com/ESJiang/JR16-notes/tree/main/Node_tutorial_code)
-- [Messages_Board_Class_Solution](https://github.com/ESJiang/JR16-notes/tree/main/Messages_Board_Class_Solution)
+- [Message_Board_Class_Solution](https://github.com/ESJiang/JR16-notes/tree/main/Message_Board_Class_Solution)
 - [Message_Board_Solution_Two](https://github.com/ESJiang/JR16-notes/tree/main/Message_Board_Solution_Two)
 
 ## Module Five: Database
