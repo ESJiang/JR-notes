@@ -9,6 +9,7 @@
       - [git reset --mixed/--soft/--hard](#git-reset---mixed--soft--hard)
       - [git rebase操作](#git-rebase操作)
       - [git commit --amend操作](#git-commit---amend操作)
+    - [简便commit\&push(git commit -am)](#简便commitpushgit-commit--am)
     - [.gitignore的陷阱](#gitignore的陷阱)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
@@ -126,6 +127,26 @@ graph LR;
     b-->d["git commit --amend -m 'new_message'"];
     a-->c["想把暂存区的新修改加入上一次commit而不想创建新commit"];
     c-->e["git commit --amend --no-edit"];
+```
+
+### 简便commit&push(git commit -am)
+*当本地repo里所有的文件都是已tracked, 使用下面指令可以完成git add, git commit和git push.*
+
+```bash
+git commit -am "your_msg" && git push
+```
+>但如果本地repo有的文件是些是untracked (新创建的), 要使用git add ., git commit和git push而不使用上面的代码
+
+`如果觉得上面的代码很长, 可以在~/.bash_profile中添加一个方法`
+```bash
+gitampush() {
+    git commit -am "$1" && git push
+}
+```
+
+这样一来, 你可以在terminal中使下面的指令实现相同效果
+```bash
+gitampush "your_msg"
 ```
 
 ### .gitignore的陷阱
