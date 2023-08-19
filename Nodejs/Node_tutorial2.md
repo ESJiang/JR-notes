@@ -24,15 +24,14 @@
 <p align='center'><img src='../image/nodejs.png' width='30%' height='30%' /></p>
 
 ### 前端如何拿到后端数据?
-#### Promise的三种情况
-`当前端向后端发送请求, 后端会返回前端一个Promise`
+>`在前后端通信过程中，一般使用一些异步机制来处理请求和响应 (更好的用户体验-不堵塞程序). 后端可以返回前端一个promise`
 
+#### Promise的三种情况
 A `Promise` is in one of these states:
 
 - pending: initial state, neither fulfilled nor rejected.
 - fulfilled: meaning that the operation was completed successfully.
 - rejected: meaning that the operation failed.
-
 
 ```mermaid
 pie
@@ -43,7 +42,7 @@ pie
 ```
 
 #### Promise流程图
-*A promise is said to be settled if it is either fulfilled or rejected, but not pending.*<br>
+*A promise is said to be `settled` if it is either fulfilled or rejected, but not pending.*<br>
 ```mermaid
 flowchart LR
     A([Promise pending]) -->|fulfill| B[".then(onFulfillment) settled"]
@@ -66,10 +65,11 @@ myPromise.then(handleFulfilledA, handleRejectedA).then(handleFulfilledB, handleR
 ```
 
 #### fetch方法使用
+`原生的写法, Chained Promises`
 ```js
 fetch("url", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" }, // 注意拼写, 是headers不是headers
     body: body,
 })
     .then(response => {
@@ -89,6 +89,7 @@ fetch("url", {
 ```
 
 #### async/await方法使用
+> 避免了Callback Hell, 减少代码嵌套. 一般配合try-catch
 ```js
 // 使用async/await的示例
 async function asyncFunction() {
@@ -257,7 +258,7 @@ module.exports = router
 
 #### script.js
 ```js
-const api = "http://localhost:8080";
+const api = "http://localhost:8080"; //提取url的公共部分, 配合template string使用, 从而节省代码量
 
 // 删除留言
 const handleDelete = async event => {
