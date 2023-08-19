@@ -1,6 +1,6 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
-  - [Backend\_class\_2 (`16/08/2023`)](#backend_class_2-16082023)
+  - [Backend\_2 (`16/08/2023`)](#backend_2-16082023)
     - [router模块化思想](#router模块化思想)
     - [课上代码](#课上代码)
       - [backend根目录下index.js (可以用server.js避免歧义)](#backend根目录下indexjs-可以用serverjs避免歧义)
@@ -25,7 +25,7 @@
 
 ## Resources
 
-## Backend_class_2 (`16/08/2023`)
+## Backend_2 (`16/08/2023`)
 <p align='center'><img src='../image/Top Social.png' width='100%' height='100%' /></p>
 
 ### router模块化思想

@@ -44,5 +44,5 @@
 - [Python 5](./Python/Python_5.md)
 
 ## Module Seven: Final Project
-- [Backend_class_1](./Final%20Project/Backend_class_1.md)
-- [Backend_class_2](./Final%20Project/Backend_class_2.md)
+- [Backend_1](./Final%20Project/Backend_1.md)
+- [Backend_2](./Final%20Project/Backend_2.md)

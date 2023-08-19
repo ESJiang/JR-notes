@@ -1,6 +1,6 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
-  - [Backend\_class\_1 (`13/08/2023`)](#backend_class_1-13082023)
+  - [Backend\_1 (`13/08/2023`)](#backend_1-13082023)
     - [上节课User\_List补全deleteList()和postUser()](#上节课user_list补全deletelist和postuser)
       - [deleteList()](#deletelist)
       - [postUser()](#postuser)
@@ -19,7 +19,7 @@
 ## Resources
 [backend code](https://github.com/AllyTang/TopSocial)
 
-## Backend_class_1 (`13/08/2023`)
+## Backend_1 (`13/08/2023`)
 <p align='center'><img src='../image/Top Social.png' width='100%' height='100%' /></p>
 
 ### 上节课User_List补全deleteList()和postUser()
