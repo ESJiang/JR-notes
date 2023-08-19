@@ -15,21 +15,21 @@
 ```mermaid
 pie
     title Promise的三种情况(随机比例)
-    "fulfill": 2
-    "reject"： 1
-    "pending"： 1.5
+    "fulfill": 1.6
+    "reject": 1.4
+    "pending": 2
 ```
 
 *A promise is said to be settled if it is either fulfilled or rejected, but not pending.*<br>
 ```mermaid
 flowchart LR
-    A([Promise pending]) -- fulfill --> B[.then(onFulfillment) settled]
-    B --> D[async actions]
-    B -- return --> E[Promise(Pending)]
-    E ==> F[.then().catch()]
-    A -- reject --> C[.then(...,onRejection).catch(onRejection)]
-    C --> G[error handling]
-    C -- return --> E
+    A([Promise pending]) -->|fulfill| B[".then(onFulfillment) settled"]
+    B -.->D[async actions]
+    B -->|return| E["Promise(Pending)"]
+    E ==>F[".then().catch()"]
+    A -->|reject| C[".then(...,onRejection).catch(onRejection)"]
+    C -.->G[error handling]
+    C -->|return| E
 ```
 
 
