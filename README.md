@@ -42,10 +42,11 @@
 - [Python 3](./Python/Python_3.md)
 - [Python 4](./Python/Python_4.md)
 - [Python 5](./Python/Python_5.md)
+- [Python 6](./Python/Python_6.md)
 
 ## Module Seven: Final Project
 - [Backend_1](./Final%20Project/Backend_1.md)
 - [Backend_2](./Final%20Project/Backend_2.md)
 
 ## Module Eight: Hackathon
-- [Hackathon](./Hackathon/Hackathon.md)
+~~[Hackathon](./Hackathon/Hackathon.md)~~
