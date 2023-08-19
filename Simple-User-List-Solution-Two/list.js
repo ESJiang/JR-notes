@@ -15,7 +15,7 @@ function judgeContinue(s = "Are you sure you want to delete all users? Y/N") {
 async function deleteSingle() {
     try {
         if (!judgeContinue(`Are you sure to delete ${this.previousElementSibling.previousElementSibling.textContent}? Y/N`)) return;
-        const response = await axios.delete(`http://localhost:8080/api/clearsingle?id=${this.getAttribute("data-id")}`);
+        const response = await axios.delete(`//localhost:8080/api/clearsingle?id=${this.getAttribute("data-id")}`);
         if (response.status === 201) alert(response.data.msg);
         getUserList();
     } catch (err) {
@@ -26,7 +26,7 @@ async function deleteSingle() {
 async function getUserList() {
     try {
         clearUserList();
-        const response = await axios.get("http://localhost:8080/api/users");
+        const response = await axios.get("//localhost:8080/api/users");
         const users = response.data.user;
         console.log("users", users);
         // if (users.length === 0) return alert("no users found, please add a new user");
@@ -51,7 +51,7 @@ async function addUser() {
             name: nameInput.value,
             age: ageInput.value,
         };
-        const response = await axios.post("http://localhost:8080/api/user", body);
+        const response = await axios.post("//localhost:8080/api/user", body);
         if (response.status === 201) {
             const user = response.data.user;
             alert("user: " + user.name + " age: " + user.age + " has been added");
@@ -67,7 +67,7 @@ async function addUser() {
 async function clear_list() {
     try {
         if (!judgeContinue()) return;
-        const response = await axios.delete("http://localhost:8080/api/clear");
+        const response = await axios.delete("//localhost:8080/api/clear");
         if (response.status === 204) alert("User List has been cleared successfully");
         getUserList();
     } catch (error) {

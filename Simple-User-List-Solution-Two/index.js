@@ -4,6 +4,7 @@ const express = require("express"),
     cors = require("cors"),
     router = require("./router"),
     PORT = 8080;
+
 app.use(cors());
 app.use(parser.urlencoded({ extended: false }));
 app.use(parser.json());
