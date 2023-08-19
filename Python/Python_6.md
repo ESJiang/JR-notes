@@ -109,8 +109,8 @@ print(e.abn)  # 24242342
 ```mermaid
 graph TB;
     a(["method的分类"])-->|至少有一个self参数| b["instance method"];
-    a-->|@classmethod+接受一个参数cls| c["class method"];
-    a-->|@staticmethod+self和cls不能作为参数| d["static method"];
+    a-->|"@classmethod+接受一个参数cls"| c["class method"];
+    a-->|"@staticmethod+self和cls不能作为参数"| d["static method"];
 ```
 
 ### python多态
