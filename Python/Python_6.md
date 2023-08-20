@@ -52,15 +52,15 @@ s1.school_name = "JR_1"
 print(s1.school_name) # JR_1
 print(s2.school_name) # JR
 
-# 用类名直接修改school_name, 所有objs的school_name属性都会改变
+# 用类名直接修改school_name, 所有objs的school_name都会改变
 Student.school_name = "JR_2"
 print(s1.school_name) # JR_1
 print(s2.school_name) # JR_2
 ```
 
 ### namespace中的__module__
-'__module__': '__main__': class在主程序中定义
-'__module__': 'teacher': class在teacher.py中定义
+> '__module__': '__main__': class在主程序中定义<br>
+> '__module__': 'teacher': class在teacher.py中定义
 
 #### obj.attribute_name的查找流程
 > 先找object的namespace再找class的namespace
@@ -78,14 +78,14 @@ s3 = Student(1)
 print(s3.name) # 1
 ```
 
-> type annotation不会对运行程序造成影响
+> type annotation不会对运行程序造成影响, 只起到提示作用
 
 ### attribute的三种属性
 ```mermaid
 graph TB;
     a(["attribute的三种类型"])-->b["public"];
-    a-->c["protected"];
-    a-->d["private"];
+    a-->c["protected_"];
+    a-->d["private__"];
 ```
 
 ```python
@@ -97,10 +97,15 @@ class Employee:
     # private
     __abn = "24242342"
 
-e = Employee() # 没有构造函数, 没有参数
-print(e.__dict__) # {}
+    @property
+    def abn(self):
+        return self.__abn
+
+
+e = Employee()  # 没有构造函数, 没有参数
+print(e.__dict__)  # {}
 print(e.company)  # JR
-print(e._adress)  # QLD
+print(e._address)  # QLD
 print(e._Employee__abn)  # 24242342 不推荐这种方法
 print(e.abn)  # 24242342
 ```
@@ -109,7 +114,7 @@ print(e.abn)  # 24242342
 ```mermaid
 graph TB;
     a(["method的分类"])-->|至少有一个self参数| b["instance method"];
-    a-->|"@classmethod+接受一个参数cls"| c["class method"];
+    a-->|"@classmethod+至少有一个cls参数"| c["class method"];
     a-->|"@staticmethod+self和cls不能作为参数"| d["static method"];
 ```
 
@@ -204,7 +209,10 @@ Jack.build_old_api() # # "Designing api"
 
 ```python
 class Parent:
-    name = "xxxx"
+    name = "xxxx"  # Parent class attribute
+
+    def c(self):
+        print("This is parent's public instance method.")
 
     @classmethod
     def __b(cls):
@@ -224,13 +232,16 @@ class Parent:
 
 
 class Child(Parent):
+    def c(self):
+        print("This is Child's public instance method.")
+
     @classmethod
     def __b(cls):
-        print(f"{cls.name}This is child's private class method.")
+        print(f"{cls.name}This is Child's private class method.")
 
     @classmethod
     def _b(cls):
-        print(f"{cls.name}This is child's protected class method.")
+        print(f"{cls.name}This is Child's protected class method.")
 
     @staticmethod
     def __a():
@@ -238,30 +249,47 @@ class Child(Parent):
 
     @staticmethod
     def _a():
-        print("This is Child's protectted static method.")
+        print("This is Child's protected static method.")
 
 
 """
-class method private vs protected
+instance method private vs protected
 """
+print("================================================")
+print("Testing instance method private vs protected")
+parent_obj = Parent()
+child_obj = Child()
+print(child_obj.name)
+child_obj.c()
+super(Child, child_obj).c()
+print("================================================")
+print("\n")
+"""
+classmethod private vs protected
+"""
+print("================================================")
+print("Testing classmethod private vs protected")
 # Parent.__b()
 # Child.__b()
-Child._Child__b()
-Parent._Parent__b()
+Child._Child__b()  # type: ignore
+Parent._Parent__b()  # type: ignore
 
 Parent._b()
 Child._b()
 # Parent._Parent_b()
 # Child._Child_b()
-
+print("================================================")
+print("\n")
 
 """
-static method private vs protected
+staticmethod private vs protected
 """
+print("================================================")
+print("Testing staticmethod private vs protected")
 # Parent.__a()
 # Child.__a()
-Parent._Parent__a()
-Child._Child__a()
+Parent._Parent__a()  # type: ignore
+Child._Child__a()  # type: ignore
 
 Parent._a()
 Child._a()
