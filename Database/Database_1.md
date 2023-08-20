@@ -22,7 +22,9 @@
 
 ## Resources
 [mysql](https://dev.mysql.com/downloads/installer/)<br>
-[DBeaver](https://dbeaver.io/download/)
+[DBeaver](https://dbeaver.io/download/)<br>
+[cars.sql](./cars.csv)<br>
+[cars.csv](./cars.csv)<br>
 
 ## Database_1 (`20/08/2023`)
 <p align='center'><img src='../image/Database.png' width='30%' height='30%' /></p>
@@ -34,8 +36,8 @@
 
 ```mermaid
 graph TB;
-    a(["Database System"])-->b["Database Management System"];
-    a --> c["Database"]
+    a(["Database System"])-.->b["DBMS"];
+    a -.-> c["DB"]
 ```
 
 <p align='center'><img src='../image/User-DBMS-DB.png' width='50%' height='50%' /></p>
@@ -115,16 +117,18 @@ erDiagram
 - 其他表的主键
 
 #### 关系型数据库 vs 非关系型数据库
-- 关系型数据库: 数据一致性, 查询方便, 写入I/O较差, 无法处理复杂模型
-- 非关系型数据库: 用文档形式存储 (xml,json), 先有数据再考虑schema, 灵活性高. ACID不如关系型数据库
+| Relational DB | Non-Relational DB |
+| :---: | :---: |
+| ***保证数据一致性, 查询方便, 写入I/O较差, 无法处理复杂模型*** | ***用文档形式存储 (xml,json), 先有数据再考虑schema, 灵活性高. ACID不如关系型数据库*** |
 
-`transaction一般是关系型`
+`bank transaction一般是选用relational DB`
+> realtional DB有很好的schema constrints和transaction management能更好保证data consistency.
 
 ##### ACID性质
-Atomicity: 要么执行成功要么恢复原状
-Consisency: 数据库完整性不被破坏 (符合预设规则)integrity constriant
-Isolaion: 一件一件做和一起做是一样的
-Durability: 失败的改动不影响原数据 (可以rollback)
+- Atomicity: 要么执行成功要么恢复原状
+- Consisency: 数据库完整性不被破坏 (符合预设规则)integrity constriant
+- Isolaion: 一件一件做和一起做是一样的
+- Durability: 失败的改动不影响原数据 (可以rollback)
 
 ### 安装mysql和DBeaver
 #### mysql-mac
