@@ -23,7 +23,7 @@
 ## Resources
 [mysql](https://dev.mysql.com/downloads/installer/)<br>
 [DBeaver](https://dbeaver.io/download/)<br>
-[cars.sql](./cars.csv)<br>
+[cars.sql](./cars.sql)<br>
 [cars.csv](./cars.csv)<br>
 
 ## Database_1 (`20/08/2023`)
