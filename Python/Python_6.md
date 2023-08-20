@@ -256,7 +256,7 @@ class Child(Parent):
 instance method private vs protected
 """
 print("================================================")
-print("Testing instance method private vs protected")
+print("Testing instance method")
 parent_obj = Parent()
 child_obj = Child()
 print(child_obj.name)
