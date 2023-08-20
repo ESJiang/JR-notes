@@ -17,6 +17,9 @@
     - [安装mysql和DBeaver](#安装mysql和dbeaver)
       - [mysql-mac](#mysql-mac)
       - [mysql-windows](#mysql-windows)
+    - [数据库语言](#数据库语言)
+      - [Data Definition Language(DDL)](#data-definition-languageddl)
+      - [Data Manipulation Language(DML)](#data-manipulation-languagedml)
 
 # Class Notes
 
@@ -142,7 +145,14 @@ brew services start mysql
 [mysql](https://dev.mysql.com/downloads/installer/)<br>
 [DBeaver](https://dbeaver.io/download/)
 
-Data Definition language(DDL): create job
+### 数据库语言
+#### Data Definition Language(DDL)
+- Define schemas
+- Define Integrity Constraints
+
+#### Data Manipulation Language(DML)
+- Query
+- CRUD
 
 ```sql
 -- 创建table
