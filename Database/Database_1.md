@@ -1,6 +1,28 @@
+- [Class Notes](#class-notes)
+  - [Resources](#resources)
+  - [Database\_1 (`20/08/2023`)](#database_1-20082023)
+    - [什么是数据库?](#什么是数据库)
+      - [数据库组成](#数据库组成)
+      - [什么是数据?](#什么是数据)
+        - [例子: 车的数据](#例子-车的数据)
+      - [三种数据结构](#三种数据结构)
+      - [怎么存数据?](#怎么存数据)
+      - [Database vs File system](#database-vs-file-system)
+    - [Database Feature](#database-feature)
+      - [例子: 简单实体关系图](#例子-简单实体关系图)
+      - [Primary Key主键](#primary-key主键)
+      - [Foreign Key 外键](#foreign-key-外键)
+      - [关系型数据库 vs 非关系型数据库](#关系型数据库-vs-非关系型数据库)
+        - [ACID性质](#acid性质)
+    - [安装mysql和DBeaver](#安装mysql和dbeaver)
+      - [mysql-mac](#mysql-mac)
+      - [mysql-windows](#mysql-windows)
+
 # Class Notes
 
 ## Resources
+[mysql](https://dev.mysql.com/downloads/installer/)<br>
+[DBeaver](https://dbeaver.io/download/)
 
 ## Database_1 (`20/08/2023`)
 <p align='center'><img src='../image/Database.png' width='30%' height='30%' /></p>
@@ -12,8 +34,8 @@
 
 ```mermaid
 graph TB;
-    a(["Database System"])-->b["DBMS"];
-    a --> c["DB"]
+    a(["Database System"])-->b["Database Management System"];
+    a --> c["Database"]
 ```
 
 <p align='center'><img src='../image/User-DBMS-DB.png' width='50%' height='50%' /></p>
@@ -27,9 +49,37 @@ graph TB;
 - 状态
 - 相互关系
 
-车的数据: brand, model, model year, color, door, manufacturer, cost, color, engine, Automatic vs Manual
+##### 例子: 车的数据
+`brand, model, model year, color, door, manufacturer, cost, color, engine, Automatic vs Manual`
 
 要避免人为拼写错误
+
+#### 三种数据结构
+```mermaid
+mindmap
+  root((Data structure))
+    Semi structured data
+      Schema can be easily changed based on the requirements
+      Data can be nested
+        json/xml/html/metadata
+    Unstructured data
+      Text data
+        Email
+        Blog
+        Legal documents
+      Image data
+        Photo
+        CT scan
+      Audio data
+        Music
+      Log data
+        Security logs
+        System logs
+        Application logs
+    Structured data
+      Schema constraints
+      Flat storage
+```
 
 #### 怎么存数据?
 | 结构化存储 | 非结构化存储 |
@@ -42,15 +92,18 @@ graph TB;
 | :---: | :---: |
 | ***存储同一类数据*** | ***存储不同类型的数据*** |
 
-#### 数据化结构
-| Structure data | Semi-structure data | Unstructured Data |
-| :---: | :---: | :---: |
-| ***form, excel表格 (严格架构, 扁平存储)*** | ***json/xml/html, 具有一定结构性 + 灵活(可以嵌套, 存储metadata, 无序, 添加新元素方便)*** | ***Rich media,weather data, email, IoT, ML, AI (不能用二维逻辑整合)*** |
-
 ### Database Feature
 - attribute
 - entity
 - value
+
+#### 例子: 简单实体关系图
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER ||--|{ DELIVERY-ADDRESS : uses
+```
 
 #### Primary Key主键
 - Unique
@@ -82,7 +135,7 @@ brew services start mysql
 ```
 
 #### mysql-windows
-[mysql](https://dev.mysql.com/downloads/installer/)
+[mysql](https://dev.mysql.com/downloads/installer/)<br>
 [DBeaver](https://dbeaver.io/download/)
 
 Data Definition language(DDL): create job
@@ -102,14 +155,14 @@ CREATE TABLE lab2.Cars (
 -- 删除table
 DROP TABLE lab2.Cars;
 
--- 修改table名(f2也行)
-Alter TABLE lab2.Cars Rename TO Cars3
+-- 修改table名(使用F2也行)
+Alter TABLE lab2.Cars RENAME TO Cars3
 
 -- 添加一个Column
-Alter Table Cars ADD COLUMN `工厂` VARCHAR(255)
+Alter TABLE Cars ADD COLUMN `工厂` VARCHAR(255)
 
 -- 删除一个column
-Alter Table Cars DROP COLUMN `工厂`
+Alter TABLE Cars DROP COLUMN `工厂`
 
 -- 插入数据
 INSERT INTO
