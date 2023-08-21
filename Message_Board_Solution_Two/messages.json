@@ -2,28 +2,23 @@
     "messages": [
         {
             "id": 1,
-            "name": "class 1",
-            "message": "11"
+            "name": "class A",
+            "message": "20"
         },
         {
             "id": 2,
-            "name": "class ",
-            "message": "2123"
+            "name": "class B",
+            "message": "30"
         },
         {
             "id": 3,
-            "name": "class",
-            "message": "ss"
+            "name": "class C",
+            "message": "40"
         },
         {
             "id": 4,
-            "name": "class",
-            "message": "88"
-        },
-        {
-            "id": 5,
-            "name": "class",
-            "message": "1"
+            "name": "class D",
+            "message": "50"
         }
     ]
 }
