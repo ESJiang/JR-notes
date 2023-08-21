@@ -170,13 +170,13 @@ CREATE TABLE lab2.Cars (
 DROP TABLE lab2.Cars;
 
 -- 修改table名(使用F2也行)
-Alter TABLE lab2.Cars RENAME TO Cars3
+ALTER TABLE lab2.Cars RENAME TO Cars3
 
 -- 添加一个Column
-Alter TABLE Cars ADD COLUMN `工厂` VARCHAR(255)
+ALTER TABLE Cars ADD COLUMN `工厂` VARCHAR(255)
 
 -- 删除一个column
-Alter TABLE Cars DROP COLUMN `工厂`
+ALTER TABLE Cars DROP COLUMN `工厂`
 
 -- 插入数据
 INSERT INTO
