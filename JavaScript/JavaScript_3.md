@@ -194,6 +194,8 @@ console.log(getStr()) // undefined
 > ES6之前: 全局作用域+局部作用域(函数作用域)<br>
 > ES6后: 块级作用域 (let/const)
 
+*obj本身不构成作用域*
+
 #### ES6之前
 ```js
 // 全局作用域 (污染全局的命名空间)

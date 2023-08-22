@@ -175,6 +175,26 @@ console.log("feartureA average", 123)
 | :---: | :---: |
 | ***退出整个循环*** | ***跳出本次循环<br>继续下一次循环*** |
 
+*对于array来说, 需要用到break和continue时一般用for循环处理, 实际上forEach也能实现这一点, 但会有代价(如原array被清空). 除了上面的情况, 大多数情况使用forEach做遍历, 因为比较简洁*
+
+```js
+const arr = [1, 2, 3, 4, 5];
+arr.forEach(value => {
+    if (value === 2) arr.length = 0;
+    console.log(value); // 1 2
+});
+
+console.log(arr); // []
+
+const arr1 = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] === 3) break;
+    console.log(arr1[i]); // 1 2
+}
+
+console.log(arr1); // [1, 2, 3, 4, 5]
+```
+
 #### continue demo
 ```js
 for (let i = 1; i <= 5; i++) {
