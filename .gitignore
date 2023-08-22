@@ -11,7 +11,7 @@ package-lock.json
 dist
 dist-ssr
 *.local
-.vscode/*
+.vscode
 !.vscode/extensions.json
 .idea
 .DS_Store
