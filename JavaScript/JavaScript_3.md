@@ -19,6 +19,7 @@
     - [作用域](#作用域)
       - [ES6之前](#es6之前)
       - [ES6之后 (使用let/const提升安全性)](#es6之后-使用letconst提升安全性)
+      - [闭包(Lexical scope)](#闭包lexical-scope)
     - [Object练习](#object练习)
     - [Math方法](#math方法)
       - [max方法](#max方法)
@@ -243,6 +244,20 @@ function fn() {
   }
 }
 fn(); //正常输出date
+```
+
+#### 闭包(Lexical scope)
+```js
+// 闭包: 先找自身方法内部有没有这个变量, 再找父级function有没有, 最后找全局变量 -> 这种机制可以保护被调用的方法内部定义的变量不会被外部修改(私有化)
+var scope = "global scope";
+function checkscope() {
+    var scope = "checkscope() scope";
+    return () => {
+        var scope = "f() scope";
+        return scope;
+    };
+}
+console.log(checkscope()()); // f() scope
 ```
 
 ### Object练习
