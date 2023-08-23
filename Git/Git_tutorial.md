@@ -9,7 +9,8 @@
       - [git reset --mixed/--soft/--hard](#git-reset---mixed--soft--hard)
       - [git rebase操作](#git-rebase操作)
       - [git commit --amend操作](#git-commit---amend操作)
-    - [简便commit\&push(git commit -am)](#简便commitpushgit-commit--am)
+    - [常规commit\&push(git add. \&\& git commit -m "msg" \&\& git push)](#常规commitpushgit-add--git-commit--m-msg--git-push)
+    - [简便commit\&push(git commit -am "msg" \&\& git push)](#简便commitpushgit-commit--am-msg--git-push)
     - [.gitignore的陷阱](#gitignore的陷阱)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
@@ -129,7 +130,26 @@ graph LR;
     c-->e["git commit --amend --no-edit"];
 ```
 
-### 简便commit&push(git commit -am)
+### 常规commit&push(git add. && git commit -m "msg" && git push)
+*无论本地repo的所有文件是不是tracked, 保险的方式是使用git add .将工作区所有修改添加到暂存区, 全部的指令如下*
+```bash
+git add. && git commit -m "msg" && git push
+```
+
+`如果觉得上面的代码很长, 可以在~/.bash_profile中添加一个方法`
+
+```bash
+gitpush() {
+    git add . && git commit -m "$1" && git push
+}
+```
+
+这样一来, 你可以在terminal中使下面的指令实现相同效果
+```bash
+gitpush "commit_msg"
+```
+
+### 简便commit&push(git commit -am "msg" && git push)
 *当本地repo里所有的文件都是已tracked, 使用下面指令可以完成git add, git commit和git push.*
 
 ```bash
@@ -146,7 +166,7 @@ gitampush() {
 
 这样一来, 你可以在terminal中使下面的指令实现相同效果
 ```bash
-gitampush "your_msg"
+gitampush "commit_msg"
 ```
 
 ### .gitignore的陷阱
