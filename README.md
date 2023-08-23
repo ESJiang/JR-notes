@@ -36,6 +36,7 @@
 
 ## Module Five: Database
 - [Database 1](./Database/Database_1.md)
+- [Database tutorial](./Database/Database_Tutorial.md)
 
 ## Module Six: Python
 - [Python 1](./Python/Python_1.md)
