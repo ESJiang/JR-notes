@@ -1,3 +1,18 @@
+- [Class Notes](#class-notes)
+  - [Resources](#resources)
+  - [Frontend\_1 (`23/08/2023`)](#frontend_1-23082023)
+    - [Vite (比webpack速度快, 轻量级开发)](#vite-比webpack速度快-轻量级开发)
+      - [Vite初始化](#vite初始化)
+      - [jsconfig.json](#jsconfigjson)
+      - [vite.config.js](#viteconfigjs)
+      - [package.json](#packagejson)
+    - [Top Social项目](#top-social项目)
+      - [项目UI架构](#项目ui架构)
+      - [index.html](#indexhtml)
+      - [index.css](#indexcss)
+      - [index.js](#indexjs)
+    - [ESLint: fix code problems](#eslint-fix-code-problems)
+
 # Class Notes
 
 ## Resources
@@ -41,6 +56,29 @@ npm run dev
 npm i path-browserify axios normalize.css
 ```
 
+#### package.json
+```json
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "normalize.css": "^8.0.1",
+    "path-browserify": "^1.0.1"
+  }
+}
+```
+
 ```js
 import { defineConfig } from "vite";
 import path from "path";
@@ -54,6 +92,7 @@ export default defineConfig({
 });
 ```
 
+### Top Social项目
 #### 项目UI架构
 nav + main (左section+中section+右section)
 
@@ -68,12 +107,6 @@ nav + main (左section+中section+右section)
         <section></section>
     </main>
 </body>
-```
-
-#### ESLint: fix code problems
-[ESLint](https://eslint.org/)
-```shell
-npm init @eslint/config
 ```
 
 #### index.html
@@ -223,6 +256,14 @@ npm init @eslint/config
 @import "./src/css/frames/nav/nav.css";
 ```
 
-#### index.css
+#### index.js
+```js
+import "./index.css";
 ```
+
+
+### ESLint: fix code problems
+[ESLint](https://eslint.org/)
+```shell
+npm init @eslint/config
 ```
