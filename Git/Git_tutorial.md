@@ -11,6 +11,8 @@
       - [git commit --amend操作](#git-commit---amend操作)
     - [常规commit\&push(git add. \&\& git commit -m "msg" \&\& git push)](#常规commitpushgit-add--git-commit--m-msg--git-push)
     - [简便commit\&push(git commit -am "msg" \&\& git push)](#简便commitpushgit-commit--am-msg--git-push)
+      - [git commit -am的局限性和优势](#git-commit--am的局限性和优势)
+      - [运行结果对比](#运行结果对比)
     - [.gitignore的陷阱](#gitignore的陷阱)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
@@ -168,6 +170,22 @@ gitampush() {
 ```bash
 gitampush "commit_msg"
 ```
+
+#### git commit -am的局限性和优势
+> 很多时候, 两种方法进行对比, 往往各有千秋. 绝对的情况很少. 一般称为trade-off. 前面两种git commit & git push的对比如下.
+
+| | git add. && git commit | git commit -am |
+| :---: | :---: | :---: |
+| ***优点*** | ***保险, 可以正确将untracked修改(如新建文件)添加到staging area*** | ***时间和系统资源消耗较少*** |
+| ***缺点*** | ***时间和系统资源无必要消耗*** | ***无法处理untracked修改(如新建文件)添加到staging area*** |
+
+#### 运行结果对比
+<div style='display:flex; justify-content: space-between'>
+    <img src='../image/git push compare - 1 file.png' width='50%' />
+    <img src='../image/git push compare - 20 files.png' width='50%' />
+</div>
+
+
 
 ### .gitignore的陷阱
 *很多时候第一次push时创建的.gitignore会生效. 但为什么push几次后再修改.gitignore就不生效了呢?*
