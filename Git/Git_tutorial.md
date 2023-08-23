@@ -176,16 +176,14 @@ gitampush "commit_msg"
 
 | | git add. && git commit | git commit -am |
 | :---: | :---: | :---: |
-| ***优点*** | ***保险, 可以正确将untracked修改(如新建文件)添加到staging area*** | ***时间和系统资源消耗较少*** |
-| ***缺点*** | ***时间和系统资源无必要消耗*** | ***无法处理untracked修改(如新建文件)添加到staging area*** |
+| ***优点*** | ***保险, 可以正确将untracked修改(如新建文件)添加到staging area*** | ***时间和cpu消耗较少*** |
+| ***缺点*** | ***时间和cpu消耗较多*** | ***无法将untracked修改(如新建文件)添加到staging area*** |
 
 #### 运行结果对比
 <div style='display:flex; justify-content: space-between'>
     <img src='../image/git push compare - 1 file.png' width='50%' />
     <img src='../image/git push compare - 20 files.png' width='50%' />
 </div>
-
-
 
 ### .gitignore的陷阱
 *很多时候第一次push时创建的.gitignore会生效. 但为什么push几次后再修改.gitignore就不生效了呢?*
