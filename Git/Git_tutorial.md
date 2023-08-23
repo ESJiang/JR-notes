@@ -214,9 +214,3 @@ source setup.sh
 git config --global user.email "xxx"
 git config --global user.name "xxx"
 ```
-
-```bash
-gitpush() {
-    git add . && git commit -m "$1" && git push
-}
-```
