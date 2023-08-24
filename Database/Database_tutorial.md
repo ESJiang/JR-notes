@@ -24,6 +24,10 @@
       - [使用union](#使用union)
       - [使用union all](#使用union-all)
     - [NULL关键字](#null关键字)
+    - [sql\_mode=only\_full\_group\_by](#sql_modeonly_full_group_by)
+      - [group by one column](#group-by-one-column)
+      - [group by two columns](#group-by-two-columns)
+      - [为什么不能select two columns, group by one column?](#为什么不能select-two-columns-group-by-one-column)
 
 # Class Notes
 
@@ -364,3 +368,29 @@ WHERE
 ### NULL关键字
 > NULL表示一个缺失值的项, 和0或包含空格的字段不同<br>
 > 一般用来做check constraint (NOT NULL)
+
+### sql_mode=only_full_group_by
+> 这是sql对于group by的一个constraint. 举一个例子
+
+<p align='center'><img src='../image/create table.png' width='80%' height='80%' /></p>
+
+*这样创建了一个简单的table, 有3个columns, 6个rows*
+
+<p align='center'><img src='../image/table display.png' width='50%' height='50%' /></p>
+
+#### group by one column
+
+<p align='center'><img src='../image/group by one non- aggregated column.png' width='80%' height='80%' /></p>
+
+*第一种是只针对品牌分组. 效果就是输出了3行. (即使最高价格都相同, 每个组只会输出一行)*
+
+#### group by two columns
+
+<p align='center'><img src='../image/group by two non-aggregated columns.png' width='80%' height='80%' /></p>
+
+*第二种是group by两个columns, 相当于用组合方式. 这里和前面例子不同在于, 同一个品牌, 颜色不同,相同maxprice全部输出了.*
+
+#### 为什么不能select two columns, group by one column?
+> 只是group by一个品牌, 最后应该像第一个例子一样输出3行. 问题在于你现在多select一个non-aggragated->颜色. mysql不知道应该return给你green还是red还是red
+
+- 所以必须把所有non-aggregated columns都加入group by中. 抽象一点说就是颜色和group by中的品牌没有依赖性. 所以报错
