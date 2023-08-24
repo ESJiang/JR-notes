@@ -1,4 +1,4 @@
--- 创建table
+-- 创建Cars table
 CREATE TABLE lab2.Cars (
     cid INT AUTO_INCREMENT PRIMARY KEY,
     brand VARCHAR(255),
@@ -75,7 +75,8 @@ VALUES
         ''
     );
 
-CREATE TABLE Factories(
+-- 创建Factories table
+CREATE TABLE lab2.Factories(
     fid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `工厂名字` TEXT,
     `地址` TEXT,
@@ -86,30 +87,7 @@ CREATE TABLE Factories(
     `品牌` TEXT
 );
 
-CREATE TABLE Production(
-    `pid` INT PRIMARY KEY AUTO_INCREMENT,
-    `cid` INT NOT NULL,
-    `fid` INT NOT NULL,
-    `生产日期` TEXT,
-    `负责员工` TEXT,
-    FOREIGN KEY(`cid`) REFERENCES Cars(`cid`),
-    FOREIGN KEY(`fid`) REFERENCES Factories(`fid`)
-);
-
-INSERT INTO
-    Production (`cid`, `fid`, `生产日期`, `负责员工`)
-VALUES
-    (2, 6, '17/12/2020', 'Alex'),
-    (5, 4, '18/12/2020', 'Zed'),
-    (7, 2, '23/12/2020', 'Lee'),
-    (8, 1, '28/12/2020', 'Lin'),
-    (13, 2, '1/01/2021', 'Gabriel'),
-    (4, 3, '1/01/2021', 'Jason'),
-    (15, 4, '2/01/2021', 'Chris'),
-    (6, 5, '3/01/2021', 'Mark'),
-    (9, 6, '14/01/2021', 'Ron'),
-    (18, 6, '16/01/2021', 'Harris');
-
+-- Factories table添加数据
 INSERT INTO
     Factories(工厂名字, 地址, 建造年份, 员工数量, 主管, 车间数量, 品牌)
 VALUES
@@ -128,9 +106,8 @@ VALUES
     ('宝马4厂', '德国', 1995, 480, 'Alex', 20, '宝马'),
     ('福特 加州分部', '美国', 1988, 900, 'Rex', 30, '福特');
 
-USE lab2;
-
-CREATE TABLE Production(
+-- 创建Production table
+CREATE TABLE lab2.Production(
     `pid` INT PRIMARY KEY AUTO_INCREMENT,
     `cid` INT NOT NULL,
     `fid` INT NOT NULL,
@@ -140,6 +117,22 @@ CREATE TABLE Production(
     FOREIGN KEY(`fid`) REFERENCES Factories(`fid`)
 );
 
+-- Production table添加数据
+INSERT INTO
+    Production (`cid`, `fid`, `生产日期`, `负责员工`)
+VALUES
+    (2, 6, '17/12/2020', 'Alex'),
+    (5, 4, '18/12/2020', 'Zed'),
+    (7, 2, '23/12/2020', 'Lee'),
+    (8, 1, '28/12/2020', 'Lin'),
+    (13, 2, '1/01/2021', 'Gabriel'),
+    (4, 3, '1/01/2021', 'Jason'),
+    (15, 4, '2/01/2021', 'Chris'),
+    (6, 5, '3/01/2021', 'Mark'),
+    (9, 6, '14/01/2021', 'Ron'),
+    (18, 6, '16/01/2021', 'Harris');
+
+-- 创建Factories_2 table
 CREATE TABLE Factories_2(
     `fid` INT AUTO_INCREMENT,
     `工厂名字` VARCHAR(255),
