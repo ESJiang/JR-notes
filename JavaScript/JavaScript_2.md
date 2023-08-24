@@ -12,9 +12,11 @@
       - [使用while计算1-100的和](#使用while计算1-100的和)
     - [console.log设置filter](#consolelog设置filter)
     - [Break和Continue](#break和continue)
-      - [continue demo](#continue-demo)
+      - [for实现break](#for实现break)
+      - [forEach实现break](#foreach实现break)
+      - [for实现continue](#for实现continue)
+      - [forEach实现continue](#foreach实现continue)
       - [1-100除了能被7整除的和](#1-100除了能被7整除的和)
-      - [break demo](#break-demo)
     - [Array](#array)
       - [求总和\&平均数](#求总和平均数)
       - [求数组最大值](#求数组最大值)
@@ -177,15 +179,8 @@ console.log("feartureA average", 123)
 
 *对于array来说, 需要用到break和continue时一般用for循环处理, 实际上forEach也能实现这一点, 但会有代价(如原array被清空). 除了上面的情况, 大多数情况使用forEach做遍历, 因为比较简洁*
 
+#### for实现break
 ```js
-const arr = [1, 2, 3, 4, 5];
-arr.forEach(value => {
-    if (value === 2) arr.length = 0;
-    console.log(value); // 1 2
-});
-
-console.log(arr); // []
-
 const arr1 = [1, 2, 3, 4, 5];
 for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === 3) break;
@@ -195,14 +190,31 @@ for (let i = 0; i < arr1.length; i++) {
 console.log(arr1); // [1, 2, 3, 4, 5]
 ```
 
-#### continue demo
+#### forEach实现break
+```js
+const arr = [1, 2, 3, 4, 5];
+arr.forEach(value => {
+    if (value === 2) arr.length = 0;
+    console.log(value); // 1 2
+});
+
+console.log(arr); // []
+```
+
+#### for实现continue
 ```js
 for (let i = 1; i <= 5; i++) {
-    if (i === 3) {
-        continue;
-    }
+    if (i === 3) continue;
     console.log(i); // 1 2 4 5
 }
+```
+
+#### forEach实现continue
+```js
+[1, 2, 3, 4, 5].forEach(i => {
+    if (i === 3) return;
+    console.log(i) // 1 2 4 5
+})
 ```
 
 #### 1-100除了能被7整除的和
@@ -215,14 +227,6 @@ for (let i = 1; i <= 100; i++) {
     sum += i;
 }
 console.log(sum); // 4315
-```
-
-#### break demo
-```js
-for (let i=1; i<=5; i++) {
-    if(i===3) break;
-    console.log(i); // 1 2
-}
 ```
 
 <hr>
