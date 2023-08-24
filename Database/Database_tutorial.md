@@ -138,7 +138,7 @@ VALUES
 ### Foreign key constraints
 *一个表的FK往往是另一个表的PK. 添加数据时要保证FK在另外一张表的PK中能找到*
 
-<p align='center'><img src='../image/ER Diagram.png' width='80%' height='80%' /></p>
+<p align='center'><img src='../image/ER Diagram.png' width='30%' height='20%' /></p>
 
 ```sql
 -- 成功, 两个FK都能在Cars和Factories的PK中一一对应
