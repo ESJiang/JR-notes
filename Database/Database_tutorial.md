@@ -5,7 +5,7 @@
     - [INSERT关键字](#insert关键字)
     - [DELETE关键字](#delete关键字)
     - [SELECT关键字](#select关键字)
-    - [创建table](#创建table)
+    - [创建Factories table](#创建factories-table)
       - [忘记添加AUTOAUTO\_INCREMENT怎么处理](#忘记添加autoauto_increment怎么处理)
     - [添加Factories数据](#添加factories数据)
     - [Foreign key constraints](#foreign-key-constraints)
@@ -16,10 +16,10 @@
       - [查询哪一个品牌的车, 最贵的那款超过20万](#查询哪一个品牌的车-最贵的那款超过20万)
       - [查询哪一个品牌的车有2020年款的](#查询哪一个品牌的车有2020年款的)
     - [联表查询](#联表查询)
-    - [创建Factories\_2](#创建factories_2)
+    - [创建Factories\_2 table](#创建factories_2-table)
     - [JOIN关键字](#join关键字)
-      - [crossjoin](#crossjoin)
-      - [innerjoin](#innerjoin)
+      - [Crossjoin](#crossjoin)
+      - [Innerjoin](#innerjoin)
     - [Union vs Union All](#union-vs-union-all)
       - [使用union](#使用union)
       - [使用union all](#使用union-all)
@@ -61,40 +61,74 @@ WHERE
 
 ### SELECT关键字
 ```sql
-select *
-from Cars
-where 颜色="红色"
+-- Q1
+SELECT
+    *
+FROM
+    Cars
+WHERE
+    颜色 = "红色"
 
-select *
-from Cars
-where 颜色="红色"
-and 生产年份<2017
+-- Q2
+SELECT
+    *
+FROM
+    Cars
+WHERE
+    颜色 = "红色"
+    AND 生产年份 < 2017
 
-select cid, 颜色, 价格
-from Cars
-where 款式="Camaro"
-order by 价格 desc limit 2
+-- Q3
+SELECT
+    cid,
+    颜色,
+    价格
+FROM
+    Cars
+WHERE
+    款式 = "Camaro"
+ORDER BY
+    价格 DESC
+LIMIT
+    2
 
-select *
-from Cars
-where 款式
-like 'C%' -- 'like' is not case sensitive
+-- Q4
+SELECT
+    *
+FROM
+    Cars
+WHERE
+    款式 LIKE 'C%' -- 'like' is not case sensitive
 
-select 品牌, count(*) as 数量
-from Cars
-group by 品牌
-order by 品牌
+-- Q5
+SELECT
+    品牌,
+    count(*) AS 数量
+FROM
+    Cars
+GROUP BY
+    品牌
+ORDER BY
+    品牌
 
-select max(价格)
-from Cars
-where 款式='Camaro'
+-- Q6
+SELECT
+    max(价格)
+FROM
+    Cars
+WHERE
+    款式 = 'Camaro'
 
-SELECT SUM(价格) AS total_amount
-FROM Cars
-where 是否卖出=1
+-- Q7
+SELECT
+    SUM(价格) AS total_amount
+FROM
+    Cars
+WHERE
+    是否卖出 = 1
 ```
 
-### 创建table
+### 创建Factories table
 ```sql
 CREATE TABLE Factories(
     fid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -110,8 +144,10 @@ CREATE TABLE Factories(
 
 #### 忘记添加AUTOAUTO_INCREMENT怎么处理
 ```sql
-ALTER TABLE Factories
-MODIFY COLUMN fid INT PRIMARY KEY NOT NULL AUTO_INCREMENT;
+ALTER TABLE
+    Factories
+MODIFY
+    COLUMN fid INT PRIMARY KEY NOT NULL AUTO_INCREMENT;
 ```
 
 ### 添加Factories数据
@@ -120,15 +156,7 @@ INSERT INTO
     Factories(工厂名字, 地址, 建造年份, 员工数量, 主管, 车间数量, 品牌)
 VALUES
     ('雪佛兰 加州1厂', '美国', 2000, 450, 'James', 20, '雪佛兰'),
-    (
-        'Toyota 2厂',
-        '美国',
-        1998,
-        700,
-        'Asuka',
-        30,
-        'Toyota'
-    ),
+    ('Toyota 2厂', '美国', 1998, 700, 'Asuka', 30, 'Toyota'),
     ('特斯拉西雅图分部', '美国', 2003, 600, 'Elon', 30, '特斯拉'),
     ('保驰捷2厂', '德国', 2010, 380, 'Alex', 10, '保驰捷'),
     ('宝马4厂', '德国', 1995, 480, 'Alex', 20, '宝马'),
@@ -142,10 +170,16 @@ VALUES
 
 ```sql
 -- 成功, 两个FK都能在Cars和Factories的PK中一一对应
-INSERT INTO Production(`cid`, `fid`, `生产日期`, `负 责员工`) VALUES (1, 1, “20150908”, “Zavier”);
+INSERT INTO
+    Production(`cid`, `fid`, `生产日期`, `负责员工`)
+VALUES
+    (1, 1, “ 20150908 ”, “ Zavier ”);
 
 -- 失败, 9在Factories的PK的无法找到
-INSERT INTO Production(`cid`, `fid`, `生产日期`, `负 责员工`) VALUES (2, 9, “20171208”, “Ross”);
+INSERT INTO
+    Production(`cid`, `fid`, `生产日期`, `负责员工`)
+VALUES
+    (2, 9, “ 20171208 ”, “ Ross ”);
 ```
 
 ### 创建Production table
@@ -183,10 +217,15 @@ VALUES
 ### HAVING关键字
 #### 选择库存中数量大于3的汽车款式
 ```sql
-SELECT 款式, COUNT(*) AS num
-FROM Cars
-GROUP BY 款式
-HAVING num > 3
+SELECT
+    款式,
+    COUNT(*) AS num
+FROM
+    Cars
+GROUP BY
+    款式
+HAVING
+    num > 3
 ```
 
 #### 查询哪一个品牌的车, 最贵的那款超过20万
@@ -222,13 +261,19 @@ HAVING
 
 ### 联表查询
 ```sql
-select * from Cars, Production, Factories
-where production.生产日期="1/01/2021"
-and Production.cid=Cars.cid
-and Factories.fid=Production.fid
+SELECT
+    *
+FROM
+    Cars,
+    Production,
+    Factories
+WHERE
+    production.生产日期 = "1/01/2021"
+    AND Production.cid = Cars.cid
+    AND Factories.fid = Production.fid
 ```
 
-### 创建Factories_2
+### 创建Factories_2 table
 ```sql
 CREATE TABLE Factories_2(
     `fid` INT AUTO_INCREMENT,
@@ -249,7 +294,7 @@ CREATE TABLE Factories_2(
 <p align='center'><img src='../image/different sql join.png' width='80%' height='80%' /></p>
 
 
-#### crossjoin
+#### Crossjoin
 ```sql
 SELECT
     Cars.颜色,
@@ -259,7 +304,7 @@ FROM
     CROSS JOIN Factories
 ```
 
-#### innerjoin
+#### Innerjoin
 ```sql
 SELECT
     款式,
