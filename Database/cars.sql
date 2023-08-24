@@ -74,3 +74,80 @@ VALUES
         2012,
         ''
     );
+
+CREATE TABLE Factories(
+    fid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `工厂名字` TEXT,
+    `地址` TEXT,
+    `建造年份` INTEGER,
+    `员工数量` INTEGER,
+    `主管` TEXT,
+    `车间数量` INTEGER,
+    `品牌` TEXT
+);
+
+CREATE TABLE Production(
+    `pid` INT PRIMARY KEY AUTO_INCREMENT,
+    `cid` INT NOT NULL,
+    `fid` INT NOT NULL,
+    `生产日期` TEXT,
+    `负责员工` TEXT,
+    FOREIGN KEY(`cid`) REFERENCES Cars(`cid`),
+    FOREIGN KEY(`fid`) REFERENCES Factories(`fid`)
+);
+
+INSERT INTO
+    Production (`cid`, `fid`, `生产日期`, `负责员工`)
+VALUES
+    (2, 6, '17/12/2020', 'Alex'),
+    (5, 4, '18/12/2020', 'Zed'),
+    (7, 2, '23/12/2020', 'Lee'),
+    (8, 1, '28/12/2020', 'Lin'),
+    (13, 2, '1/01/2021', 'Gabriel'),
+    (4, 3, '1/01/2021', 'Jason'),
+    (15, 4, '2/01/2021', 'Chris'),
+    (6, 5, '3/01/2021', 'Mark'),
+    (9, 6, '14/01/2021', 'Ron'),
+    (18, 6, '16/01/2021', 'Harris');
+
+INSERT INTO
+    Factories(工厂名字, 地址, 建造年份, 员工数量, 主管, 车间数量, 品牌)
+VALUES
+    ('雪佛兰 加州1厂', '美国', 2000, 450, 'James', 20, '雪佛兰'),
+    (
+        'Toyota 2厂',
+        '美国',
+        1998,
+        700,
+        'Asuka',
+        30,
+        'Toyota'
+    ),
+    ('特斯拉西雅图分部', '美国', 2003, 600, 'Elon', 30, '特斯拉'),
+    ('保驰捷2厂', '德国', 2010, 380, 'Alex', 10, '保驰捷'),
+    ('宝马4厂', '德国', 1995, 480, 'Alex', 20, '宝马'),
+    ('福特 加州分部', '美国', 1988, 900, 'Rex', 30, '福特');
+
+USE lab2;
+
+CREATE TABLE Production(
+    `pid` INT PRIMARY KEY AUTO_INCREMENT,
+    `cid` INT NOT NULL,
+    `fid` INT NOT NULL,
+    `生产日期` TEXT,
+    `负责员工` TEXT,
+    FOREIGN KEY(`cid`) REFERENCES Cars(`cid`),
+    FOREIGN KEY(`fid`) REFERENCES Factories(`fid`)
+);
+
+CREATE TABLE Factories_2(
+    `fid` INT AUTO_INCREMENT,
+    `工厂名字` VARCHAR(255),
+    `地址` VARCHAR(255) NOT NULL CHECK(`地址` IN ("美国", "德国")),
+    `建造年份` INT,
+    `员工数量` INT CHECK(`员工数量 ` >= 100),
+    `主管` VARCHAR(255),
+    `车间数量` INT,
+    `品牌` VARCHAR(255) UNIQUE,
+    PRIMARY KEY(`fid`)
+);
