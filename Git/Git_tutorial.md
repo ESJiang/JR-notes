@@ -14,6 +14,9 @@
       - [git commit -am的局限性和优势](#git-commit--am的局限性和优势)
       - [运行结果对比](#运行结果对比)
     - [.gitignore的陷阱](#gitignore的陷阱)
+    - [如何将一个branch所有commit合并成一个?](#如何将一个branch所有commit合并成一个)
+      - [gitclearcommithistory()函数](#gitclearcommithistory函数)
+      - [两种使用场景](#两种使用场景)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
       - [environment setup](#environment-setup)
@@ -199,6 +202,44 @@ git push # 将本地仓库的commit推送到远程仓库
 `如果觉得上面需要一行一行输入太麻烦, 可以在~/.bash_profile中添加alias (注意等号前后均无空格)`
 ```bash
 alias gitignore-update='git rm -r --cached . && git add . && git commit -m "update .gitignore" && git push'
+```
+
+### 如何将一个branch所有commit合并成一个?
+> 很多人想到的是rebase方法. 但是这样做至少会剩余两个commits. 理想的方式是新建一个branch, 复制原来的branch, 删除原来的branch, 新branch重命名 (过河拆桥)
+
+```bash
+git checkout --orphan new
+git add .
+git commit -m "first commit"
+git branch -D main
+git branch -m main
+git push --force-with-lease origin main
+```
+
+*你可以自由修改commit message或者branch name来实现合并成一个commit, 但用户要手打6行, 能不能只打一行实现?*
+
+#### gitclearcommithistory()函数
+```bash
+gitclearcommithistory() {
+    branch_name=${2:-main}
+    git checkout --orphan new && \
+    git add . && \
+    git commit -m "$1" && \
+    git branch -D "$branch_name" && \
+    git branch -m "$branch_name" && \
+    git push --force-with-lease origin "$branch_name"
+}
+```
+
+#### 两种使用场景
+- 个人练习项目: 我想直接把自己的main branch合并成一个commit
+```bash
+gitclearcommithistory "first commit"
+```
+
+- 团队项目: 我想直接把自己的feature branch合并成一个commit而不影响别人的分支
+```bash
+gitclearcommithistory "first commit" "featureA"
 ```
 
 <hr>
