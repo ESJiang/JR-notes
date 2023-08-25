@@ -28,6 +28,7 @@
       - [group by one column](#group-by-one-column)
       - [group by two columns](#group-by-two-columns)
       - [为什么不能select two columns, group by one column?](#为什么不能select-two-columns-group-by-one-column)
+      - [SQL execution order](#sql-execution-order)
 
 # Class Notes
 
@@ -394,3 +395,14 @@ WHERE
 > 只是group by一个品牌, 最后应该像第一个例子一样输出3行. 问题在于你现在多select一个non-aggragated->颜色. mysql不知道应该return给你green还是red还是red
 
 - 所以必须把所有non-aggregated columns都加入group by中. 抽象一点说就是颜色和group by中的品牌没有依赖性. 所以报错
+
+#### SQL execution order
+| Order | Clause | Function |
+| :---: | :---: | :---: |
+| ***1*** | ***FROM*** | ***Tables are merged in order to get the base data***|
+| ***2*** | ***WHERE*** | ***This clause filters the base data***|
+| ***3*** | ***GROUP BY*** | ***This clause group the filtered base data***|
+| ***4*** | ***HAVING*** | ***This clause filters the grouped base data***|
+| ***5*** | ***SELECT*** | ***This clause returns the final data***|
+| ***6*** | ***ORDER BY*** | ***This clause stored the final data***|
+| ***7*** | ***LIMIT*** | ***The returned data is limited to row count***|
