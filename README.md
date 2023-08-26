@@ -45,11 +45,15 @@
 - [Python 4](./Python/Python_4.md)
 - [Python 5](./Python/Python_5.md)
 - [Python 6](./Python/Python_6.md)
+- [Python 7](./Python/Python_7.md)
+- [Python 8](./Python/Python_8.md)
 
 ## Module Seven: Final Project
 - [Backend_1](./Final%20Project/Backend_1.md)
 - [Backend_2](./Final%20Project/Backend_2.md)
 - [Frontend_1](./Final%20Project/Frontend_1.md)
+- [Frontend_2](./Final%20Project/Frontend_2.md)
+- [Frontend_3](./Final%20Project/Frontend_3.md)
 
 ## Module Eight: Hackathon
 ~~[Hackathon](./Hackathon/Hackathon.md)~~
