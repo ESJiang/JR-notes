@@ -3,7 +3,7 @@
   - [Frontend\_2 (`27/08/2023`)](#frontend_2-27082023)
     - [项目一些debug](#项目一些debug)
     - [使用JavaScript代替hardcode](#使用javascript代替hardcode)
-      - [如何从后端拿数据?](#如何从后端拿数据)
+      - [如何从后端拿数据 (axios)?](#如何从后端拿数据-axios)
         - [配置.env.development](#配置envdevelopment)
         - [database.js](#databasejs)
         - [utiles.js](#utilesjs)
@@ -42,7 +42,7 @@ graph LR;
 ### 使用JavaScript代替hardcode
 > 将资源都写在HTML代码中, 这样做不能很好应对项目的变化. 可以使用js的DOM方法和axios方法来实现
 
-#### 如何从后端拿数据?
+#### 如何从后端拿数据 (axios)?
 ##### 配置.env.development
 ```shell
 VITE_DB_PATH="localhost:8000";
