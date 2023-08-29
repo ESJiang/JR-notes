@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -6,62 +6,73 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
         <style>
+            :root {
+                --padding-block: 20px;
+            }
             * {
                 box-sizing: border_box;
                 margin: 0;
             }
-
-            body > div {
+            main {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 overflow-x: hidden;
+                padding: var(--padding-block);
                 border: 2px dashed black;
                 background-color: lightskyblue;
                 text-align: center;
             }
 
-            div {
-                padding: 20px;
+            section {
+                padding: var(--padding-block);
                 background-color: lightcoral;
             }
-
             span {
                 display: block;
-                padding: 20px;
+                padding: var(--padding-block);
                 background-color: green;
             }
-
             button {
                 display: block;
             }
         </style>
     </head>
     <body>
-        <div>
-            this is body
-            <div>
-                this is div
+        <main>
+            This is main
+            <section>
+                This is section
                 <span
-                    >this is span
+                    >This is span
                     <button>Click Me!</button>
                 </span>
-            </div>
-        </div>
+            </section>
+        </main>
         <script>
-            document.getElementsByTagName("body")[0].addEventListener("click", () => alert("body was clicked"));
-            document.getElementsByTagName("div")[1].addEventListener("click", e => {
-                // e.stopPropagation();
-                alert("div was clicked");
+            document.querySelector("main").addEventListener("click", e => {
+                alert("main was clicked");
+                console.log("target", e.target);
+                console.log("current_target", e.currentTarget);
             });
-            document.getElementsByTagName("span")[0].addEventListener("click", e => {
+            document.querySelector("section").addEventListener("click", e => {
+                // e.stopPropagation();
+                alert("section was clicked");
+                console.log("target", e.target);
+                console.log("current_target", e.currentTarget);
+            });
+            document.querySelector("span").addEventListener("click", e => {
                 // e.stopPropagation();
                 alert("span was clicked");
+                console.log("target", e.target);
+                console.log("current_target", e.currentTarget);
             });
-            document.getElementsByTagName("button")[0].addEventListener("click", e => {
+            document.querySelector("button").addEventListener("click", e => {
                 // e.stopPropagation();
                 alert("button was clicked");
+                console.log("target", e.target);
+                console.log("current_target", e.currentTarget);
             });
         </script>
     </body>
