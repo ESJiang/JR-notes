@@ -1,10 +1,15 @@
 - [Class Notes](#class-notes)
   - [Resources](#resources)
   - [JavaScript\_2 (`23/07/2023`)](#javascript_2-23072023)
-    - [if/else结构](#ifelse结构)
+    - [if/else结构 (最少三行)](#ifelse结构-最少三行)
       - [score if-else练习](#score-if-else练习)
-      - [三元运算符 (分支少时可以用)](#三元运算符-分支少时可以用)
-      - [switch用法 (全等匹配)](#switch用法-全等匹配)
+        - [solution 1: if/else (非常直观+可维护性差)](#solution-1-ifelse-非常直观可维护性差)
+        - [solution 2: ternary operator (代码量少+可读性差)](#solution-2-ternary-operator-代码量少可读性差)
+        - [solution 3: array (非常直观+可维护性强)](#solution-3-array-非常直观可维护性强)
+    - [三元运算符 (分支少时可以用)](#三元运算符-分支少时可以用)
+      - [判断成绩是否大于90](#判断成绩是否大于90)
+      - [判断变量小于10时在前面添加0](#判断变量小于10时在前面添加0)
+    - [switch用法 (全等匹配)](#switch用法-全等匹配)
       - [水果switch判断](#水果switch判断)
     - [循环](#循环)
       - [统计总分数和平均数](#统计总分数和平均数)
@@ -20,10 +25,14 @@
     - [Array](#array)
       - [求总和\&平均数](#求总和平均数)
       - [求数组最大值](#求数组最大值)
+        - [solution 1: for循环](#solution-1-for循环)
+        - [solution 2: Math.max()](#solution-2-mathmax)
       - [得到array的index](#得到array的index)
       - [array转化成string](#array转化成string)
     - [Object](#object)
-      - [遍历object](#遍历object)
+      - [遍历object的value](#遍历object的value)
+        - [solution 1](#solution-1)
+        - [solution 2](#solution-2)
   - [作业](#作业)
 
 # Class Notes
@@ -38,12 +47,17 @@
 
 <p align='center'><img src='../image/js.png' width='30%' height='30%' /></p>
 
-### if/else结构
-if (条件表达式){
-    语句1;
+### if/else结构 (最少三行)
+```js
+if (条件表达式) {
+    执行语句1;
 }
+```
+
+> 只有一条执行语句时, {}可以省略
 
 #### score if-else练习
+##### solution 1: if/else (非常直观+可维护性差)
 ```js
 let score = prompt("Please enter your score");
 if (score >= 90) {
@@ -59,27 +73,53 @@ if (score >= 90) {
 }
 ```
 
-#### 三元运算符 (分支少时可以用)
-`syntax: 条件?执行语句1:执行语句2`
-
+##### solution 2: ternary operator (代码量少+可读性差)
 ```js
-let score=85;
-console.log(score>90?'A':'B'); // B
+let score = prompt("Please enter your score");
+console.log(score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : score >= 60 ? "D" : "E");
 ```
 
+##### solution 3: array (非常直观+可维护性强)
+```js
+let score = prompt("Please enter your score");
+score = parseFloat(score);
+if (isNaN(score) || score < 0) {
+    console.error("Please enter a valid score");
+    throw new Error("Invalid score");
+}
+const scoreRange = [
+    { grade: "A", minScore: 90 },
+    { grade: "B", minScore: 80 },
+    { grade: "C", minScore: 70 },
+    { grade: "D", minScore: 60 },
+    { grade: "E", minScore: 0 },
+];
+console.log(scoreRange.find(range => score >= range.minScore).grade);
+```
+
+### 三元运算符 (分支少时可以用)
+`syntax: 条件 ? 执行语句1 : 执行语句2`
+
+#### 判断成绩是否大于90
+```js
+let score = 85;
+console.log(score > 90 ? "A" : "B"); // B
+```
+
+#### 判断变量小于10时在前面添加0
 ```js
 let num = prompt("Please enter  a number between 0~59");
 let res = num < 10 ? "0" + num : num;
 alert(res);
 ```
 
-#### switch用法 (全等匹配)
+### switch用法 (全等匹配)
 > `多个case每个都要test下, case后面要记得加break`
 
 `switch demo`
 ```js
-let num = 3;
-switch(num){
+const num = 3;
+switch (num) {
     case 1:
         console.log(num);
         break;
@@ -116,6 +156,8 @@ switch (fruit) {
 - while循环
 - do...while循环
 
+> 和if/else相似, 当循环体内部只有一条执行语句时, {}可以省略
+
 ```js
 for (let i = 1; i <= 100; i++) {
     if (i === 1) {
@@ -143,10 +185,8 @@ alert(`Total_score: ${scoreSum} \nAverage_score: ${average}`);
 #### 计算1-100能被3整除的和
 ```js
 let sum = 0;
-for (let i = 1; i <= 100; i++) {
-    if (i % 3 === 0) sum += i;
-}
-console.log(sum);
+for (let i = 1; i <= 100; i++) if (i % 3 === 0) sum += i;
+console.log(sum); // 1683
 ```
 
 #### 使用while计算1-100的和
@@ -221,9 +261,7 @@ for (let i = 1; i <= 5; i++) {
 ```js
 let sum = 0;
 for (let i = 1; i <= 100; i++) {
-    if (i % 7 === 0) {
-        continue;
-    }
+    if (i % 7 === 0) continue;
     sum += i;
 }
 console.log(sum); // 4315
@@ -234,35 +272,36 @@ console.log(sum); // 4315
 ### Array
 `array demo`
 ```js
-let arr = new Array();
-let arr1 = [];
-let arr2 = [1,3,5,7]
-console.log(arr2[0]) // 1
-console.log(arr2[arr2.length - 1]) // 7
+let arr = new Array(); // 使用new Array()创建新数组
+let arr1 = []; // 使用[]创建新数组
+let arr2 = [1, 3, 5, 7];
+console.log(arr2[0]); // 1
+console.log(arr2[arr2.length - 1]); // 7
 ```
 
 #### 求总和&平均数
 ```js
-let arr = [2, 6, 1, 7, 4];
+const arr = [2, 6, 1, 7, 4];
 let sum = 0;
-for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-}
-let avg = sum / arr.length;
+for (let i = 0; i < arr.length; i++) sum += arr[i];
+const avg = sum / arr.length;
 console.log(sum); // 20
 console.log(avg); // 4
 ```
 
 #### 求数组最大值
+##### solution 1: for循环
 ```js
-let arr = [2,6,1,77,52,25,7];
+const arr = [2, 6, 1, 77, 52, 25, 7];
 let max = arr[0];
-for (let i=1; i < arr.length; i++){
-    if(arr[i] > max){
-        max = arr[i];
-    }
-}
+for (let i = 1; i < arr.length; i++) if (arr[i] > max) max = arr[i];
 console.log(max);
+```
+
+##### solution 2: Math.max()
+```js
+const arr = [2, 6, 1, 77, 52, 25, 7];
+console.log(Math.max(...arr));
 ```
 
 `push方法`
@@ -283,11 +322,11 @@ console.log(max);
 
 #### 得到array的index
 ```js
-let arr = ['red', 'green', 'blue', 'pink', 'blue'];
-let index = arr.indexOf('blue');
-console.log(index) // 2
-let arr2 = ['red', 'green', 'blue', 'pink', 'blue'];
-let index2 = arr2.lastIndexOf('blue')
+let arr = ["red", "green", "blue", "pink", "blue"];
+let index = arr.indexOf("blue");
+console.log(index); // 2
+let arr2 = ["red", "green", "blue", "pink", "blue"];
+let index2 = arr2.lastIndexOf("blue");
 console.log(index2); // 4
 ```
 
@@ -298,6 +337,8 @@ console.log(arr.toString())  // 'green,blue,red'
 console.log(arr.join(' ')) // "green blue red"
 ```
 
+> toString()和join()不改变原数组
+
 <hr>
 
 ### Object
@@ -306,30 +347,40 @@ console.log(arr.join(' ')) // "green blue red"
 > 对象 = 属性 + 方法
 
 ```js
-var star={
-    name: 'pink',
+var star = {
+    name: "pink",
     age: 18,
-    sex: 'male',
-    sayHi(){
-        console.log('hello');
-    }
-}
+    sex: "male",
+    sayHi() {
+        console.log("hello");
+    },
+};
 console.log(star.name);
-console.log(star['name']);
+console.log(star["name"]);
 star.sayHi();
 ```
 
-#### 遍历object
+#### 遍历object的value
+##### solution 1
 ```js
 let obj = {
-    name: 'Chirs',
+    name: "Chirs",
     age: 40,
     hobby: "codeing",
-    gender: "female"
-}
-for(let key in obj){
-    console.log(obj[key]); // 这里key是variable
-}
+    gender: "female",
+};
+for (let key in obj) console.log(obj[key]);
+```
+
+##### solution 2
+```js
+let obj = {
+    name: "Chirs",
+    age: 40,
+    hobby: "codeing",
+    gender: "female",
+};
+for (let value of Object.values(obj)) console.log(value);
 ```
 
 <hr>

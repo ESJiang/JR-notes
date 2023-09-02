@@ -23,7 +23,7 @@
 # Class Notes
 
 ## Resources
-[Git指南](../git.pdf)<br>
+[Git指南](./git.pdf)<br>
 [Error: Permission denied (publickey)](https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey)<br>
 
 ## Git (`12/07/2023`)
@@ -82,12 +82,17 @@ flowchart LR
 `git reset HEAD file_name`: 撤销暂存区修改<br>
 > ***reset后面加--hard的意思是将上次commit的修改也删除***<br>
 
-`git checkout -- file_name`: 可以丢弃⼯作区的修改<br>
-> ***对刚创建文件无效, 用vscode点discard changes就好***
+`git checkout -- file_name`: 可以丢弃⼯作区的修改/恢复从工作区删除的文件 (前提是文件已被tracked)<br>
+`git checkout HEAD -- file_name`: 恢复从暂存区删除的文件 (前提是文件已被tracked - 一个例子是你用了git rm但还没有commit)<br>
+> ***对刚创建文件 (Untracked files)无效, 用vscode点discard changes就好***
 >> ***不要忘记写--,这样就会切换到另⼀个分⽀***
 
 `git rm file_name`: 删除文件<br>
+`git stash -u`: 将当前工作目录中的所有更改 (包括未跟踪的文件)保存到一个临时的存储区域 (stash)中<br>
+`git stash list branch_name`: 显示指定分支下的stash list<br>
 `git branch`, `git branch -d <branch name>`: 查看分支/删除本地分支<br>
+> 有时候需要使用-D来删除branch (强制删除分支, 无论分支上是否有未合并的更改)
+
 `git log --all --decorate --oneline --graph`: 用图形化展示分支和合并情况<br>
 `git branch -u name/branch`: 将当前分支和远程分支进行关联<br>
 `git remote -v`: 查看远程库信息<br>

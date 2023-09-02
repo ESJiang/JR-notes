@@ -110,11 +110,21 @@ const name = 'James'; // error
 
 ### 交换两个变量的值
 ```js
+// 方法1: Temp variable swapping
 let apple1 = 1;
 let apple2 = 2;
 let temp = apple1;
 apple1 = apple2;
 apple2 = temp;
+console.log("apple1", apple1); // 2
+console.log("apple2", apple2); // 1
+
+// 方法2: Destructuring assignment
+let banana1 = 1;
+let banana2 = 2;
+[banana1, banana2] = [banana2, banana1];
+console.log("banana1", banana1); // 2
+console.log("banana2", banana2); // 1
 ```
 ### 字符串
 - `字符串长度: str.length`

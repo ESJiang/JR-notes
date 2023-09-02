@@ -15,11 +15,11 @@
       - [return demo](#return-demo)
       - [得到两个数中最大值](#得到两个数中最大值)
       - [求数组的最大值](#求数组的最大值)
-      - [不写return关键字](#不写return关键字)
+      - [不写return关键字的后果](#不写return关键字的后果)
     - [作用域](#作用域)
       - [ES6之前](#es6之前)
       - [ES6之后 (使用let/const提升安全性)](#es6之后-使用letconst提升安全性)
-      - [闭包(Lexical scope)](#闭包lexical-scope)
+      - [闭包 (Lexical scope)](#闭包-lexical-scope)
     - [Object练习](#object练习)
     - [Math方法](#math方法)
       - [max方法](#max方法)
@@ -59,12 +59,13 @@
 *声明函数 + 调用函数*
 
 ```js
-funciton 函数名(){ // 使用Function Declaration声明函数
+funciton 函数名() { // 使用Function Declaration声明函数
     // 函数体代码
 }
 函数名() // 调用函数
 ```
-> function必须小写, 函数名命名为动词
+> function关键字必须小写, 函数名用动词
+> function的{}不能省略 (即使执行语句只有一句)
 
 #### 函数声明的不同方法
 
@@ -78,30 +79,28 @@ graph LR;
 
 ##### Function Declaration
 ```js
-getValue() // correct
-function getValue(){
+getValue(); // correct
+function getValue() {
     console.log("hello world");
 }
 ```
 
 ##### Function Expression
 ```js
-isFormValidated() // error
-let isFormValidated = function(){
-    console.log(true)
-}
+isFormValidated(); // error
+let isFormValidated = function () {
+    console.log(true);
+};
 ```
 
 #### 求和函数
 ```js
 function getSum(start, end) {
     let sum = 0;
-    for (let i = start; i <= end; i++) {
-        sum += i;
-    }
+    for (let i = start; i <= end; i++) sum += i;
     console.log(sum);
 }
-getSum(1, 100) //5050
+getSum(1, 100); //5050
 ```
 
 ### 函数的参数
@@ -155,34 +154,41 @@ function getMax2(num1, num2) {
     else return num2;
 }
 console.log(getMax2(7, 6)); //7
+
+// 方法3: Spread Operator
+console.log(Math.max(7, 6)); // 7
 ```
 
 #### 求数组的最大值
 ```js
 // 方法1: Ternary Operator
-let arr = [5, 2, 99, 101, 67, 77];
+const arr = [5, 2, 99, 101, 67, 77];
 
 function getArrayMax(arr) {
     let max = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        max = arr[i] > max ? arr[i] : max;
-    }
+    for (let i = 1; i < arr.length; i++) max = arr[i] > max ? arr[i] : max;
     return max;
 }
-console.log(getArrayMax(arr));
+console.log(getArrayMax(arr)); // 101
 
 // 方法2: if-else statements
 function getArrayMax2(arr) {
     let max = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > max) max = arr[i];
-    }
+    for (let i = 1; i < arr.length; i++) if (arr[i] > max) max = arr[i];
     return max;
 }
-console.log(getArrayMax2(arr));
+console.log(getArrayMax2(arr)); // 101
+
+// 方法3: Short-circuit Evaluation
+function getArrayMax3(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) arr[i] > max && (max = arr[i]); // you must add () after && because "max=arr[i]" is an assignment. If not, you will see an error message like "Invalid left-hand side in assignment".
+    return max;
+}
+console.log(getArrayMax3(arr)); // 101
 ```
 
-#### 不写return关键字
+#### 不写return关键字的后果
 ```js
 function getStr() {
     'hello'
@@ -201,32 +207,29 @@ console.log(getStr()) // undefined
 // 全局作用域 (污染全局的命名空间)
 var num = 10;
 var num = 30;
-console.log(num);
+console.log(num); // 30
 
-if(true){
-    var a = 1;
-}
-console.log('a', a); // 1
+if (true) var a = 1;
 
-for(var i = 0; i < 10; i++){}
-console.log('i', i);
+console.log("a", a); // a 1
+
+for (var i = 0; i < 10; i++) {}
+console.log("i", i);
 
 // 变量提升
 console.log(foo); // undefined
-var foo=2;
+var foo = 2;
 
 // 内层变量被外层修改
 var tmp = new Date();
-function fn(){
+function fn() {
     console.log(tmp);
-    if(false){
-        var tmp = "hello world";
-    }
+    if (false) var tmp = "hello world";
 }
 fn(); // undefined (拿不到外部的tmp)
 
 // 局部作用域
-function fn(){
+function fn() {
     var num1 = 20;
     console.log("num1", num1);
 }
@@ -236,26 +239,26 @@ console.log("num1", num1); // error
 #### ES6之后 (使用let/const提升安全性)
 ```js
 console.log(a); // error
-let a =1;
+let a = 1;
+```
 
+```js
 let tmp = new Date();
 function fn() {
-  console.log(tmp);
-  if (false) {
-    let tmp = "hello world";
-  }
+    console.log(tmp);
+    if (false) tmp = "hello world";
 }
 fn(); //正常输出date
 ```
 
-#### 闭包(Lexical scope)
+#### 闭包 (Lexical scope)
 ```js
-// 闭包: 先找自身方法内部有没有这个变量, 再找父级function有没有, 最后找全局变量 -> 这种机制可以保护被调用的方法内部定义的变量不会被外部修改(私有化)
-var scope = "global scope";
+// 闭包: 先找自身方法内部有没有这个变量, 再找父级function有没有, 最后找全局变量 -> 这种机制可以保护被调用的方法内部定义的变量不会被外部修改 (私有化)
+const scope = "global scope";
 function checkscope() {
-    var scope = "checkscope() scope";
+    const scope = "checkscope() scope";
     return () => {
-        var scope = "f() scope";
+        const scope = "f() scope";
         return scope;
     };
 }
@@ -264,7 +267,7 @@ console.log(checkscope()()); // f() scope
 
 ### Object练习
 ```js
-let info = {
+const info = {
     name: "Ben",
     age: 20,
     gender: "male",
@@ -273,9 +276,9 @@ let info = {
 // 方法一: Template Strings
 console.log(`The user's name is ${info.name}`);
 // 方法二: '+' operator
-console.log("The user's name is "+ info.name);
+console.log("The user's name is " + info.name);
 
-let puppy = {
+const puppy = {
     name: "coco",
     type: "alaska",
     age: 5,
@@ -328,26 +331,23 @@ const random = Math.floor(Math.random() * (max-min+1)) + min;
 
 ##### 用random方法随机得到数组的任一元素(随机点名)
 ```js
-let arr = ['Jane', 'Ben', 'Chris', 'John', 'Andrew', 'Amy'];
-function getRandom(min, max){
-    return Math.floor(Math.random() * (max-min+1))+min;
+let arr = ["Jane", "Ben", "Chris", "John", "Andrew", "Amy"];
+function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 const index = getRandom(0, 5);
 console.log(arr[index]);
-
-console.log(arr[Math.floor(Math.random()*arr.length)]);
+console.log(arr[Math.floor(Math.random() * arr.length)]);
 ```
 
 ### String方法
 #### charAt方法
 ```js
-// 1. charAt(index) 根据位置返回字符
+// charAt(index) 根据位置返回字符
 var str = "andy";
 console.log(str.charAt(3)); // y
 // 遍历所有的字符
-for (let i = 0; i < str.length; i++) {
-    console.log(str[i]);
-}
+for (let i = 0; i < str.length; i++) console.log(str[i]);
 ```
 
 #### concat方法
@@ -370,7 +370,6 @@ console.log(str1.substr(2, 2)); // "cd"
 var str1 = "abcoefoxyozzopp";
 console.log(str1.replace("a", "b")) // bbcoefoxyozzopp
 
-
 // 全部替换
 // 方法一 - replace方法
 var str2 = "abcoefoxyozzopp";
@@ -378,9 +377,7 @@ const newString = str2.replace(/o/g, "*");
 console.log(newString); // abc*ef*xy*zz*pp
 
 // 方法2 - while循环
-while (str2.indexOf("o") !== -1){
-    str2 = str2.replace("o", "*");
-}
+while (str2.indexOf("o") !== -1) str2 = str2.replace("o", "*");
 console.log(str2); // abc*ef*xy*zz*pp
 ```
 
@@ -437,17 +434,13 @@ document.getElementById("list").insertBefore(newElement, document.getElementById
 #### 12-dom_style.html练习
 ```js
 const element = document.getElementById("p-id");
+element.style.cssText = "color: #ff0000; font-size: 20px; padding-top: 20px;";
 element.innerHTML = "hello world";
-element.style.color = "#ff0000";
-element.style.fontSize = "20px";
-element.style.paddingTop = "20px";
 ```
 
 #### 13-dom_eventListener.html练习
 ```js
-document.getElementById("myBtn").addEventListener("click", ()=>{
-    document.getElementById('demo').innerHTML = Date();
-})
+document.getElementById("myBtn").addEventListener("click", () => (document.getElementById("demo").innerHTML = Date()));
 ```
 
 ## 作业

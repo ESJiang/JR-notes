@@ -15,7 +15,7 @@
 ## Resources
 [Pandas](https:/pandas.pydata.org/)<br>
 [Pygame Library Documentation](https://www.pygame.org/docs/)<br>
-[Snake game repo]("https://github.com/ElevnLi/SnakeGame16")
+[Snake game repo](https://github.com/ElevnLi/SnakeGame16)
 
 ## Python_7 (`26/08/2023`)
 <p align='center'><img src='../image/snakegame.png' width='30%' height='30%' /></p>

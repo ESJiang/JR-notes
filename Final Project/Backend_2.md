@@ -64,7 +64,7 @@ app.listen(PORT, function () {
 
 //app.use(express.json())// parse JSON requests
 //app.use(express.urlencoded({extended:true})) //parse URL-encoded requests
-//app.use(cors()) //必须在路由之前挂在，解决跨域问题
+//app.use(cors()) //必须在路由之前挂载cors，解决跨域问题
 //app.use(authMiddleware);// custom authentication middleare 比如用户验证，api授权之类的
 //app.use(routes) // route handlers
 //app.use(handleErrors) // error handling middleware (at the end) error中间件在路由后挂载

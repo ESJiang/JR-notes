@@ -56,4 +56,7 @@
 - [Frontend_3](./Final%20Project/Frontend_3.md)
 
 ## Module Eight: Hackathon
-~~[Hackathon](./Hackathon/Hackathon.md)~~
+- [Hackathon](./Hackathon/Web3%20&%20AI%20Hackfest.md)
+
+## Module Nine: VScode Shortcuts
+- [Shortcuts](./VScode%20Shortcuts/shortcuts.md)

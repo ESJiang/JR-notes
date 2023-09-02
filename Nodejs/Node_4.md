@@ -5,7 +5,7 @@
       - [添加前缀 (解决上面的冲突问题)](#添加前缀-解决上面的冲突问题)
     - [CORS 跨域资源共享](#cors-跨域资源共享)
     - [RESTful API](#restful-api)
-      - [http动词](#http动词)
+      - [http methods](#http-methods)
         - [get vs post](#get-vs-post)
       - [http状态码](#http状态码)
     - [User list后端练习](#user-list后端练习)
@@ -62,12 +62,12 @@ http://localhost/user/1.html
 一种设计风格: 请求和响应简洁, 可读性强
 一个架构符合REST原则, 就称它符合RESTful架构
 
-<p align='center'><img src='../image/REST基本原则.png' width='50%' height='50%' /></p>
+<p align='center'><img src='../image/Principles of Rest API.png' width='50%' height='50%' /></p>
 
 > URL中名词应该用复数
 
-#### http动词
-<p align='center'><img src='../image/http动词.png' width='50%' height='50%' /></p>
+#### http methods
+<p align='center'><img src='../image/http methods.png' width='50%' height='50%' /></p>
 
 ##### get vs post
 | get | post |

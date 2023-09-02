@@ -326,7 +326,6 @@ FROM
 | :---: | :---: |
 | ***不包含重复行*** | ***包含重复行*** |
 
-
 #### 使用union
 ```sql
 SELECT
@@ -345,7 +344,6 @@ WHERE
 ```
 
 <p align='center'><img src='../image/union.png' width='80%' height='80%' /></p>
-
 
 #### 使用union all
 ```sql

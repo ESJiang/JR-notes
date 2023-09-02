@@ -58,7 +58,7 @@ blog.html -> `http://www.example.com/blog.html`<br>
 <hr>
 
 ### VScode下载 (<https://code.visualstudio.com/>)
-![VScode](image/vscode.png)
+![VScode](../image/vscode.png)
 
 #### VScode插件
 - Live Server (启动server, 随代码更新实时更新网站)

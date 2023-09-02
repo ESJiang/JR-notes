@@ -4,6 +4,7 @@
     - [常见git指令](#常见git指令)
       - [git clone和git pull的区别](#git-clone和git-pull的区别)
       - [merge的应用场景](#merge的应用场景)
+        - [merge conflict](#merge-conflict)
       - [git rm和rm的区别](#git-rm和rm的区别)
     - [git rebase/git reset/git commit --amend的区别](#git-rebasegit-resetgit-commit---amend的区别)
       - [git reset --mixed/--soft/--hard](#git-reset---mixed--soft--hard)
@@ -11,12 +12,19 @@
       - [git commit --amend操作](#git-commit---amend操作)
     - [常规commit\&push(git add. \&\& git commit -m "msg" \&\& git push)](#常规commitpushgit-add--git-commit--m-msg--git-push)
     - [简便commit\&push(git commit -am "msg" \&\& git push)](#简便commitpushgit-commit--am-msg--git-push)
-      - [git commit -am的局限性和优势](#git-commit--am的局限性和优势)
+    - [gitpush和gitampush edge case handling (重点!)](#gitpush和gitampush-edge-case-handling-重点)
+      - [Final Solution - gitpush \& gitampush](#final-solution---gitpush--gitampush)
+    - [git commit -am的局限性和优势](#git-commit--am的局限性和优势)
       - [运行结果对比](#运行结果对比)
     - [.gitignore的陷阱](#gitignore的陷阱)
-    - [如何将一个branch所有commit合并成一个?](#如何将一个branch所有commit合并成一个)
-      - [gitclearcommithistory()函数](#gitclearcommithistory函数)
-      - [两种使用场景](#两种使用场景)
+    - [如何将main分支所有commits合并成一个 (只在个人练习项目且只有一个分支时使用)?](#如何将main分支所有commits合并成一个-只在个人练习项目且只有一个分支时使用)
+      - [gitclearMainHistory()函数](#gitclearmainhistory函数)
+    - [如何将pull request中的commits合并成一个](#如何将pull-request中的commits合并成一个)
+      - [gitclearPullHistory()函数](#gitclearpullhistory函数)
+    - [删除本地分支和远程分支的细节](#删除本地分支和远程分支的细节)
+      - [删除本地分支](#删除本地分支)
+      - [删除远程分支](#删除远程分支)
+        - [本地repo和远程repo的远程分支数量不一致](#本地repo和远程repo的远程分支数量不一致)
     - [常见shell命令](#常见shell命令)
     - [cloud shell 练习](#cloud-shell-练习)
       - [environment setup](#environment-setup)
@@ -24,6 +32,8 @@
 # Class Notes
 
 ## Resources
+[Git指南](./git.pdf)<br>
+[Git常用命令行简写](https://juejin.cn/post/7155671438916059173)<br>
 [Cloudshell Practice](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/praqma-training/git-katas.git)
 
 ## Git tutorial (`13/07/2023`)
@@ -58,6 +68,21 @@
 `大多数merge都是用git官网上按钮完成, 一般create a pull request, 在别人review后, 才会执行merge`
 
 > `git merge --squash <branch>`: 将所有commits应用到当前分支上, merge完删除分支, 节省对branch的维护成本
+
+##### merge conflict
+> 别的组员将自己的修改merge到main分支, 这样你的feature分支会behind main分支, 当你执行git pull origin main时就会出现conflict
+
+- 一般根据公司要求设置git config
+```zsh
+git config pull.rebase false # merge
+git config pull.rebase true # rebase
+```
+
+- 再处理conflict
+```zsh
+git pull origin main # accept both
+gitpush "msg"
+```
 
 #### git rm和rm的区别
 | git rm | rm
@@ -169,12 +194,36 @@ gitampush() {
 }
 ```
 
-这样一来, 你可以在terminal中使下面的指令实现相同效果
+*这样一来, 你可以在terminal中使下面的指令实现相同效果*
 ```bash
 gitampush "commit_msg"
 ```
 
-#### git commit -am的局限性和优势
+### [gitpush](#常规commitpushgit-add--git-commit--m-msg--git-push)和[gitampush](#简便commitpushgit-commit--am-msg--git-push) edge case handling (重点!)
+> 上面的gitpush和gitampush没有处理一个edge case. 在做pull request时, 需要创建一个新分支, 当第一次push到新分支时, 我们会因为没有写`-u`而出现error.
+
+#### Final Solution - gitpush & gitampush
+```bash
+git_push() {
+    [ -z "$(git branch -vv --list $(git symbolic-ref --short HEAD) | grep '\[.*\]')" ] \
+        && git push -u origin $(git symbolic-ref --short HEAD) \
+        || git push
+}
+
+gitpush() {
+    git add . && git commit -m "$1"
+    git_push
+}
+
+gitampush() {
+    git commit -am "$1"
+    git_push
+}
+```
+
+*通过封装一个方法来判断是否本地repo和远程repo已经建立连接*
+
+### git commit -am的局限性和优势
 > 很多时候, 两种方法进行对比, 往往各有千秋. 绝对的情况很少. 一般称为trade-off. 前面两种git commit & git push的对比如下.
 
 | | git add. && git commit | git commit -am |
@@ -193,7 +242,7 @@ gitampush "commit_msg"
 > 实际上, .gitignore只能应用于未被track的文件. 如果这些文件已经被push过了, 我们需要执行下面的代码:
 
 ```bash
-git rm -r --cached . # 从暂存区中取消跟踪所有文件和目录，但保留这些文件在您的工作目录中
+git rm -r --cached . # 从暂存区中取消跟踪所有文件和目录，但保留这些文件在工作目录中
 git add . # 将工作区所有修改添加到暂存区
 git commit -m 'update .gitignore' # 将暂存区修改commit到本地仓库
 git push # 将本地仓库的commit推送到远程仓库
@@ -204,8 +253,8 @@ git push # 将本地仓库的commit推送到远程仓库
 alias gitignore-update='git rm -r --cached . && git add . && git commit -m "update .gitignore" && git push'
 ```
 
-### 如何将一个branch所有commit合并成一个?
-> 很多人想到的是rebase方法. 但是这样做至少会剩余两个commits. 理想的方式是新建一个branch, 复制原来的branch, 删除原来的branch, 新branch重命名 (过河拆桥)
+### 如何将main分支所有commits合并成一个 (只在个人练习项目且只有一个分支时使用)?
+> ***很多人想到的是rebase方法. 但是这样做至少会剩余两个commits. 理想的方式是新建一个branch, 复制原来的branch, 删除原来的branch, 新branch重命名 (过河拆桥)***
 
 ```bash
 git checkout --orphan new
@@ -213,36 +262,105 @@ git add .
 git commit -m "first commit"
 git branch -D main
 git branch -m main
-git push --force-with-lease origin main
+git push --force-with-lease -u origin main
 ```
 
-*你可以自由修改commit message或者branch name来实现合并成一个commit, 但用户要手打6行, 能不能只打一行实现?*
+*每次要手打6行, 能不能只打一行实现?*
 
-#### gitclearcommithistory()函数
+#### gitclearMainHistory()函数
 ```bash
-gitclearcommithistory() {
-    branch_name=${2:-main}
+gitclearMainHistory() {
+    if [ $(( $(git branch | wc -l) )) -ne 1 ] || [ $(( $(git ls-remote --exit-code --heads | wc -l) )) -ne 1 ]; then
+       echo "Error: This command is intended for use with a single 'main' branch in a solo project.
+Please ensure you are in the correct project context.
+If you are working on a team project, consult with your team members before proceeding.
+Function terminated."
+       return 1
+    fi
     git checkout --orphan new && \
     git add . && \
     git commit -m "$1" && \
-    git branch -D "$branch_name" && \
-    git branch -m "$branch_name" && \
-    git push --force-with-lease origin "$branch_name"
+    git branch -D main && \
+    git branch -m main && \
+    git push --force-with-lease -u origin main
 }
 ```
 
-#### 两种使用场景
-- 个人练习项目: 我想直接把自己的main branch合并成一个commit
+`使用方法`
 ```bash
-gitclearcommithistory "first commit"
+gitclearMainHistory "first commit"
 ```
 
-- 团队项目: 我想直接把自己的feature branch合并成一个commit而不影响别人的分支
+### 如何将pull request中的commits合并成一个
+> ***团队项目中, 一般有一个main branch和很多的feature branches. 有时候reviewer提了很多建议或有新功能需要在这个pull request中完成, 这都会导致pull request所绑定分支的commit数量过多. 有没有一种简单的方法可以将这个绑定分支的commit数量合并成一个, 同时不关闭这个pull request, 不影响别的feature branches和main branch?***
+
+#### gitclearPullHistory()函数
 ```bash
-gitclearcommithistory "first commit" "featureA"
+gitclearPullHistory() {
+    git rev-parse --verify "$1" &>/dev/null || {
+        echo "Local branch $1 does not exist."
+        return 1
+    }
+    git ls-remote --exit-code --heads origin "$1" &>/dev/null || {
+        echo "Remote branch $1 does not exist."
+        return 1
+    }
+    git merge-base --is-ancestor origin/main origin/"$1" &>/dev/null || {
+        echo "Conflict detected between $1 and main branch."
+        return 1
+    }
+    git checkout main && \
+    git checkout -b new && \
+    git merge --squash "$1" && \
+    git add . && \
+    git commit -m "merge squash" && \
+    git push -u origin new && \
+    git checkout "$1" && \
+    git reset --soft new && \
+    git push --force-with-lease -u origin "$1"
+    git push origin --delete new
+    git branch -d new
+}
+```
+
+`使用方法`
+```bash
+gitclearPullHistory "Your_PR_branch_name"
 ```
 
 <hr>
+
+### 删除本地分支和远程分支的细节
+> 分支是指向提交的指针
+
+#### 删除本地分支
+```zsh
+git checkout main
+git branch -d featureA
+```
+
+> 注意要切换到b分支才能删除a分支, 如果你checkout在a分支, 无法删除a分支
+
+> 如果待删除分支有一个新commit, -d标志将失效. 这是一种保护机制
+
+```zsh
+git checkout main
+git branch -D featureA
+```
+
+*强制删除本地分支, 不考虑其合并状态.*
+
+#### 删除远程分支
+```zsh
+git push origin -d remote_branch_name
+```
+
+##### 本地repo和远程repo的远程分支数量不一致
+> 在github界面上点击按钮删除了一个branch并不会使本地远程列表的分支数量同步, 需要执行下面的代码
+
+```zsh
+git fetch -p origin
+```
 
 ### 常见shell命令
 ```shell

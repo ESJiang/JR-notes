@@ -50,7 +50,6 @@
 
 #### condition
 ##### if/else
-
 ```js
 if (condition) {}
 else if (condition){}
@@ -58,13 +57,11 @@ else {}
 ```
 
 ##### 三目运算符
-
 ```js
-condition?expression1:expression2
+condition ? expression1 : expression2
 ```
 
 ##### Logical operator
-
 ```js
 a && b
 a || b
@@ -73,7 +70,7 @@ a || b
 #### 循环
 ##### for循环
 ```js
-for (let i=1; i<=100; i++){
+for (let i = 1; i <= 100; i++){
     // expression
 }
 ```
@@ -81,7 +78,7 @@ for (let i=1; i<=100; i++){
 ##### while循环
 ```js
 let i = 1;
-while (i<100){
+while (i < 100){
     // expression
     i++;
 }
@@ -211,7 +208,7 @@ for (let num of input) {
 ### DOM选择器
 ```js
 getElementById()
-querySelector() // 推荐使用
+querySelector()
 querySelectorAll()
 getElementsByClassName()
 getElementsByTagName()
@@ -309,7 +306,7 @@ setInterval(() => {
 ##### solution 1: closest
 ```js
 function handleArrowButtonClick() {
-    this.closest(".info-item").querySelector(".extra-info").style.display = "none"; // this指代点击事件的i元素, 这里使用this/e.target效果一样
+    this.closest(".info-item").querySelector(".extra-info").style.display = "none"; // this指代点击事件的i元素, 这里无论使用this, e.target, e.currentTarget效果是一样的
 }
 
 document.querySelectorAll(".expand-collapse-btn>i").forEach(button => {
@@ -351,7 +348,6 @@ itag.forEach((button, index) => {
 ```
 
 #### expand (expand less - expand more切换)
-
 ##### solution 1: getElementById + forEach
 ```js
 const arr = [1, 2];
