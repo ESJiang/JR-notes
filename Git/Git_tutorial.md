@@ -317,8 +317,8 @@ gitclearPullHistory() {
     git push -u origin new && \
     git checkout "$1" && \
     git reset --soft new && \
-    git push --force-with-lease -u origin "$1"
-    git push origin --delete new
+    git push --force-with-lease -u origin "$1" && \
+    git push origin --delete new && \
     git branch -d new
 }
 ```
