@@ -7,6 +7,12 @@
     - [Type vs Interface](#type-vs-interface)
       - [Type](#type)
       - [Interface](#interface)
+    - [Function](#function)
+      - [Optional parameters](#optional-parameters)
+      - [Destructured and Rest Parameters](#destructured-and-rest-parameters)
+      - [Typing Variables As Functions](#typing-variables-as-functions)
+    - [Unions](#unions)
+    - [Intersections](#intersections)
 
 # Self-learning Notes
 
@@ -64,4 +70,128 @@ const person: Person = {
     name: "Kyle",
     age: 28,
 }
+```
+
+### Function
+```ts
+function printName(person: { name: string }) {
+    console.log(person.name);
+}
+
+const person = { name: "James", age: 28 };
+
+printName(person);
+printName({ name: "James", age: 28 }); // error
+
+function sum(a: number, b: number) {
+    return a + b;
+}
+
+const c = sum(1, 2);
+
+function printAge(age: number): void { // no return value or only contains return keywords
+    console.log(age);
+}
+
+```
+
+> 尽量不要明确规定return type, typescript会自己判断
+
+#### Optional parameters
+```ts
+function printNameandAge(name: string, options?: { debugMode: boolean }) {
+    console.log(name, options);
+}
+
+printNameandAge("Jack");
+printNameandAge("Jack", { debugMode: true });
+```
+
+#### Destructured and Rest Parameters
+```ts
+type Option = {
+    debugMode?: boolean;
+    logLevel?: number;
+};
+function printNameandAge(name: string, { debugMode = false, logLevel }: Option = {}) {
+    console.log(name, debugMode, logLevel);
+}
+
+printNameandAge("Jack", { logLevel: 5 });
+
+function sum(...nums: number[]) {
+    return nums.reduce((acc, n) => acc + n, 0);
+}
+
+sum(1, 2, 3); // 6
+```
+
+#### Typing Variables As Functions
+```ts
+type PrintNameFunc = (name: string) => number;
+
+const f: PrintNameFunc = name => Number(name);
+```
+
+
+### Unions
+> type支持union语法, 但是interface不支持
+
+```ts
+type Todo = {
+    name: string;
+    status: "Complete" | "Incomplete" | "Draft";
+};
+
+type TodoPerson =
+    | Todo
+    | {
+          name: string;
+          age: number;
+      };
+
+const todo: Todo = { name: "Laundry", status: "Complete" };
+```
+
+### Intersections
+```ts
+type Person = {
+    name: string;
+    age: number;
+};
+
+type Employee = {
+    employeeID: string;
+    department: string;
+};
+
+type PersonWithEmployeeInfo = Person & Employee;
+
+const person: PersonWithEmployeeInfo = {
+    name: "Alice",
+    age: 30,
+    employeeID: "12345",
+    department: "HR",
+};
+```
+
+```ts
+interface Person {
+    name: string;
+    age: number;
+}
+
+interface Employee {
+    employeeID: string;
+    department: string;
+}
+
+interface PersonWithEmployeeInfo extends Person, Employee {}
+
+const person: PersonWithEmployeeInfo = {
+    name: "Alice",
+    age: 30,
+    employeeID: "12345",
+    department: "HR"
+};
 ```
