@@ -13,6 +13,10 @@
       - [Typing Variables As Functions](#typing-variables-as-functions)
     - [Unions](#unions)
     - [Intersections](#intersections)
+    - [ReadOnly](#readonly)
+    - [keyof](#keyof)
+    - [typeof](#typeof)
+    - [Index Types](#index-types)
 
 # Self-learning Notes
 
@@ -194,4 +198,75 @@ const person: PersonWithEmployeeInfo = {
     employeeID: "12345",
     department: "HR"
 };
+```
+
+### ReadOnly
+```ts
+type Person = {
+    readonly id: number;
+    name: string;
+    age: number;
+};
+
+const person: Person = { id: 1, name: "James", age: 18 };
+person.id = 2; // error, coz id cannot be modified
+```
+
+### keyof
+```ts
+type Person = {
+    name: string;
+    age: number;
+    isProgrammer?: boolean;
+};
+
+function getValue(key: keyof Person, person: Person) {
+    return person[key];
+}
+
+const age = getValue("age", { name: "Jack", age: 28 }); //age = string | number | boolean | undefined
+```
+
+### typeof
+```ts
+const person = { name: "Jack", age: 24 };
+const people: (typeof person)[] = [];
+// const people: { name: string; age: number }[] = [];
+
+people.push(person);
+people.push({ name: "Sally", age: 24 });
+
+function sayHi(name: string) {
+    console.log(name);
+}
+
+type FuncType = typeof sayHi;
+```
+
+### Index Types
+```ts
+type Person = {
+    name: string;
+    skillLevel: "Beiginner" | "Intermediate" | "Expert" | "Master";
+};
+
+const person: Person = { name: "James", skillLevel: "Intermediate" };
+
+function printSkillLevel(skillLevel: Person["skillLevel"]) {
+    console.log(skillLevel);
+}
+
+printSkillLevel(person.skillLevel);
+
+type PeopleGroupBySkillLevel = {
+    [index in Person["name"]]: Person[];
+};
+
+const a: PeopleGroupBySkillLevel = {
+    Expert: [{ name: "John", skillLevel: "Expert" }],
+};
+
+const x = ["sdf", "d", false];
+type X = (typeof x)[keyof typeof x];
+type Y = (typeof x)[number];
 ```
