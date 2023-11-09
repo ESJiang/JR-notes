@@ -11,12 +11,18 @@
       - [Optional parameters](#optional-parameters)
       - [Destructured and Rest Parameters](#destructured-and-rest-parameters)
       - [Typing Variables As Functions](#typing-variables-as-functions)
-    - [Unions](#unions)
-    - [Intersections](#intersections)
-    - [ReadOnly](#readonly)
-    - [keyof](#keyof)
-    - [typeof](#typeof)
-    - [Index Types](#index-types)
+    - [Type Modifiers](#type-modifiers)
+      - [Unions](#unions)
+      - [Intersections](#intersections)
+      - [ReadOnly](#readonly)
+      - [keyof](#keyof)
+      - [Typeof](#typeof)
+      - [Index Types](#index-types)
+    - [Advanced Types](#advanced-types)
+      - [As Const And Enums](#as-const-and-enums)
+      - [Tuples](#tuples)
+      - [Generics](#generics)
+      - [Async Functions](#async-functions)
 
 # Self-learning Notes
 
@@ -137,8 +143,8 @@ type PrintNameFunc = (name: string) => number;
 const f: PrintNameFunc = name => Number(name);
 ```
 
-
-### Unions
+### Type Modifiers
+#### Unions
 > type支持union语法, 但是interface不支持
 
 ```ts
@@ -157,7 +163,7 @@ type TodoPerson =
 const todo: Todo = { name: "Laundry", status: "Complete" };
 ```
 
-### Intersections
+#### Intersections
 ```ts
 type Person = {
     name: string;
@@ -200,7 +206,7 @@ const person: PersonWithEmployeeInfo = {
 };
 ```
 
-### ReadOnly
+#### ReadOnly
 ```ts
 type Person = {
     readonly id: number;
@@ -212,7 +218,7 @@ const person: Person = { id: 1, name: "James", age: 18 };
 person.id = 2; // error, coz id cannot be modified
 ```
 
-### keyof
+#### keyof
 ```ts
 type Person = {
     name: string;
@@ -227,7 +233,7 @@ function getValue(key: keyof Person, person: Person) {
 const age = getValue("age", { name: "Jack", age: 28 }); //age = string | number | boolean | undefined
 ```
 
-### typeof
+#### Typeof
 ```ts
 const person = { name: "Jack", age: 24 };
 const people: (typeof person)[] = [];
@@ -243,7 +249,7 @@ function sayHi(name: string) {
 type FuncType = typeof sayHi;
 ```
 
-### Index Types
+#### Index Types
 ```ts
 type Person = {
     name: string;
@@ -269,4 +275,95 @@ const a: PeopleGroupBySkillLevel = {
 const x = ["sdf", "d", false];
 type X = (typeof x)[keyof typeof x];
 type Y = (typeof x)[number];
+```
+
+### Advanced Types
+#### As Const And Enums
+```ts
+const SKILL_LEVELS = ["Beginner", "Intermediate", "Expert"] as const; // as const changes everything to readonly
+type Person = {
+    skillLevel: (typeof SKILL_LEVELS)[number];
+};
+
+SKILL_LEVELS.forEach(skillLevel => {
+    console.log(skillLevel);
+});
+```
+
+```ts
+const person = {
+    name: "",
+    age: 28,
+    adddress: {
+        street: "Main St",
+    },
+} as const;
+
+person.age = 2; // error, coz as const is readonly
+```
+
+#### Tuples
+```ts
+const person = {
+  name: "James",
+  age: 28
+}
+
+type Tuple = [string, boolean];
+const a: Tuple = ["sdfsdf", true];
+```
+
+#### Generics
+```ts
+const input = document.querySelector<HTMLInputElement>(".input");
+console.log(input?.value);
+
+function getSecond<ArrayType>(array: ArrayType[]) {
+    return array[1];
+}
+
+const a = [1, 2, 3];
+const b = ["1", "2", "3"];
+const ret = getSecond(a);
+
+type APIResponse<TData = { status: number }> = {
+    data: TData;
+    isError: boolean;
+};
+
+type UserResponse = APIResponse<{ name: string; age: number }>;
+type BlogResponse = APIResponse<{ title: string }>;
+
+const data1: UserResponse = {
+    data: { name: "Amy", age: 24 },
+    isError: false,
+};
+
+const data2: BlogResponse = {
+    data: { title: "blog1" },
+    isError: false,
+};
+
+function arrayToObject<T>(array: [string, T][]) {
+    const obj: {
+        [index: string]: T;
+    } = {};
+    array.forEach(([key, value]) => {
+        obj[key] = value;
+    });
+    return obj;
+}
+
+const arr: [string, number | boolean][] = [
+    ["keyone", 1],
+    ["keytwo", 2],
+    ["keythree", true],
+];
+```
+
+#### Async Functions
+```ts
+const wait = async (during: number) => await fetch("sdf");
+
+wait(1000).then(value => console.log(value.json()));
 ```
