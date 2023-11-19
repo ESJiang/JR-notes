@@ -1,6 +1,6 @@
 - [Self-learning Notes](#self-learning-notes)
   - [Resources](#resources)
-  - [TypeScript\_3 (`19/11/2023`)](#typescript_3-19112023)
+  - [TypeScript\_3 (`20/11/2023`)](#typescript_3-20112023)
     - [Generate a new type based on an old type](#generate-a-new-type-based-on-an-old-type)
       - [Pick and Omit](#pick-and-omit)
       - [Partial and Required](#partial-and-required)
@@ -8,12 +8,14 @@
     - [Record](#record)
     - [Readonly](#readonly)
     - [Awaited](#awaited)
+    - [Satisfies](#satisfies)
+    - [Discriminated Union](#discriminated-union)
 
 # Self-learning Notes
 
 ## Resources
 
-## TypeScript_3 (`19/11/2023`)
+## TypeScript_3 (`20/11/2023`)
 
 <p align='center'><img src='../image/TypeScript.png' width='30%' height='30%' /></p>
 
@@ -118,4 +120,43 @@ async function doSomething() {
 }
 
 type Value = Awaited<ReturnType<typeof doSomething>>; // number
+```
+
+### Satisfies
+```ts
+type Todo = {
+    title: string;
+    dueDate: string | Date;
+    isComplete: boolean;
+};
+
+const todo = {
+    title: "sdf",
+    dueDate: new Date(),
+    isComplete: true,
+} satisfies Todo; // better use satisfies keyword here coz const todo is more explicit than type Todo. We want to maintain it while ensuring that const todo meets the minimum requirements of type Todo
+
+todo.dueDate.setDate(4);
+```
+
+### Discriminated Union
+```ts
+type SuccessResponse = {
+    status: "Success"; // do not use number/string, only literal value (必须是一个具体的值)
+    data: { id: string; name: string };
+};
+
+type ErrorResponse = {
+    status: "Error"; // do not use number/string, only literal value (必须是一个具体的值)
+    errorMessage: string;
+};
+
+function handleResponse(res: SuccessResponse | ErrorResponse) {
+    // 两个type的status必须同类型, 因此一个为string, 一个为number就不行
+    if (res.status === "Success") {
+        console.log(res.data.name);
+    } else {
+        console.log(res.errorMessage.length);
+    }
+}
 ```
