@@ -16,6 +16,7 @@
 - [JavaScript 3](./JavaScript/JavaScript_3.md)
 - [JavaScript_tutorial_1](./JavaScript/JavaScript_tutorial_1.md)
 - [JavaScript_tutorial_2](./JavaScript/JavaScript_tutorial_2.md)
+- [JavaScript_Array_Advanced_Tutorial_1](./JavaScript/JavaScript_Array_Advanced.md)
 
 ## Module Four: Node.js
 ### Notes
@@ -60,3 +61,12 @@
 
 ## Module Nine: VScode Shortcuts
 - [Shortcuts](./VScode%20Shortcuts/shortcuts.md)
+
+## Module Ten: React self-learning
+- [React_Self_Learning](./React/React_self_Learning.md)
+
+## Module Eleven: TypeScript self-learning
+- [TypeScript_1](./TypeScript/TypeScript_1.md)
+- [TypeScript_2](./TypeScript/TypeScript_2.md)
+- [TypeScript_3](./TypeScript/TypeScript_3.md)
+- [TypeScript_4](./TypeScript/TypeScript_4.md)

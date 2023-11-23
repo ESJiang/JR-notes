@@ -10,6 +10,8 @@
     - [Awaited](#awaited)
     - [Satisfies](#satisfies)
     - [Discriminated Union](#discriminated-union)
+    - [Function Overload](#function-overload)
+    - [Type Predicate Function](#type-predicate-function)
 
 # Self-learning Notes
 
@@ -158,5 +160,45 @@ function handleResponse(res: SuccessResponse | ErrorResponse) {
     } else {
         console.log(res.errorMessage.length);
     }
+}
+```
+
+### Function Overload
+> 函数重载可以提升代码可读性
+
+```ts
+function sum(a: number[]): number;
+function sum(a: number, b: number): number;
+function sum(a: number[], b: number): number;
+function sum(a: number | number[], b?: number): number {
+    if (Array.isArray(a)) a = a.reduce((acc, num) => acc + num, 0);
+    if (b) return a + b;
+    else return a;
+}
+
+const s1 = sum([1, 2]);
+const s2 = sum(1, 2);
+const s3 = sum([1, 2], 3);
+```
+
+### Type Predicate Function
+```ts
+const PRIORITIES = ["High", "Medium", "Low"] as const;
+type Priority = (typeof PRIORITIES)[number];
+type Todo = {
+    title: string;
+    description: string;
+};
+
+function func(todo: Todo) {
+    if (isPriority(todo.description)) {
+        todo.description;
+    } else {
+        todo.description;
+    }
+}
+
+function isPriority(description: string): description is Priority {
+    return PRIORITIES.includes(description as Priority);
 }
 ```
