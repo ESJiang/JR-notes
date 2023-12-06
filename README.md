@@ -16,7 +16,7 @@
 - [JavaScript 3](./JavaScript/JavaScript_3.md)
 - [JavaScript_tutorial_1](./JavaScript/JavaScript_tutorial_1.md)
 - [JavaScript_tutorial_2](./JavaScript/JavaScript_tutorial_2.md)
-- [JavaScript_Array_Advanced_Tutorial_1](./JavaScript/JavaScript_Array_Advanced.md)
+- [JavaScript_Array_Advanced_Tutorial](./JavaScript/JavaScript_Array_Advanced.md)
 
 ## Module Four: Node.js
 ### Notes
