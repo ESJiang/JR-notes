@@ -71,3 +71,4 @@
 - [TypeScript_3](./TypeScript/TypeScript_3.md)
 - [TypeScript_4](./TypeScript/TypeScript_4.md)
 - [TypeScript_Todo_List](./TypeScript/TypeScript_Todo_List/)
+- [TypeScript_Migrate_JS_to_TS](./TypeScript/TypeScript_Migrate_JS_to_TS/)
